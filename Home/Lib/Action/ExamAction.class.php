@@ -3,8 +3,6 @@ Class ExamAction extends CommonAction{
 	
 	public function _initialize(){
 		parent::_initialize();
-		
-		//判断来源是否是从个人中心来的。
 		if(!session('sutudyappid')){
 			$this->redirect('index.php/User/myapp');
 		}
@@ -24,6 +22,8 @@ Class ExamAction extends CommonAction{
 	}
 	
 	public function training(){
+		//dump(session('身份证号'));exit;//座位号
+		//dump(session('seatNo'));exit;//座位号
 		$this->assign('pagetitle','练习');
 		$this->display();
 	}
@@ -35,10 +35,10 @@ Class ExamAction extends CommonAction{
 	
 	public function doexamlogin(){
 		if($_POST['idCard'] == $_SESSION['userinfo']['identitycard']){
-			session('sutudyappid',$_POST['sutudyappid']);
+			session('seatNo',$_POST['seatNo']);
 			$this->redirect('Exam/training');
 		}else{
-			$this->redirect('Exam/login');
+			$this->error('身份证号码不正确！','/index.php/Exam/login');
 		}
 	}
 	

@@ -165,7 +165,7 @@
 							<span class="apptitle">91移动开放平台</span><br />
 							专门为手机用记设计，新的界面，流畅的操作流程，让您 方便与友好的自通。
 							<p>已经有13564人下载</p>
-							<button class="clicktobuy sutudyapp">开始练习</button>
+								<button title="5" class="clicktobuy sutudyapp">开始练习</button>
 							</div>
 						</div><?php endforeach; endif; else: echo "" ;endif; ?>
 				</div>

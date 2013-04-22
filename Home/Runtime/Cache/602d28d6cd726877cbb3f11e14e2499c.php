@@ -14,32 +14,13 @@
 	<div class="navigation-wrapper">
 		<div id="logo2">
 			<h1>
-				<a href="/"> <img width="218" height="55"
-					src="__PUBLIC__/images/home/herderlogo2.png" />
-				</a>
+			<a href="/">
+			<img width="218" height="55" src="__PUBLIC__/images/home/herderlogo.png" />
+			</a>
 			</h1>
 		</div>
-		<div class="nav-body site-nav exampage">
-			<div class="nav-main">
-				<div class="menu">
-					<div class="menu-title">
-						<a ui-async="async" href="<?php echo U('User/profile');?>" accesskey="1"><span
-							stats="V6Hd_home" class="menu-title-text">会员首页</span></a>
-					</div>
-				</div>
-				<div class="menu">
-					<div class="menu-title" id="profileMenuActive">
-						<a href="<?php echo U('User/myapp');?>" accesskey="2" id="showProfileMenu"><span
-							class="menu-title-text" stats="V6Hd_Profile">我的应用</span></a>
-					</div>
-				</div>
-				<div class="menu">
-					<div id="friendMenuActive" class="menu-title">
-						<a href="<?php echo U('User/allapp');?>" accesskey="3" id="showFriendMenu"><span
-							stats="V6Hd_frd" class="menu-title-text">船员题库</span></a>
-					</div>
-				</div>
-			</div>
+		<div class="nav-body">
+			<h2 class="nav-title">中国领先的实名制SNS社交网络</h2>
 			<div class="nav-other">
 				<div class="menu">
 				<a href="##" stats="homenav_suggest" title="给我们提建议">给我们提建议</a>
@@ -54,33 +35,49 @@
 <div class="page-wrapper clearfix">
 	<div class="full-page">
 		<div class="login-page clearfix">
-			<div class="main-columns">
-				<div id="login_area">
-					<div id="logo_student"></div>
-					<div id="loginCopyRight">
-						该系统由 中国船员考试网 提供技术支持
-						<br>
-						COPYRIGHT 2001-<?php echo date('Y',time()); ?> 中国船员考试网
+		<div class="side-column">
+	<div class="login-panel logoutpanel">
+		<div class="leftnewtitleh2">
+			船员考试网
+		</div>
+		<ul class="leftnewtitleul">
+			<li><a href="">关于我们</a></li>
+			<li><a href="">最新资讯</a></li>
+			<li><a href="">会员服务及收费</a></li>
+			<li><a href="">常见问题解答</a></li>
+			<li><a href="">海事法规及考试公告</a></li>
+			<li><a href="">省事相关报表下载</a></li>
+			<li><a href="">海员考试资料下载</a></li>
+			<li><a href="">服务条款</a></li>
+			<li><a href="">联系我们</a></li>
+		</ul>
+	</div>
+</div>
+		<div class="main-column usercenter news newlist">
+			<div class="rightcontentboxx">
+				<div class="headertitles_news"><div class="titleinfo">船员考试网 > 常见问题解答</div></div>
+				<div class="realcontentboxx">
+					<div class="newsbox">
+						<ul>
+							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月16日：传升级版Nexus 4下月发布 支持LTE</a></li>
+							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月18日：视频游戏惨淡 3月份零售额同比降一成</a></li>
+							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月19日：中移动：对雅安所有移动用户实施免停机服务</a></li>
+							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月7日：东芝Kirabook上手：配视网膜屏 售价1599美元起</a></li>
+							<li class="newsitem5"><a href="<?php echo U('Public/news','id=1');?>">7月16日：传升级版Nexus 4下月发布 支持LTE</a></li>
+							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月18日：视频游戏惨淡 3月份零售额同比降一成</a></li>
+							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月19日：中移动：对雅安所有移动用户实施免停机服务</a></li>
+							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月7日：东芝Kirabook上手：配视网膜屏 售价1599美元起</a></li>
+							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月16日：传升级版Nexus 4下月发布 支持LTE</a></li>
+							<li class="newsitem5"><a href="<?php echo U('Public/news','id=1');?>">7月18日：视频游戏惨淡 3月份零售额同比降一成</a></li>
+							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月19日：中移动：对雅安所有移动用户实施免停机服务</a></li>
+							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月7日：东芝Kirabook上手：配视网膜屏 售价1599美元起</a></li>
+							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月16日：传升级版Nexus 4下月发布 支持LTE</a></li>
+							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月18日：视频游戏惨淡 3月份零售额同比降一成</a></li>
+							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月7日：东芝Kirabook上手：配视网膜屏 售价1599美元起</a></li>
+						</ul>	
 					</div>
-					<form action="__URL__/doexamlogin" method="post">
-					<div id="input_area">
-						<div id="loginStudent_title"></div>
-						<div class="input_title">
-							身份证号：
-							<input onchange="checkidentitycard(this)" type="text" maxlength="18" class="add_item" id="person_id" name="idCard">  
-						</div>
-						<div class="input_title">
-									座&nbsp;位&nbsp;号：
-							<input id="additem" type="text" maxlength="10" class="add_item" name="seatNo">
-						</div>
-						<div id="button_area" class="examloginbtn">
-							<input type="submit" value="进入考场" name="Submit" class="examloginbtnsubt">
-							&nbsp;
-							<input type="reset" value="重置" name="Submit">
-						</div>
-					</div>
-					</form>
 				</div>
+			</div>
 			</div>
 		</div>
 	</div>

@@ -1,5 +1,14 @@
 var jq = jQuery.noConflict();
 var __APP__ = '/index.php/';
+
+//系统错误提示
+function alerts(msg){
+	jq('div.bshade').show();
+	art.dialog({title:'系统提示',content: msg,icon:'face-sad',cancelVal: '关闭',cancel: true,fixed: true,close:function(){
+		jq('div.bshade').hide();
+    }});
+}
+
 //身份证号码的验证 （15/18位） 
 //欢迎验证、给予指正错误，从好多地方查来的资料修改的...已用本人身份证验证...  由于以前修改的问题无法验证带 X 的身份证号码，已修复!  
 //为值添加0 
@@ -49,7 +58,7 @@ function checkusrcardnum(ths){
                     sum += (Math.pow(2, i) % 11) * parseInt(person_id.charAt(17 - i), 11);  
                 }  
                 if (sum % 11 != 1) {
-                    art.dialog({title:'系统提示',content: '对不起，身份证号码不符合国定标准，请核对！',icon:'warning',cancelVal: '关闭',cancel: true});
+                	alerts('对不起，身份证号码不符合国定标准，请核对！');
                     //jq("#person_id").val("");  
                     jq("#birthday").val("")                    
                     return false;  
@@ -58,7 +67,7 @@ function checkusrcardnum(ths){
             //检测证件地区的合法性                                  
             if (aCity[parseInt(person_id.substring(0, 2))] == null)   
             { 
-                art.dialog({title:'系统提示',content: '对不起，证件地区未知，请核对！',icon:'warning',cancelVal: '关闭',cancel: true});
+            	alerts('对不起，证件地区未知，请核对！');
                 //jq("#person_id").val("");  
                 jq("#birthday").val("");               
                 return false;  
@@ -67,7 +76,7 @@ function checkusrcardnum(ths){
               
             //alert(birthday +":"+(dateStr.getFullYear()+"-"+ Append_zore(dateStr.getMonth()+1)+"-"+ Append_zore(dateStr.getDate())))  
             if (birthday != (dateStr.getFullYear()+"-"+ Append_zore(dateStr.getMonth()+1)+"-"+ Append_zore(dateStr.getDate()))) { 
-                art.dialog({title:'系统提示',content: '对不起，证件出生日期非法！',icon:'warning',cancelVal: '关闭',cancel: true});
+            	alerts('对不起，证件出生日期非法！');
                 //jq("#person_id").val("");  
                 jq("#birthday").val("");                   
                 return false;  
@@ -76,7 +85,7 @@ function checkusrcardnum(ths){
         }  
         else  
         {           
-            art.dialog({title:'系统提示',content: '对不起，证件号码格式非法！',icon:'warning',cancelVal: '关闭',cancel: true});
+        	alerts('对不起，证件号码格式非法！');
             jq("#person_id").val("");
             jq("#birthday").val("");
             return false;  
@@ -85,7 +94,7 @@ function checkusrcardnum(ths){
     }  
     else  
     {  
-        art.dialog({title:'系统提示',content: '对不起，请输入身份证号码！',icon:'warning',cancelVal: '关闭',cancel: true});
+    	alerts('对不起，请输入身份证号码！');
         jq("#birthday").val("");
         return false;
     }  
@@ -94,7 +103,7 @@ function checkusrcardnum(ths){
 //用有道api进行身份证号码验证     
 function checkidentitycard(ths){
 	var id = jq(ths).val();
-	//checkusrcardnum(ths);
+	var flag = false;
 	jq.post(__APP__+'Public/checkidentitycard',{'identitycard':id},function(data,status){
 		var jStr=JSON.stringify(data);
 		if((data == null) || (jStr == '{}')){
@@ -102,6 +111,8 @@ function checkidentitycard(ths){
 				jq('input#person_id').focus();
 				jq('input#person_id').val('');
 			}});
+			
+			flag = false;		
 		}else{
 			var birthday = data.product.birthday;
 			var birthday = birthday.substring(0,4)+"-"+birthday.substring(4,6)+"-"+birthday.substring(6,8);
@@ -117,9 +128,12 @@ function checkidentitycard(ths){
 			var location = data.product.location;
 			jq('span.defaultarea').html('如：'+location);
 			
+			flag = true;
 		}
 		
 	},"json");
+	
+	return flag;
 }
 //我要报名
 function iwantapply(appid){
@@ -133,14 +147,6 @@ function iwantapply(appid){
 function clicktobuy(appid){
 	jq('div.bshade').show();
 	art.dialog.load(__APP__+'User/buyapp/'+appid,{title: '立即购买此应用', width: 400, height: 150,fixed: true,close:function(){
-		jq('div.bshade').hide();
-    }});
-}
-
-//系统错误提示
-function alerts(msg){
-	jq('div.bshade').show();
-	art.dialog({title:'系统提示',content: msg,icon:'face-sad',cancelVal: '关闭',cancel: true,fixed: true,close:function(){
 		jq('div.bshade').hide();
     }});
 }
@@ -236,6 +242,18 @@ jq(function(){
 	jq('form#loginForm input#password').blur(function(){
 		if(jq(this).val()==''){
 			jq('.login-form dl.pwd .pwdtip').show();
+		}
+	});
+	
+	//首页点击登陆 
+	jq('form#loginForm input#login.input-submit').click(function(){
+		if((jq('input#email').val() == '邮箱/身份证/电话号码') || (jq('input#email').val() == '')){
+			alerts('登陆用户名不能为空！');
+			return false;
+		}
+		if(jq('input#password').val() == ''){
+			alerts('登陆密码不能为空！');
+			return false;
 		}
 	});
 	
@@ -342,7 +360,7 @@ jq(function(){
 	
 	//个人应用中心，学习类应用点击
 	jq('button.sutudyapp').click(function(){
-		var sutudyappid = 1;
+		var sutudyappid = jq(this).attr('title');
 		jq.post(__APP__+'Public/selectapp',{'sutudyappid':sutudyappid},function(data,status){
 			if(status == 'success'){
 				window.location.href=__APP__+'Exam/login';
@@ -351,6 +369,27 @@ jq(function(){
 			}
 		});
 		return false;
+	});
+	
+	//座位号
+	if(jq('div.input_title input#additem').length != 0){
+		jq('div.input_title input#additem').focus(function(){
+			var additem = Math.ceil(Math.random()*100000000000000000000);
+			jq(this).val(additem);
+		});
+	}
+	//用户考试登陆
+	jq('div.examloginbtn input.examloginbtnsubt').click(function(){
+		
+		if(jq('div.input_title #person_id').val()==''){
+			alerts('身份证号码必填！');
+			return false;
+		}
+		if(jq('div.input_title input#additem').val()==''){
+			alerts('座位编号可随意填写！');
+			return false;
+		}
+
 	});
 	
 });

@@ -183,6 +183,7 @@ Class PublicAction extends Action{
 		$sutudyappid = $_POST['sutudyappid'];
 		if($sutudyappid){
 			session('sutudyappid',$sutudyappid);
+			echo session('sutudyappid');
 		}
 	}
 	
