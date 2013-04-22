@@ -1,0 +1,1172 @@
+html {color: #333333;direction: ltr;}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {margin: 0;padding: 0;}
+body {font-family: Tahoma,Verdana,STHeiTi,simsun,sans-serif;font-size: 9pt;color: #333333;}
+h1, h2, h3, h4, h5, h6 {font-size: 100%;font-weight: normal;}
+ul,li{list-style: none;}
+.clearfix{clear: both;content: ".";display: block;}
+fieldset, img {border: 0 none;}
+div.navigation{
+	background: url(../../images/home/headerbg.png);
+	height: 56px;
+}
+
+.login-page {
+    margin: 0 auto 0px;
+    width: 980px;
+}
+
+.navigation-wrapper {
+    margin: 0 auto;
+    width: 980px;
+}
+#logo2 {
+    float: left;
+    height: 55px;
+    margin-right: 35px;
+    background: url("../../images/home/loginleftbarbg.png") repeat-x scroll left 0px #EBF2FA;
+    border:1px solid #d4d4d4;border-bottom-color:#AAA;border-top:0;border-bottom:0;
+}
+
+.nav-title {
+    background: url("../../images/home/slogan.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 24px;
+    margin-top: 16px;
+    text-indent: -9999em;
+    width: 342px;
+}
+.navigation .nav-other {
+    float: right;
+    margin-top: 16px;
+}
+.login_corp a, .navigation .menu a.show-more, .login-download a {
+    background: url("../../images/home/ico_new.png") no-repeat scroll 0 0 transparent;
+}
+.navigation .menu a.show-more {
+    background-position: right 10px;
+    padding-right: 18px;
+}
+
+.navigation .menu {
+    float: left;
+    margin: 0;
+    position: relative;
+    /*z-index: 10005;*/
+    z-index: 1985;
+}
+a:link, a:visited {
+    color: #005EAC;
+    text-decoration: none;
+}
+.navigation .menu a {
+    color: #CEE1EE;
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 10px;
+}
+
+.login-page .side-column{
+	float:left;width:218px;margin-right:35px;background:#ebf2fa;
+	border:1px solid #d4d4d4;border-bottom-color:#AAA;border-top:0;height:525px;
+	box-shadow:0 1px 1px #CCC;background:#ebf2fa url(../../images/home/loginleftbarbg.png) left -42px repeat-x;
+	margin-top:-2px;position:relative;
+	padding-top: 20px;display: block;
+}
+.IE7 .login-page .side-column{
+	height: 545px;
+}
+.login-form {
+    padding: 35px 15px 15px;
+}
+.login-form dl {
+    line-height: 20px;
+}
+
+.login-form dl.top label, .login-form dl.pwd label {
+    background: url("../../images/home/ico.png") no-repeat scroll 8px -84px transparent;
+    height: 25px;
+    left: 4px;
+    position: absolute;
+    text-indent: -9999em;
+    top: 4px;
+    width: 25px;
+    z-index: 2;
+}
+.login-form dl {
+    line-height: 20px;
+    position: relative;
+}
+
+.login-form .input-text {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    font-size: 14px;
+    height: 32px;
+    line-height: 32px;
+    margin: 0 0 0 30px;
+    padding: 0;
+    width: 155px;
+}
+.login-form dl.pwd label {
+    background-position: 8px -112px;
+}
+
+.login-form dl.top dd, .login-form dl.pwd dd, .login-form dl.code dd {
+    background: url("../../images/home/cssimgbg.png") no-repeat scroll 0 -76px #FFFFFF;
+    border: 1px solid #ADB6C9;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 0 1px #FFFFFF;
+    height: 32px;
+    padding: 1px;
+    position: relative;
+    width: 186px;
+}
+
+.login-form dl.pwd {
+    margin: 15px 0 0;
+}
+
+.login-form dl.savepassword {
+    margin: 5px 0;
+    height: 30px;
+}
+
+
+.login-form .labelCheckbox {
+    color: #333333;
+    float: left;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 27px;
+}
+
+.login-form .labelCheckbox input {
+    margin-right: 5px;
+    width: 13px;
+}
+
+.login-btn {
+    background: url("../../images/home/btn.png") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    cursor: pointer;
+    height: 38px;
+    text-indent: -9999em;
+    width: 190px;
+}
+
+#login {
+    margin-top: 3px;
+    padding: 0 0 3px;
+}
+
+.regnow {
+    background: url("../../images/home/border.png") repeat-x scroll left top transparent;
+    margin: 0 15px;
+    padding: 17px 0 15px;
+}
+
+#regnow {
+    background-position: 0 -38px;
+    border: 0 none;
+    padding: 0 0 3px;
+}
+
+.login-form .getpassword {
+    float: right;
+    margin-top: 3px;
+}
+.regnow.noet{
+	color:#336699;
+	margin-top: 20px;
+	background-repeat: repeat-x;
+}
+.noteleft{
+	color: #999999;
+	display: block;
+	margin-bottom: 10px;
+}
+.readmore{
+	color: #999999;
+	text-align: right;
+	display: block;
+	margin-top: 10px;
+}
+.readmore a{
+	color: #999999;
+}
+.login-form dl.pwd .pwdtip, .login-form dl.code .codetip {
+    background: none repeat scroll 0 0 transparent;
+    color: #888888;
+    cursor: text;
+    font-size: 14px;
+    font-weight: normal;
+    left: 30px;
+    position: absolute;
+    text-indent: 0;
+    top: 7px;
+    visibility: visible;
+    width: 100px;
+}
+
+
+#footer0904 {
+    clear: both;
+    color: #999999;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 20px 0 0;
+    text-align: center;
+    width: 980px;
+    border-top: 1px #d3d3d3 solid;
+    padding-top: 10px;
+}
+.footer_c {
+    color: #666666;
+    margin: 0 0 7px;
+}
+.footer_about {
+    background: none repeat scroll 0 0 #F1F1F1;
+    border: 1px solid #E9E9E9;
+    height: 26px;
+    margin: 0 0 15px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+}
+
+.footer_about .about {
+    float: left;
+    left: 50%;
+    list-style: none outside none;
+    position: relative;
+    text-align: center;
+}
+
+.footer_about .about li {
+    border-right: 1px solid #CCCCCC;
+    cursor: pointer;
+    float: left;
+    height: 14px;
+    line-height: 15px;
+    margin-top: 6px;
+    padding: 0 10px;
+    position: relative;
+    right: 50%;
+}
+
+.footer_about .about li.last {
+    border: 0 none;
+}
+
+.footer_text {
+    font-family: Arial;
+    margin: 0 auto 8px;
+    width: 950px;
+}
+
+.footer_text p {
+    line-height: 24px;
+}
+
+.icpbox {
+    height: 70px;
+    margin: 0 auto;
+    width: 264px;
+}
+
+.footer_text a:link, .footer_text a:visited {
+    color: #999999;
+}
+
+.footer_text a:hover {
+    color: #CC0000;
+}
+
+#footer{
+	margin-top: 20px;
+}
+
+.main-column {
+    float: left;
+    width: 725px;
+}
+
+div.rightmainloginbox{
+	padding-top: 20px;
+}
+
+div.fourphonebox{
+	border-top: 1px #dddddd solid;
+	padding-top: 20px;
+	margin-top: 20px;
+}
+
+div.undernewsmoreinfoline{
+	background: #f1f6f9;
+	text-align: center;
+	color: #888888;
+	height: 34px;
+	line-height: 34px;
+	margin-top: 20px;
+}
+div.undernewsmoreinfoline a{
+	color: #336699;
+}
+
+div.loginnewbox{
+	margin-top: 37px;
+}
+div.loginnewbox div.loginnewboxleft,
+div.loginnewbox div.loginnewboxrihgt{
+	width: 48%;
+	float: left;
+}
+.red{
+	color: red;
+}
+
+div.newsheaderline{
+	font-size: 14px;
+	font-weight: bolder;
+	margin-bottom: 13px;
+}
+
+div.loginnewbox ul li{
+	line-height: 18px;
+	height: 18px;
+}
+
+div.loginnewbox ul li a{
+	color: #666666;
+}
+
+
+.nav-main .menu-title {
+    width: 60px;
+}
+
+.site-nav .menu-title a {
+    color: #FFFFFF;
+    display: block;
+    height: 31px;
+    line-height: 31px;
+}
+
+.site-nav .nav-main .menu-title a {
+    font-size: 14px;
+    font-weight: bold;
+    height: 31px;
+    overflow: hidden;
+    padding: 0 0px;
+}
+.site-nav, .site-nav .account-action .menu-title a, .site-nav .nav-drop-menu-btn, .site-nav .menu-title-active .nav-drop-menu-btn, .nav-app-drop-menu .rec-app .rank, #accountDropDownMenu .action .switch, .menu-dropdown .optionmenu a, .optionsupport a, #accountDropDownMenu a.logout, .dressup-home-btn, #navMessage i em, #navMessage b, #navMessage span a {
+    background: url("../../images/home/home.png") no-repeat scroll 0 0 transparent;
+}
+.site-nav .nav-drop-menu-btn {
+    background-position: -185px -164px;
+    display: inline-block;
+    height: 31px;
+    margin-left: 5px;
+    overflow: hidden;
+    padding: 0 5px;
+    vertical-align: top;
+    width: 10px;
+}
+.nav-main .menu-title {
+    width: 60px;
+}
+.nav-main #profileMenuActive {
+    width: 116px;
+}
+.nav-main .menu-title {
+    width: 60px;
+}
+
+.nav-main #showAppMenu {
+    width: 80px;
+}
+
+.nav-body.site-nav div.nav-main div.menu{
+	margin-top: 10px;
+}
+h2.reg_page_title{
+	font: 20px/1.5 microsoft yahei,simhei,arial;
+}
+
+.reg-form th {
+    font-size: 14px;
+    height: 40px;
+    padding-right: 6px;
+    text-align: right;
+    width: 209px;
+    font-style: normal;
+    font-weight: normal;
+}
+
+div.regboxcontent.iwantapplypopupbox .reg-form th {
+    height: 25px;
+}
+
+.reg-form .txt{
+	vertical-align:middle;border:1px solid #dbdbdb;border-color:#c0c0c0 #e1e1e1 #e1e1e1 #c0c0c0;background:#fbfbfb;padding:5px;font-size:14px;width:270px
+}
+
+div.regboxcontent{
+	padding-top: 40px;
+}
+input.birthday.txt,
+input.verify.txt{
+	width: 130px;
+}
+.pcabox select{
+	margin-right: 5px;
+	width: 80px;
+}
+.reg-form #person_id{
+	letter-spacing:5px;
+}
+input.verify{
+	margin-top: 5px;
+}
+th.verifyth{
+	vertical-align: bottom;
+}
+img.verifyimg{
+	vertical-align: middle;
+	margin-right: 5px;
+}
+input.regsubbutton{
+	width: 165px;
+	height: 39px;
+	border: 0;
+	background: url(../../images/home/regbutton.png) no-repeat;
+	cursor: pointer;
+	text-indent: -999px;
+	display: block;
+}
+table.regtableright{
+	float: right;
+	height: 355px;
+	width: 255px;
+	padding-left: 20px;
+	background: url(../../images/home/regrightbg.png) left top no-repeat;
+}
+table.regtableright tr td{
+	vertical-align: top;
+	line-height: 35px;
+	font-size: 14px;
+}
+
+table.regtableleft{
+	float: left;
+}
+div.userinfoleftbox1 h4{
+	color: #336699 !important;
+	font-weight: bolder;
+	font-size: 14px;
+}
+div.userinfoleftbox1{
+	font-size: 12px;
+	color: #999999;
+	line-height: 15px;
+}
+span.viplog{
+	width: 33px;
+	height: 14px;
+	padding-right: 6px;
+	text-align: right;
+	background: url(../../images/home/viplog.png);
+	font-size: 10px;
+	color: #939393;
+	display: inline-block;
+}
+div.userinfoleftbox1,div.userinfoleftbox2,div.userinfoleftbox3,div.userinfoleftbox4{
+	margin-bottom: 16px;
+	padding-bottom: 16px;
+}
+div.userinfoleftbox2,div.userinfoleftbox3{
+	background: url("../../images/home/border.png") repeat-x scroll left bottom transparent;
+}
+div.userinfoleftbox2 h3,div.userinfoleftbox3 h3{
+	background: url("../../images/home/icon2.png") no-repeat;
+	font-weight:  bolder;
+	padding-left: 25px;
+	height: 17px;
+}
+div.userinfoleftbox2 ul,div.userinfoleftbox3 ul{
+	padding-left: 25px;
+}
+div.userinfoleftbox2 ul li,div.userinfoleftbox3 ul li{
+	height: 23px;
+	line-height: 23px;
+}
+div.userinfoleftbox2 h3{
+	background-position: 0 0;
+}
+div.userinfoleftbox3 h3{
+	background-position: 0 -17px;
+}
+div.logoutpanel{
+	padding:0 15px;
+}
+div.logoutpanel a{
+	color: #333;
+}
+
+div.userinfoleftbox4 ul.otherlink li{
+	height: 24px;
+	line-height: 24px;
+	padding-left: 27px;
+	background: url("../../images/home/icon2.png") no-repeat;
+}
+div.userinfoleftbox4 ul.otherlink li a{
+	color:#999999 !important;
+	font-weight: bolder;
+}
+div.userinfoleftbox4 ul.otherlink li.item1{
+	background-position: 0 -33px;
+}
+div.userinfoleftbox4 ul.otherlink li.item2{
+	background-position: 0 -52px;
+}
+div.userinfoleftbox4 ul.otherlink li.item3{
+	background-position: 0 -72px;
+}
+div.userinfoleftbox4 ul.otherlink li.item4{
+	background-position: 0 -94px;
+}
+div.userinfoleftbox4 ul.otherlink li.item4 a{
+	color: #336699 !important;
+	font-weight: normal;
+}
+div.userinfoleftbox4 ul.otherlink li.item5{
+	background-position: 145px -119px;
+	text-align: right;
+}
+
+div.usercenter{
+	padding-top: 26px;
+}
+div.rightcontentbox{
+	border:1px #e3e8f0 solid;
+}
+div.rightcontentbox div.headertitle{
+	background: #f2f6f9;
+	height: 24px;
+	padding: 11px 0 0 18px;
+}
+div.rightcontentbox div.headertitle div.titleinfo{
+	color: :#333;
+	font-weight: bolder;
+	padding-left: 27px;
+	background: url(../../images/home/icon2.png) no-repeat 0 0 ;
+}
+div.rightcontentbox div.secondtitle,
+div.rightcontentbox div.realcontentbox
+{
+	padding: 11px 0 0 18px;
+}
+div.myapp div.rightcontentbox div.realcontentbox
+{
+    padding: 20px 0 0 18px;
+}
+div.rightcontentbox div.secondtitle ul li{
+	float: left;
+	margin-right: 18px;
+	padding: 5px 10px;
+    font-weight: bold;
+}
+div.rightcontentbox div.secondtitle ul li.active{
+	background: #bad1e5;
+}
+
+div.rightcontentbox div.realcontentbox{
+	display: inline-table;
+}
+
+div.rightcontentbox div.realcontentbox div.itemapp{
+	width: 323px;
+	height: 100px;
+	float: left;
+	margin-bottom: 10px;
+	border-bottom: 1px #e3e8f0 solid;
+}
+div.rightcontentbox div.realcontentbox div.itemapp.even{
+    float: right;
+    width: 332px;
+    padding-left: 50px;
+}
+div.rightcontentbox div.realcontentbox div.itemapp .appimgiconleft{
+	float: left;
+	width: 60px;
+	margin-right: 5px;
+	text-align: center;
+}
+
+div.rightcontentbox div.realcontentbox div.itemapp .appimgiconright{
+	float: left;
+	width: 250px;
+	position: relative;
+}
+div.rightcontentbox div.realcontentbox div.itemapp .appimgiconright span.apptitle{
+	font-weight: bolder;
+	color: #336699;
+}
+
+div.rightcontentbox div.realcontentbox div.itemapp .appimgiconright p{
+	color: #ccc;
+	margin-top: 18px;
+}
+
+div.rightcontentbox div.realcontentbox div.itemapp .appimgiconright button.clicktobuy{
+	background: url(../../images/home/clicktobuy.png) no-repeat;
+	width: 88px;
+	height: 29px;
+	border: none;
+	cursor: pointer;
+	position: absolute;
+	right:9px;
+	bottom: 0px;
+	display: block;
+    padding-left: 15px;
+	/*text-indent: -9999px;*/
+	overflow: hidden;
+}
+.red{color: red !important;}
+div.useravatar{
+    width: 200px; 
+    float: left;
+    height: 259px;
+    position: relative;
+}
+.realcontentbox iframe.uploaduseavatar{
+    float: left;
+}
+
+div.useravatar img#useravatars{
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    width: 48px;
+    border-radius: 5px;
+    border:1px #eee solid;
+    padding: 2px;
+}
+img#leftuseravar.leftuseravar{
+    width: 67px;
+    height: 67px;
+    overflow: hidden;
+    margin-right: 5px;
+}
+div.useravatar img#useravatarm{
+    position: absolute;
+    bottom: 0;
+    left: 75px;
+    width: 119px;
+    border-radius: 5px;
+    border:1px #eee solid;
+    padding: 2px;
+}
+input.chpwd{
+    border: 1px #7f9db9 solid;
+    height: 21px;
+    width: 143px;
+}
+form.changepwdform th{
+    text-align: right;
+}
+form.changepwdform{
+    padding: 40px 0 0 80px;
+    color: #808080;
+    font-weight: normal;
+}
+form.changepwdform tr td{
+    height: 30px;
+    line-height: 35px;
+}
+input.changepwdsubmitbtn{
+    width: 90px;
+    height: 30px;
+    background: #005eac;
+    border: none;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+}
+td span.personcard{font-size: 11px;}
+
+div.rightcontentbox.changepwdbox,
+div.rightcontentbox.uploadavatars{
+    height: 515px;
+}
+div.rightcontentbox.uploadavatars div.realcontentbox.uploadavatar{
+    padding-top: 70px;
+}
+
+/**修改用户信息**/
+div.realcontentbox.changeuserprofilebox div.regboxcontent {
+    padding-top: 0px;
+    color: #808080 !important;
+}
+
+div.realcontentbox.changeuserprofilebox .reg-form th {
+    height: 35px;
+    line-height: 35px;
+    font-size: 12px;
+}
+
+div.realcontentbox.changeuserprofilebox .reg-form .txt {
+    padding: 2px;
+    border: 1px #7f9db9 solid;
+    height: 17px;
+    width: 200px;
+}
+div.realcontentbox.changeuserprofilebox .reg-form .txt.verify{
+     width: 174px;
+}
+
+div.realcontentbox.changeuserprofilebox .reg-form select#job.txt {
+    width: 135px;
+    height: 23px;
+}
+
+div.realcontentbox.changeuserprofilebox .reg-form .pcabox select {
+    border: 1px #7f9db9 solid;
+    height: 17px;
+}
+input.changeprofilesubbutton,
+input.applysubbutton{
+    background: none repeat scroll 0 0 #005EAC;
+    border: medium none;
+    color: #FFFFFF;
+    cursor: pointer;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 90px;
+}
+div.rightcontentbox.changeuserprofileboxs{
+    height: 515px;
+}
+div.regboxcontent.iwantapplypopupbox{
+    font-size: 12px;
+}
+
+div.regboxcontent.iwantapplypopupbox .reg-form th {
+    width: 100px;
+}
+
+div.regboxcontent.iwantapplypopupbox{
+    padding-top: 0px;
+}
+div.regboxcontent.iwantapplypopupbox .reg-form .txt{
+    width: 150px;
+}
+div.rightcontentbox div.headertitle div.titleinfo.allapps_titleinfo{
+    background-position: 0 -17px;
+}
+
+
+div.allapp div.rightcontentbox div.secondtitle ul li {
+    float: left;
+    margin-right: 5px;
+    padding: 2px 5px;
+    font-weight: bold;
+}
+
+div.allapp div.rightcontentbox div.secondtitle ul li.sortlable {
+    margin: 0;
+    padding: 0;
+    margin-left: 30px;
+    font-weight: normal;
+}
+div.allapp div.rightcontentbox div.secondtitle ul li.sortdownloadnum {
+    margin: 0;
+    padding: 0;
+    border-right: 1px #ddd solid;
+    padding-right: 5px;
+    margin-right: 5px;
+    font-weight: normal;
+
+}
+div.allapp div.rightcontentbox div.secondtitle ul li.sortlatestonline {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+
+}
+div.allapp div.rightcontentbox div.realcontentbox{
+    margin-top: 10px;
+}
+
+form.appsearchform{
+    float: left;
+    width: 192px;
+    height: 22px;
+    margin-bottom: 15px;
+    color: #888888;
+    background: url(../../images/home/appsearchbox.png) no-repeat;
+}
+form.appsearchform input.appsearchbtn{
+    width: 30px;
+    height: 22px;
+    border: none;
+    background: none;
+    z-index: -999;
+    display: inline-block;
+    cursor: pointer;
+}
+form.appsearchform input.appsearchvalue{
+    width: 145px;
+    height: 22px;
+    border: none;
+    color: #888888;
+    background: none;
+}
+div.hotkeywords{
+    width: 300px;
+    float: left;
+    height: 22px;
+    line-height: 22px;
+    margin-bottom: 15px;
+    color: #888888;
+}
+
+div.newsbox{
+    padding-right: 20px;
+    padding-bottom: 20px;
+    line-height: 20px;
+}
+div.news div.rightcontentbox{
+    min-height: 515px;
+}
+
+div.exampage .nav-main #profileMenuActive {
+    width: 100px;
+}
+
+
+div.exampage .nav-main .menu-title {
+    width: 100px;
+}
+
+tr.buchongyuming th{
+    height: 90px !important;
+}
+
+tr.dianjibaoming th{
+    height: 50px;
+}
+
+.iwantapplypopupbox h3.bmh3title{
+    text-align: center;
+    font-size: 15px;
+}
+.bshade{
+    width: 100%;
+    height: 100%;
+    display: none;
+    background: #000;
+    opacity: 0.67;
+    filter:alpha(opacity=67);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1986;
+}
+
+#login_area{
+    margin: 64px auto 50px auto;
+    width: 770px;
+    /*background: url(../../images/home/login_student.gif) no-repeat;*/
+    text-align:center;
+    padding:1px;
+    padding-bottom: 55px;
+}
+#logo_student{
+    width: 412px;
+    height: 48px;
+    margin: 40px auto 5px auto;
+    text-align: center;
+    background: url(../../images/home/login_student_logo.gif) no-repeat;
+    display: block;
+}
+
+#loginCopyRight {
+    background: url("../../images/home/copy.gif") no-repeat scroll center bottom transparent;
+    color: #1F211C;
+    height: 50px;
+    line-height: 150%;
+    text-align: center;
+}
+
+#input_area {
+    background: url("../../images/home/loginInputArea_bg.gif") no-repeat scroll center top transparent;
+    height: 176px;
+    margin: 20px auto 0;
+    width: 416px;
+}
+
+#loginStudent_title {
+    background: url("../../images/home/loginStudent_title.gif") no-repeat scroll center bottom transparent;
+    height: 40px;
+    margin: 0 auto;
+    width: 380px;
+}
+
+.input_title {
+    margin: 0 auto;
+    padding: 15px 5px 0;
+    text-align: center;
+}
+
+.input_title input {
+    border: 1px solid #7F9DB9;
+    font-size: 9pt;
+    height: 20px;
+    width: 160px;
+}
+#login_area {
+    text-align: center;
+    border: 1px #c5e3fa solid;
+    border-radius: 10px;
+}
+
+#button_area {
+    padding: 0;
+}
+#button_area input {
+    background: url("../../images/home/loginStudent_button.gif") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #1C6F83;
+    height: 33px;
+    margin: 15px auto;
+    text-align: center;
+    width: 100px;
+}
+
+div.trainingtopbox{
+    height: 188px;
+    border: 1px #e2f3f6 solid;
+    margin-top: 30px;
+    background: #f7fdfe;
+}
+
+div.trainingtopbox div.row1,
+div.trainingtopbox div.row2,
+div.trainingtopbox div.row3,
+div.trainingtopbox div.row4{
+    float: left;
+    width: 250px;
+    color: #2591ac;
+}
+div.trainingtopbox div.row1{
+    width: 170px;
+    padding: 5px 0 0 11px;
+}
+
+div.trainingtopbox div.row1 img{
+    width: 122px;
+    height: 127px;
+    padding: 10px;
+    border: 1px #e7f3fa solid;
+    background: #fff;
+}
+
+div.trainingtopbox div.row2{
+    line-height: 40px;
+}
+
+div.sizebigger button{
+    background: url("../../images/home/loginStudent_button.gif") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #1C6F83;
+    height: 33px;
+    margin: 15px auto;
+    text-align: center;
+    width: 100px;
+}
+
+span.trlefttime{
+    font-size: 18px;
+    color: #0000ff;
+    display: inline-block;
+    padding: 0 5px;
+    font-weight: bold;
+    font-family: small-caption;
+}
+
+div.trainingtopbox div.row3{
+    padding-top: 10px;
+}
+
+div.trainingtopbox div.row3 table.truserinfo tr th{
+    background: url(../../images/home/icon2.png) left -147px no-repeat;
+    width: 105px;
+    font-weight: bolder;
+    text-align: right;
+    height: 21px;
+}
+
+div.trainingtopbox div.row3 table.truserinfo tr td{
+    padding-left: 20px;
+}
+
+div.trainingtopbox div.row3 table.truserinfo tr td.usernametd{
+    font-weight: bolder;
+}
+div.trainingtopbox div.row4{
+    width: 180px;
+    padding: 10px 0 0 90px;
+}
+
+div.chosetopicbox{
+    font-weight: bolder;
+    margin-bottom: 6px;
+}
+
+div.chosetopicbox span a{
+    color: #000;
+}
+
+table.topicslist{
+    border-collapse: collapse;
+}
+table.topicslist tr td{
+    text-align: center;
+    vertical-align: middle;
+    color: #0c0dfe;
+    width: 27px;
+    height: 27px;
+    border: solid #e8f6f9 1px;
+    cursor: pointer;
+}
+
+table.topicslist tr td.r{
+    background: url(../../images/home/topicyn.png);
+}
+table.topicslist tr td.w{
+    background: url(../../images/home/topicyn.png) 0 -24px;
+}
+span.upanddown1{
+    margin-left: 30px;
+}
+
+div.trainingmiddlebox{
+    background: none repeat scroll 0 0 #F7FDFE;
+    border: 2px solid #E2F3F6;
+    /*min-height: 188px;*/
+    margin-top: 5px;
+    padding: 10px 55px 0px 55px;
+}
+
+div.trainingbottombox{
+    text-align: center;
+    margin-top: 15px;
+}
+div.trainingbottombox button{
+    background: url("../../images/home/loginStudent_button.gif") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #1C6F83;
+    height: 33px;
+    margin: 15px auto;
+    text-align: center;
+    width: 100px;
+    margin-right: 5px;
+}
+div.trainingmiddleboxtitle{
+    color: #1488a5;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+div.trainingmiddleboxcontent{
+    border: 1px dashed #d9f0f4;
+    padding: 10px 50px 25px 50px;
+    margin-bottom: 50px;
+}
+div.trtitle{
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px dashed #d9f0f4;
+    margin-bottom: 5px;
+}
+table.answerbox{
+    background: #fff;
+    padding: 5px;
+    width: 100%;
+}
+table.answerbox tr td{
+    height: 20px;
+    line-height: 20px;
+}
+table.answerbox tr.checked{
+    background: #ffff00;
+}
+table.answerbox tr td.abc{
+    color: red;
+    width: 18px;
+    font-weight: bolder;
+    vertical-align: middle;
+}
+table.answerbox tr td.abcheck{
+    width: 18px;
+}
+table.answerbox tr td input,
+table.answerbox tr td label{
+    vertical-align: middle;
+}
+div.kaosheninfo{
+    line-height: 47px;
+    height: 47px;
+    color: #1488a5;
+}
+div.kaosheninfo ul li{
+    float: left;
+    margin-right: 20px;
+}
+table.topicslistmark{
+    border-collapse: collapse;
+    width: 100%;
+}
+table.topicslistmark tr td{
+    text-align: left;
+    vertical-align: middle;
+    color: #0c0dfe;
+    width: 160px;
+    height: 30px;
+    border: solid #e1f3f6 1px;
+    cursor: pointer;
+    padding-left: 3px;
+}
+table.topicslistmark tr td span.dangqianti{
+    display: inline-block;
+    padding: 2px 5px;
+    background: #a9d5e0;
+}
+
+table.topicslistmark tr td span.biaojiti{
+    display: inline-block;
+    padding: 2px 5px;
+    background: #dba8e0;
+}
+
+div.appbuybox button{
+    background: none repeat scroll 0 0 #005EAC;
+    border: medium none;
+    color: #FFFFFF;
+    cursor: pointer;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    width: 90px;
+    margin-right: 30px;
+}
+div.appbuybox span b{
+    color: red;
+}
+span.defaultarea{
+    font-size: 12px;
+    color: #ccc;
+}

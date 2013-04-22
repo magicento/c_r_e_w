@@ -1,0 +1,5 @@
+<if condition="$Think.session.user_id eq ''">
+	<include file="Public:leftbar_login" />
+<else />
+	<include file="Public:leftbar_logout" />
+</if>

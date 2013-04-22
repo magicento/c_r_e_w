@@ -1,0 +1,43 @@
+<div class="side-column">
+	<div class="login-panel logoutpanel">
+		<div class="userinfoleftbox1">
+			<table>
+				<tr>
+					<td><img id="leftuseravar" src="<php>echo getuseravatar();</php>" class="leftuseravar" alt="" /></td>
+					<td>
+						<h4><{$Think.session.userinfo.account}></h4><span class="personcard"><{$Think.session.userinfo.identitycard}></span><br />职务：<{$Think.session.userinfo.job}><br /><span class="viplog">0</span><php>
+						echo ceil((time()-$_SESSION['userinfo']['create_time'])/3600/24);
+						</php>天
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="userinfoleftbox2">
+			<h3>我的个人资料</h3>
+			<ul>
+				<li><a href="<{:U('User/profile')}>">资料修改</a></li>
+				<li><a href="<{:U('User/changepwd')}>">密码修改</a></li>
+				<li><a href="<{:U('User/uploadavatar')}>">上传头像</a></li>
+				<li><a href="<{:U('User/myapp')}>">我的应用</a></li>
+			</ul>
+		</div>
+		<div class="userinfoleftbox3">
+			<h3>船员题库练习与模拟考试</h3>
+			<ul>
+				<li><a href="<{:U('User/allapp','gid=1')}>">适任证书（驾驶）</a></li>
+				<li><a href="<{:U('User/allapp','gid=2')}>">适任证书（轮机）</a></li>
+				<li><a href="<{:U('User/allapp','gid=3')}>">船员基本证书</a></li>
+				<li><a href="<{:U('User/allapp','gid=4')}>">特殊船舶证书</a></li>
+			</ul>
+		</div>
+		<div class="userinfoleftbox4">
+			<ul class="otherlink">
+				<li class="item1"><a href="##">船员电子申报</a></li>
+				<li class="item2"><a href="##">船员考试成绩查询</a></li>
+				<li class="item3"><a href="##">海事局考试公告</a></li>
+				<li class="item4"><a href="##">联系客服</a></li>
+				<li class="item5"><a href="<{:U('Public/logout')}>">退出</a></li>
+			</ul>
+		</div>
+	</div>
+</div>

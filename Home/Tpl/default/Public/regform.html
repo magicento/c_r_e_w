@@ -1,0 +1,92 @@
+<div class="regboxcontent">
+<import type='css' file="images.home.tip-yellowsimple.tip-yellowsimple,images.home.datepicker.css.jquery-ui" />
+<import type='js' file="js.jquery_poshytip,js.city,images.home.datepicker.js.jquery-ui-datepicker" />
+<style type="text/css">.tip-yellowsimple {z-index:1000;}</style>
+<form action="__URL__/doreg" method="post" class="reg-form">
+	<table class="regtableleft">
+		<tr>
+			<th></th>
+			<td><h2 class="reg_page_title">注册新账号</h2></td>
+		</tr>
+		<tr>
+			<th>身份证号码：</th>
+			<td><input type="text" name="identitycard" onblur="checkidentitycard(this)" id="person_id" class="person_id txt" title="15/18位有效身份证号！" /></td>
+		</tr>
+		<tr>
+			<th>真实姓名：</th>
+			<td><input type="text" name="account" id="account" class="account txt" title="请输入真实姓名！" /></td>
+		</tr>
+		<tr>
+			<th>邮箱：</th>
+			<td>
+				<input type="text" name="email" id="usereamil" class="txt" title="可以通过邮箱找回密码！" />
+			</td>
+		</tr>
+		<tr>
+			<th>生日：</th>
+			<td><input type="text" name="birthday" id="birthday" class="birthday txt" title="请输入有效的出生日期！" /></td>
+		</tr>
+		<tr>
+			<th>性别：</th>
+			<td>
+				<input type="radio" name="sex" id="sexman" value="1" /><label for="sexman">男</label>
+				<span style="width: 20px;">&nbsp;</span>
+				<input type="radio" name="sex" id="sexwoman" value="2" /><label for="sexwoman">女</label>
+			</td>
+		</tr>
+		<tr>
+			<th>密码：</th>
+			<td><input type="password" name="password" id="password" class="txt" title="6-12个字符组成！" /></td>
+		</tr>
+		<tr>
+			<th>确认密码：</th>
+			<td><input type="password" name="password2" id="password2" class="txt" title="重复上面的密码！" /></td>
+		</tr>
+		<tr>
+			<th>现任职务：</th>
+			<td><select name="job" id="job">
+				<option value="大力水手">大力水手</option>
+				<option value="船长">船长</option>
+				<option value="大副">大副</option>
+			</select></td>
+		</tr>
+		<tr>
+			<th>联系电话：</th>
+			<td><input type="text" name="tel" id="telephone" class="telephone txt" title="你的手机或者固定电话！" /></td>
+		</tr>
+		<tr>
+			<th>所在地：</th>
+			<td class="pcabox">
+				<select name="Province"></select><select name="City"></select><select name="Area"></select>
+				<script language="javascript">new PCAS("Province","City","Area");</script>
+				<span class="defaultarea"></span>
+			</td>
+		</tr>
+		<tr>
+			<th class="verifyth">验证码：</th>
+			<td>
+			<script type="text/javascript">function updateverifyimg(obj){obj.src="__APP__/Public/GBVerify/?"+Math.random();}</script>	
+			<img onclick="updateverifyimg(this)" class="verifyimg" src="__APP__/Public/GBVerify/" alt="验证码" /><span>看不清楚点击图片换一张？</span><br />
+			<input type="text" name="verify" id="verify" class="verify txt" title="输入上面图片中的文字" />
+			</td>
+		</tr>
+		<tr>
+			<th></th>
+			<td><input type="submit" class="regsubbutton" value="注册" /></td>
+		</tr>
+		<tr>
+			<th></th>
+			<td>
+				<input type="checkbox" checked name="xieyi" id="xieyi" style="vertical-align:middle;" /><label style="vertical-align:middle;" for="xieyi">我接受</label>
+				<a style="vertical-align:middle;" href="##">船员考试网服务条款</a>
+			</td>
+		</tr>
+	</table>
+	<table class="regtableright">
+		<tr><td>已经是船员考试网会员？<a href="/">直接登陆</a><br />还可以下载APP下载到手机<br />
+			<img src="__PUBLIC__/images/home/regerweima.png" alt="" />
+		</td></tr>
+	</table>
+	<div class="clearfix"></div>
+</form>
+</div>

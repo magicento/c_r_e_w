@@ -1,0 +1,95 @@
+<include file="Public:header" />
+<include file="Public:navigation_1" />
+<div class="page-wrapper clearfix">
+	<div class="full-page">
+		<div class="login-page clearfix">
+		<include file="Public:leftbar" />
+		<div class="main-column usercenter">
+			<div class="rightcontentbox changeuserprofileboxs">
+				<div class="headertitle"><div class="titleinfo">我的个人资料</div></div>
+				<div class="secondtitle">
+					<ul>
+						<li><a href="<{:U('myapp')}>">我的应用</a></li>
+						<li class="active"><a href="<{:U('profile')}>">资料修改</a></li>
+						<li><a href="<{:U('changepwd')}>">密码修改</a></li>
+						<li><a href="<{:U('uploadavatar')}>">上传头像</a></li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				<div class="realcontentbox changeuserprofilebox">
+					<div class="regboxcontent">
+					<import type='css' file="images.home.tip-yellowsimple.tip-yellowsimple,images.home.datepicker.css.jquery-ui" />
+					<import type='js' file="js.jquery_poshytip,js.city,images.home.datepicker.js.jquery-ui-datepicker" />
+					<form action="__URL__/domodifyuserinfo" method="post" class="reg-form">
+						<table class="regtableleft">
+							<tr>
+								<th>身份证号码：</th>
+								<td><{$Think.session.userinfo.identitycard}></td>
+							</tr>
+							<tr>
+								<th>姓名：</th>
+								<td><{$Think.session.userinfo.account}></td>
+							</tr>
+							<tr>
+								<th>邮箱：</th>
+								<td>
+									<{$Think.session.userinfo.email}>
+								</td>
+							</tr>
+							<tr>
+								<th>现任职务：</th>
+								<td><select name="job" id="job" class="txt">
+									<option value="<{$Think.session.userinfo.job}>"><{$Think.session.userinfo.job}></option>
+									<option value="大力水手">大力水手</option>
+									<option value="船长">船长</option>
+									<option value="大副">大副</option>
+								</select></td>
+							</tr>
+							<tr>
+								<th>生日：</th>
+								<td><input type="text" value="<{$Think.session.userinfo.birthday}>" name="birthday" id="birthday" class="birthday txt" title="请输入有效的出生日期" /></td>
+							</tr>
+							<tr>
+								<th>性别：</th>
+								<td>
+									<php>$sex = $_SESSION['userinfo']['sex'];if($sex==1){$m = 'checked';}else{$w = 'checked';}</php>
+									<input type="radio" <php>echo $m;</php> name="sex" id="sexman" value="1" /><label for="sexman">男</label>
+									<span style="width: 20px;">&nbsp;</span>
+									<input type="radio" <php>echo $w;</php> name="sex" id="sexwoman" value="2" /><label for="sexwoman">女</label>
+								</td>
+							</tr>
+							<tr>
+								<th>联系电话：</th>
+								<td><input type="text" value="<{$Think.session.userinfo.tel}>" name="telephone" id="telephone" class="telephone txt" title="你的手机或者固定电话" /></td>
+							</tr>
+							<tr>
+								<th>所在地：</th>
+								<td class="pcabox">
+									<select name="Province"></select><select name="City"></select><select name="Area"></select>
+									<php>$address = explode('--',$_SESSION['userinfo']['address']);</php>
+									<script language="javascript">new PCAS("Province","City","Area",'<php>echo $address[0]</php>','<php>echo $address[1]</php>','<php>echo $address[2]</php>');</script>
+								</td>
+							</tr>
+							<tr>
+								<th class="verifyth">验证码：</th>
+								<td>
+								<script type="text/javascript">function updateverifyimg(obj){obj.src="__APP__/Public/GBVerify/?"+Math.random();}</script>	
+								<img onclick="updateverifyimg(this)" class="verifyimg" src="__APP__/Public/GBVerify/" alt="验证码" /><span>看不清楚点击图片换一张？</span><br />
+								<input type="text" name="verify" id="verify" class="verify txt" title="输入上面图片中的文字" />
+								</td>
+							</tr>
+							<tr>
+								<th></th>
+								<td><input type="submit" class="changeprofilesubbutton" value="修改资料" /></td>
+							</tr>
+						</table>
+						<div class="clearfix"></div>
+					</form>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+<include file="Public:footer" />

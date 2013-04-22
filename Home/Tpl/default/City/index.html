@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>地区管理</title>
+	<style type="text/css">
+		body{
+			font-size: 13px;
+		}
+		table.cityliststb img.verify{vertical-align: top;}
+		table.cityliststb{border-collapse:collapse;border:none;}
+		table.cityliststb td{border:solid #ccc 1px;}
+		a.updateajax{margin-left: 50px;}
+	</style>	
+	<script type="text/javascript">
+		function updateverifyimg(obj){
+			obj.src="__APP__/Common/GBVerify/?"+Math.random();
+		}
+	</script>	
+	<import type='js' file="js.jquery_min,js.jquery_cookie" />
+	<js href="__PUBLIC__/js/artDialog/artDialog.js?skin=black" />
+	<load href="__PUBLIC__/js/common.js" />
+</head>
+<body>
+	<{/*
+	<form action="__URL__/insert" method="POST">
+		城市列表：
+		<select name="pid">
+			<option value="0">地区列表</option>
+			<volist name="alist" id="vo">
+				<option value="<{$vo['id']}>">
+					|<?php 
+						$con = count(split('-', $vo['path']));
+						for ($i=0; $i < $con; $i++) { 
+							echo '--';
+						}
+					?>
+					<{$vo['name']}>
+				</option>
+			</volist>
+		</select>
+		<br>
+		地区名称：<input type="text" name="name"><br>
+		<img onclick="updateverifyimg(this)" class="verify" src='__APP__/Common/GBVerify/' /><br>
+		输入验证：<input type="text" name="verify" />
+		<input type="submit" value="添加地区">
+	</form>
+	<hr style="border:none;border-top:1px #ccc solid; width:100%;display:table;">
+	*/}>
+	<table class="cityliststb" width="50%" border="0">
+	  <tr>
+	    <td colspan="4" align=center>列表...</td>
+	  </tr>
+	  <volist name="list" id="vo">
+	  <tr>
+	    <td><{$vo.id}></td>
+	    <td><{$vo.name}></td>
+	    <td>
+	    	<a class="update" href="__URL__/update/id/<{$vo.id}>">普通修改</a>
+	    	<a class="updateajax" title="<{$vo.id}>" href="##">Ajax修改</a>
+	    </td>
+	    <td><a class="delete" href="__URL__/delete/id/<{$vo.id}>">删除</a></td>
+	  </tr>
+	  </volist>
+	  <tr>
+	    <td colspan="4"  align=center>
+	    	<{$page}>
+	    	<div style="display:none;">
+	    		<span id="cityajaxupdateurl">__URL__/updateAjax/</span>
+	    		{__TOKEN__}
+	    	</div>
+	    </td>
+	  </tr>
+	</table>
+</body>
+</html>

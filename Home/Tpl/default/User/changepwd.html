@@ -1,0 +1,46 @@
+<include file="Public:header" />
+<include file="Public:navigation_1" />
+<div class="page-wrapper clearfix">
+	<div class="full-page">
+		<div class="login-page clearfix">
+		<include file="Public:leftbar" />
+		<div class="main-column usercenter">
+			<div class="rightcontentbox changepwdbox">
+				<div class="headertitle"><div class="titleinfo">我的个人资料</div></div>
+				<div class="secondtitle">
+					<ul>
+						<li><a href="<{:U('myapp')}>">我的应用</a></li>
+						<li><a href="<{:U('profile')}>">资料修改</a></li>
+						<li class="active"><a href="<{:U('changepwd')}>">密码修改</a></li>
+						<li><a href="<{:U('uploadavatar')}>">上传头像</a></li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				<div class="realcontentbox">
+					<form action="__URL__/dochangepwd" class="changepwdform" method="post">
+						<table>
+							<tr>
+								<th>原密码：</th>
+								<td><input type="password" name="password0" id="oldpwd" class="oldpwd chpwd" /></td>
+							</tr>
+							<tr>
+								<th>新密码：</th>
+								<td><input type="password" name="password" id="newpwd" class="newpwd chpwd" /></td>
+							</tr>
+							<tr>
+								<th>确认密码：</th>
+								<td><input type="password" name="password2" id="newpwd2" class="newpwd2 chpwd" /></td>
+							</tr>
+							<tr>
+								<th></th>
+								<td><input type="submit" value="修改密码" class="changepwdsubmitbtn"/></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+<include file="Public:footer" />

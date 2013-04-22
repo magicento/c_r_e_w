@@ -1,0 +1,40 @@
+<include file="Public:header" />
+<include file="Public:navigation_1" />
+<div class="page-wrapper clearfix">
+	<div class="full-page">
+		<div class="login-page clearfix">
+		<include file="Public:leftbar" />
+		<div class="main-column usercenter myapp">
+			<div class="rightcontentbox">
+				<div class="headertitle"><div class="titleinfo">我的个人资料</div></div>
+				<div class="secondtitle">
+					<ul>
+						<li class="active"><a href="<{:U('myapp')}>">我的应用</a></li>
+						<li><a href="<{:U('profile')}>">资料修改</a></li>
+						<li><a href="<{:U('changepwd')}>">密码修改</a></li>
+						<li><a href="<{:U('uploadavatar')}>">上传头像</a></li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				<div class="realcontentbox">
+					<volist name="appslist" id="vo">
+						<div class="itemapp <if condition='$i%2 eq 0'>even</if>">
+							<div class="appimgiconleft">
+								<img src="__PUBLIC__/images/home/defaultappimg.png" alt="" class="leftappimg" /><br />
+								<a href="javascript:iwantapply('appid')" class="red">马上报名</a>
+							</div>
+							<div class="appimgiconright">
+							<span class="apptitle">91移动开放平台</span><br />
+							专门为手机用记设计，新的界面，流畅的操作流程，让您 方便与友好的自通。
+							<p>已经有13564人下载</p>
+							<button class="clicktobuy sutudyapp">开始练习</button>
+							</div>
+						</div>
+					</volist>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+<include file="Public:footer" />

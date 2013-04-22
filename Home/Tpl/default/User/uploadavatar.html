@@ -1,0 +1,32 @@
+<include file="Public:header" />
+<include file="Public:navigation_1" />
+<div class="page-wrapper clearfix">
+	<div class="full-page">
+		<div class="login-page clearfix">
+		<include file="Public:leftbar" />
+		<div class="main-column usercenter">
+			<div class="rightcontentbox uploadavatars">
+				<div class="headertitle"><div class="titleinfo">我的个人资料</div></div>
+				<div class="secondtitle">
+					<ul>
+						<li><a href="<{:U('myapp')}>">我的应用</a></li>
+						<li><a href="<{:U('profile')}>">资料修改</a></li>
+						<li><a href="<{:U('changepwd')}>">密码修改</a></li>
+						<li class="active"><a href="<{:U('uploadavatar')}>">上传头像</a></li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				<div class="realcontentbox uploadavatar">
+					<iframe class="uploaduseavatar" src="/ThinkPHP/Extend/Vendor/Ucavatar/upload.php?uid=<{$Think.session.user_id}>" width="465" height="300" frameborder="0"></iframe>
+					<div class="useravatar">
+						<img id="useravatarm" src="<php>echo getuseravatar();</php>" alt="" />
+						<img id="useravatars" src="<php>echo getuseravatar();</php>" alt="" />
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+<include file="Public:footer" />

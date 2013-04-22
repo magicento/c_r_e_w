@@ -1,0 +1,66 @@
+<div class="side-column">
+	<div class="login-panel">
+		<form action="<{:U('Public/dologin')}>" class="login-form"
+			id="loginForm" method="post">
+			<dl class="top clearfix">
+				<dt>
+					<label for="email">帐号:</label>
+				</dt>
+				<dd style="border-color: rgb(173, 182, 201);">
+					<input type="text" value="邮箱/身份证/电话号码" tabindex="1" id="email"
+						class="input-text" name="uaccount" style="color: rgb(136, 136, 136);">
+				</dd>
+			</dl>
+			<dl class="pwd clearfix">
+				<dt>
+					<label for="password">密码:</label>
+				</dt>
+				<dd>
+					<input type="password" autocomplete="off" tabindex="2"
+						class="input-text" error="请输入密码" name="password" id="password">
+					<label for="password" id="pwdTip" class="pwdtip">请输入密码</label>
+				</dd>
+			</dl>
+			<div class="clearfix"></div>
+			<dl class="savepassword clearfix">
+				<dt>
+					<label class="labelCheckbox" for="autoLogin"
+						title="为了确保您的信息安全，请不要在网吧或者公共机房勾选此项！"> <input
+						type="checkbox" tabindex="4" value="true" id="autoLogin"
+						name="autoLogin">下次自动登录
+					</label>
+				</dt>
+				<dd>
+					<span id="getpassword" class="getpassword"><a
+						stats="home_findpassword"
+						href="##">忘记密码？</a></span>
+				</dd>
+			</dl>
+			
+			<dl class="bottom">
+				<input type="hidden" value="/"
+					name="origURL">
+				<input type="hidden" value="crewexam.com" name="domain">
+				<input type="hidden" value="1" name="key_id">
+				<input type="hidden" value="web_login" id="captcha_type"
+					name="captcha_type">
+				<input type="submit" tabindex="5" value="登录"
+					stats="loginPage_login_button" class="input-submit login-btn"
+					id="login">
+			</dl>
+		</form>
+		<div class="regnow">
+			<input type="button" stats="loginPage_signUp_button" tabindex="6"
+				value="立即注册帐号" class="input-button login-btn" id="regnow"
+				onclick="window.location='<php>echo U('__APP__/index.php/Public/reg')</php>'">
+		</div>
+		<div class="regnow noet">
+			<span class="noteleft">船员考试网使用说明</span>
+			根据《中华人民共和国海船船员适任考试和发证规则》（简称11规则）的颁布实施，自2012年下半年开始，省事局船员考试开始启用2012年版新考试大纲。
+			船员考试网根据11规则考试大纲要求，推出最新最全面的适任证书相关和模拟考试，为广大船员服务。<br>
+			<span class="readmore"><a href="##">更多>></a></span>
+		</div>
+		
+		
+	</div>
+</div>

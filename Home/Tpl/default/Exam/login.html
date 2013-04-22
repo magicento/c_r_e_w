@@ -1,0 +1,37 @@
+<include file="Public:header" />
+<include file="Public:navigation_3" />
+<div class="page-wrapper clearfix">
+	<div class="full-page">
+		<div class="login-page clearfix">
+			<div class="main-columns">
+				<div id="login_area">
+					<div id="logo_student"></div>
+					<div id="loginCopyRight">
+						该系统由 中国船员考试网 提供技术支持
+						<br>
+						COPYRIGHT 2001-<php>echo date('Y',time());</php> 中国船员考试网
+					</div>
+					<form action="__URL__/doexamlogin" method="post">
+					<div id="input_area">
+						<div id="loginStudent_title"></div>
+						<div class="input_title">
+							身份证号：
+							<input type="text" maxlength="18" class="add_item" id="card_no" name="idCard">  
+						</div>
+						<div class="input_title">
+									座&nbsp;位&nbsp;号：
+							<input type="text" maxlength="10" class="add_item" name="seatNo">
+						</div>
+						<div id="button_area">
+							<input type="submit" value="进入考场" name="Submit">
+							&nbsp;
+							<input type="reset" value="重置" name="Submit">
+						</div>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<include file="Public:footer" />

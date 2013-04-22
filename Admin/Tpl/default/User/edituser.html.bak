@@ -1,0 +1,61 @@
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #F8F9FA;
+}
+-->
+</style>
+
+<link href="__PUBLIC__/css/admin/skin.css" rel="stylesheet" type="text/css" />
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="17" height="29" valign="top" background="__PUBLIC__/images/admin/mail_leftbg.gif"><img src="__PUBLIC__/images/admin/left-top-right.gif" width="17" height="29" /></td>
+    <td width="1500" height="29" valign="top" background="__PUBLIC__/images/admin/content-bg.gif"><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
+      <tr>
+        <td height="31"><div class="titlebt">修改用户</div></td>
+      </tr>
+    </table></td>
+    <td width="16" valign="top" background="__PUBLIC__/images/admin/mail_rightbg.gif"><img src="__PUBLIC__/images/admin/nav-right-bg.gif" width="16" height="29" /></td>
+  </tr>
+  <tr>
+    <td height="71" valign="middle" background="__PUBLIC__/images/admin/mail_leftbg.gif">&nbsp;</td>
+    <td valign="top" bgcolor="#F7F8F9"><table width="100%" height="138" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="13" valign="top">&nbsp;</td>
+      </tr>
+      <tr>
+        <td valign="top"><table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td class="left_txt location">当前位置：修改用户</td>
+            <td class="left_txt curdbuttonbox">
+            <span class="adduser">
+                <a href="__APP__/User/adduser">添加用户</a>
+            </span>
+            <span class="edituser"><a href="__APP__/User/edituser">修改用户</a></span>
+            <span class="deluser"><a href="__APP__/User/deluser">删除用户</a></span>
+            </td>
+          </tr>
+          <tr>
+            <td height="20" colspan="2">&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="2">&nbsp;</td>
+          </tr>
+          </table></td>
+      </tr>
+    </table></td>
+    <td background="__PUBLIC__/images/admin/mail_rightbg.gif">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="middle" background="__PUBLIC__/images/admin/mail_leftbg.gif"><img src="__PUBLIC__/images/admin/buttom_left2.gif" width="17" height="17" /></td>
+      <td height="17" valign="top" background="__PUBLIC__/images/admin/buttom_bgs.gif"><img src="__PUBLIC__/images/admin/buttom_bgs.gif" width="17" height="17" /></td>
+    <td background="__PUBLIC__/images/admin/mail_rightbg.gif"><img src="__PUBLIC__/images/admin/buttom_right2.gif" width="16" height="17" /></td>
+  </tr>
+</table>
+
+</body>
