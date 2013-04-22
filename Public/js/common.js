@@ -151,6 +151,12 @@ function clicktobuy(appid){
     }});
 }
 
+//时间转换
+function gettime(){
+	jq.post(__APP__+'Exam/timer',{},function(data,status){
+		jq('span.trlefttime.hasgo').html(data);
+	});
+}
 /**************************************************************/
 jq(function(){
 	//删除信息
@@ -259,7 +265,7 @@ jq(function(){
 	
 		
 	//选择答案
-	jq('table.answerbox tr td.abcheck input').click(function(){
+	jq('table.answerbox tr td.abcheck input').die().live('click',function(){
 		if(jq(this).attr("checked")=='checked'){
 			jq(this).parent().parent().addClass('checked');
 		}else{
@@ -374,7 +380,7 @@ jq(function(){
 	//座位号
 	if(jq('div.input_title input#additem').length != 0){
 		jq('div.input_title input#additem').focus(function(){
-			var additem = Math.ceil(Math.random()*100000000000000000000);
+			var additem = 'B'+Math.ceil(Math.random()*10000000000000);
 			jq(this).val(additem);
 		});
 	}
@@ -392,4 +398,68 @@ jq(function(){
 
 	});
 	
+	//增大字体
+	jq('button.biggerfont').click(function(){
+		var curf = jq('div.trainingmiddleboxcontent.item').css('font-size');
+		curf = parseInt(curf)+1;
+		jq('div.trainingmiddleboxcontent.item').css({"font-size":curf+"px"});
+	});
+	
+	//默认字体
+	jq('button.defaultfont').click(function(){
+		jq('div.trainingmiddleboxcontent.item').css({"font-size":"12px"});
+	});
+	
+	//计时
+	if(jq('span.trlefttime.hasgo').length != 0){
+
+		//se = setInterval("gettime()",1000);
+		//clearInterval(se);//暂停
+		//clearInterval(se);//停止
+	}else{
+		if(se){
+			//清除以往的计时
+			clearInterval(se);
+		}
+	}
+	
+	//加载题目(上一个，下一个)
+	jq('button.nextquestion,button.prevquestion').die().live('click',function(){
+		jq('div.trainingmiddleboxtitle').addClass('loadingline');
+		var questionid = jq(this).attr("value");
+		if(questionid == 0){alerts('已经是第一题了，前面没有了！');jq('div.trainingmiddleboxtitle').removeClass('loadingline');return false;}
+		if(questionid == -1){alerts('已经是最后一题了，后面没有了！');jq('div.trainingmiddleboxtitle').removeClass('loadingline');return false;}
+		jq.post(__APP__+'Exam/getQuestion',{"questionid":questionid},function(data,status){
+			jq('div.questionbox').html(data);
+		});
+		jq.post(__APP__+'Exam/questionbuttons',{"questionid":questionid},function(data,status){
+			jq('div.trainingbottombox').html(data);
+			jq('div.trainingmiddleboxtitle').removeClass('loadingline');
+		});
+	});
+	if(jq('div.questionbox').length != 0){
+		if(jq('div.questionbox').html() == ''){
+			//输出第一题
+			jq.post(__APP__+'Exam/getQuestion',{"questionid":1},function(data,status){
+				jq('div.questionbox').html(data);
+			});
+			jq.post(__APP__+'Exam/questionbuttons',{"questionid":1},function(data,status){
+				jq('div.trainingbottombox').html(data);
+			});
+		}
+	}
+	//加载题目(乱入选择)
+	jq('table.topicslist tr td').die().live('click',function(){
+		var questionid = parseInt(jq(this).text());
+		jq.post(__APP__+'Exam/getQuestion',{"questionid":questionid},function(data,status){
+			jq('div.questionbox').html(data);
+		});
+		jq.post(__APP__+'Exam/questionbuttons',{"questionid":questionid},function(data,status){
+			jq('div.trainingbottombox').html(data);
+			jq('div.trainingmiddleboxtitle').removeClass('loadingline');
+		});
+	});
+	
+	
 });
+

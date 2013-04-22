@@ -1011,7 +1011,7 @@ div.trainingtopbox div.row3 table.truserinfo tr th{
 }
 
 div.trainingtopbox div.row3 table.truserinfo tr td{
-    padding-left: 20px;
+    padding-left: 12px;
 }
 
 div.trainingtopbox div.row3 table.truserinfo tr td.usernametd{
@@ -1182,6 +1182,12 @@ div.leftnewtitleh2{
     font-weight: bolder;
     margin-top: 25px;
     padding-bottom: 12px;
+}
+div.loadingline{
+    background: url(../../images/home/questionloading.gif) no-repeat center center;
+}
+.hidden{
+    display: none;
 }
 ul.leftnewtitleul{
     margin-top: 5px;
