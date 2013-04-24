@@ -987,6 +987,11 @@ div.sizebigger button{
     margin: 15px auto;
     text-align: center;
     width: 100px;
+    line-height: 33px;
+}
+
+img.markgobackimg{
+    cursor: pointer;
 }
 
 span.trlefttime{
@@ -1238,4 +1243,14 @@ div.realcontentboxx div.newsbox div.newscontentbox1{
 }
 div.realcontentboxx div.newsbox div.newscontentbox1 p{
     margin: 5px 0;
+}
+
+table.topicslist{
+    display: none;
+}
+table.topicslist.topicslist0{
+    display: block;
+}
+div.trainingbottombox button.disabled{
+    color:#aeaa9c;
 }

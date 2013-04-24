@@ -10,7 +10,7 @@ return array(
 		'DB_PREFIX'             => 'think_',    // 数据库表前缀
 		
 		
-		'SITE_NAME'			    => '中国船员考试网_crewexam.com',
+		'SITE_NAME'			    => '中国PHP开发网_crewexam.com',
 		)
 
 ?>

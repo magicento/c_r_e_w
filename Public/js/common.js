@@ -157,6 +157,7 @@ function gettime(){
 		jq('span.trlefttime.hasgo').html(data);
 	});
 }
+ 
 /**************************************************************/
 jq(function(){
 	//删除信息
@@ -266,10 +267,27 @@ jq(function(){
 		
 	//选择答案
 	jq('table.answerbox tr td.abcheck input').die().live('click',function(){
+		var answer = jq(this).val();
+		var answername = jq(this).attr("name");
+		var answertype = jq(this).attr('type');
+		var answernames = answername.split('_');
+		var question_true_id = answernames[1];
+		
 		if(jq(this).attr("checked")=='checked'){
+			if(answertype == 'radio'){
+				jq(this).parent().parent().parent().find('tr').removeClass('checked');
+			}
 			jq(this).parent().parent().addClass('checked');
+			//将答案保存
+			jq.post(__APP__+'Exam/saveAnswer',{"question_true_id":question_true_id,"answer":answer,"answertype":answertype},function(data,status){
+				//...记录COOKIE,没有返回
+			});
 		}else{
 			jq(this).parent().parent().removeClass('checked');
+			//更新答案,从现有的答案中去掉这个被取消的值 
+			jq.post(__APP__+'Exam/savecaneledAnswer',{"question_true_id":question_true_id,"answer":answer,"answertype":answertype},function(data,status){
+				//...记录COOKIE,没有返回
+			});
 		}
 	});
 	
@@ -427,8 +445,8 @@ jq(function(){
 	jq('button.nextquestion,button.prevquestion').die().live('click',function(){
 		jq('div.trainingmiddleboxtitle').addClass('loadingline');
 		var questionid = jq(this).attr("value");
-		if(questionid == 0){alerts('已经是第一题了，前面没有了！');jq('div.trainingmiddleboxtitle').removeClass('loadingline');return false;}
-		if(questionid == -1){alerts('已经是最后一题了，后面没有了！');jq('div.trainingmiddleboxtitle').removeClass('loadingline');return false;}
+		if(questionid === ''){alerts('已经是最后一题了，后面没有了！');jq('div.trainingmiddleboxtitle').removeClass('loadingline');return false;}
+		if(questionid <= 0){alerts('已经是第一题了，前面没有了！');jq('div.trainingmiddleboxtitle').removeClass('loadingline');return false;}
 		jq.post(__APP__+'Exam/getQuestion',{"questionid":questionid},function(data,status){
 			jq('div.questionbox').html(data);
 		});
@@ -436,7 +454,40 @@ jq(function(){
 			jq('div.trainingbottombox').html(data);
 			jq('div.trainingmiddleboxtitle').removeClass('loadingline');
 		});
+		//当前是第一几题 更新
+		jq('span.trlefttime.currenttm').text(questionid);
+		
+		//自动锁定 题目列表到当前页面
+		var flag_currentpage = false;
+		jq('table.topicslist:visible tr td').each(function(i){
+			if(parseInt(jq(this).text()) == questionid ){
+				flag_currentpage = true;
+			}
+		});
+		if(flag_currentpage == false){
+			jq('table.topicslist:hidden tr td').each(function(i){
+				if(parseInt(jq(this).text()) == questionid){
+					jq('table.topicslist').hide();
+					jq(this).parent().parent().parent('table').show();
+				}
+			});
+		}
 	});
+	
+/*	//选题上一页，下一页遇到30，60联动
+	jq('button.nextquestion').die().live('click',function(){
+		var questionid = jq(this).attr("value");
+		if(questionid%30-1 == 0){
+			//jq('span.upanddown2').click();
+		}
+	})
+	jq('button.prevquestion').die().live('click',function(){
+		var questionid = jq(this).attr("value");
+		if(questionid%30 == 0){
+			//jq('span.upanddown1').click();
+		}
+	})*/
+	
 	if(jq('div.questionbox').length != 0){
 		if(jq('div.questionbox').html() == ''){
 			//输出第一题
@@ -449,7 +500,8 @@ jq(function(){
 		}
 	}
 	//加载题目(乱入选择)
-	jq('table.topicslist tr td').die().live('click',function(){
+	jq('table.topicslist tr td,table.topicslistmark tr td span').die().live('click',function(){
+		jq('div.trainingmiddleboxtitle').addClass('loadingline');
 		var questionid = parseInt(jq(this).text());
 		jq.post(__APP__+'Exam/getQuestion',{"questionid":questionid},function(data,status){
 			jq('div.questionbox').html(data);
@@ -457,9 +509,88 @@ jq(function(){
 		jq.post(__APP__+'Exam/questionbuttons',{"questionid":questionid},function(data,status){
 			jq('div.trainingbottombox').html(data);
 			jq('div.trainingmiddleboxtitle').removeClass('loadingline');
+			jq('div.trainingmiddleboxtitle').removeClass('loadingline');
+		});
+		//当前是第一几题 更新
+		jq('span.trlefttime.currenttm').text(questionid);
+	});
+	
+	//题目的上一页，下一页
+	jq('span.upanddown1').click(function(){
+		var currenttable = jq('table.topicslist:visible');
+		var currenttablenext = currenttable.prev('table');
+		if(currenttablenext.length != 0){
+			currenttable.hide();
+			currenttablenext.show();
+		}else{
+			alerts('已经是第一页了，前面没有了!');
+			return false;
+		}
+	});
+	
+	jq('span.upanddown2').click(function(){
+		var currenttable = jq('table.topicslist:visible');
+		var currenttablenext = currenttable.next('table');
+		if(currenttablenext.length != 0){
+			currenttable.hide();
+			currenttablenext.show();
+		}else{
+			alerts('已经是最后一页了，后面没有了!');
+			return false;
+		}
+	});
+	
+	//标记题目
+	jq('button.markquestion').die().live("click",function(){
+		if(jq(this).hasClass('disabled')){
+			alerts('此题目已经被标记过了，请不要重复标记！');return false;
+		}
+		jq(this).addClass('disabled');
+		var questionid = jq(this).attr('value');
+		jq.post(__APP__+'Exam/markquestion',{'questionid':questionid},function(data,status){
+			if(status = 'success'){
+				//alerts('标记成功！');
+				jq('button.unmarkquestion').removeClass('disabled');
+			}else{
+				alerts('系统忙，标记失败，请稍后重试！');
+			}
 		});
 	});
 	
+	//取消标记的题目
+	jq('button.unmarkquestion').die().live('click',function(){
+		if(jq(this).hasClass('disabled')){
+			alerts('此题目还未曾做过标记！');return false;
+		}
+		var ths = jq(this);
+		var questionid = jq(this).attr('value');
+		jq.post(__APP__+'Exam/unmarkquestion',{'questionid':questionid},function(data,status){
+			if(status = 'success'){
+				//alerts('取消标记成功！');
+				ths.addClass('disabled');
+				jq('button.markquestion').removeClass('disabled');
+			}else{
+				alerts('系统忙，标记失败，请稍后重试！');
+			}
+		});
+	});
+	
+	//选题
+	jq('button.selectquestion').die().live('click',function(){
+		var questionid = jq(this).attr("value");
+		jq.post(__APP__+'Exam/mark',{'questionid':questionid},function(data,status){
+			if(status = 'success'){
+				jq('div.questionbox').html(data);
+			}else{
+				alerts('系统忙，标记失败，请稍后重试！');
+			}			
+		});
+	});
+	
+	//标记页面返回按钮
+	jq('div img.markgobackimg').die().live('click',function(){
+		jq('span.dangqianti,span.zhuangqiangliao').click();
+	});
 	
 });
 

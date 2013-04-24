@@ -23,9 +23,9 @@
 			<h2 class="nav-title">中国领先的实名制SNS社交网络</h2>
 			<div class="nav-other">
 				<div class="menu">
-				<a href="##" stats="homenav_suggest" title="给我们提建议">给我们提建议</a>
+				<a href="##" stats="homenav_suggest" title="给我们提建议">在线客户服务</a>
 				</div>
-				<div class="menu more">
+				<div class="menu more hidden">
 				<a class="show-more" id="moreWeb" stats="homenav_more" href="##">更多</a>
 				</div>
 			</div>

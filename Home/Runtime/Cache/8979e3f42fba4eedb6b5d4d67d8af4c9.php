@@ -23,9 +23,9 @@
 			<h2 class="nav-title">中国领先的实名制SNS社交网络</h2>
 			<div class="nav-other">
 				<div class="menu">
-				<a href="##" stats="homenav_suggest" title="给我们提建议">给我们提建议</a>
+				<a href="##" stats="homenav_suggest" title="给我们提建议">在线客户服务</a>
 				</div>
-				<div class="menu more">
+				<div class="menu more hidden">
 				<a class="show-more" id="moreWeb" stats="homenav_more" href="##">更多</a>
 				</div>
 			</div>
@@ -165,7 +165,7 @@
 							<span class="apptitle">91移动开放平台</span><br />
 							专门为手机用记设计，新的界面，流畅的操作流程，让您 方便与友好的自通。
 							<p>已经有13564人下载</p>
-								<button title="5" class="clicktobuy sutudyapp">开始练习</button>
+								<button title="1" class="clicktobuy sutudyapp">开始练习</button>
 							</div>
 						</div><?php endforeach; endif; else: echo "" ;endif; ?>
 				</div>

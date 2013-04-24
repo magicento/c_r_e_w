@@ -59,7 +59,7 @@
 					<div class="row1"><img src="<?php echo getuseravatar(); ?>" alt="" /></div>
 					<div class="row2">
 						您本次练习已经用时：<span class="trlefttime hasgo">00:00:00</span><br />
-						您当前所答的是第 <span class="trlefttime">3</span>题，上次的回答是 <br />
+						您当前所答的是第 <span class="trlefttime currenttm">1</span>题，上次的回答是 <br />
 						您还有<span class="trlefttime red">2</span>题没有答
 						<div class="sizebigger">
 							<button class="biggerfont">增大字体[Z]</button>
@@ -101,81 +101,10 @@
 					<div class="row4">
 						<div class="chosetopicbox">
 							<span class="ctopic">选择题目</span>
-							<span class="upanddown1"><a href="##">上一页</a></span>
-							<span class="upanddown2"><a href="##">下一页</a></span>
+							<span class="upanddown1"><a href="javascript:void(0)">上一页</a></span>
+							<span class="upanddown2"><a href="javascript:void(0)">下一页</a></span>
 						</div>
-						<table class="topicslist">
-							<tr>
-								<td>1
-								</td>
-								<td>2
-								</td>
-								<td>3
-								</td>
-								<td class="r">4
-								</td>
-								<td>5
-								</td>
-								<td>6
-								</td>
-							</tr>
-							<tr>
-								<td>1
-								</td>
-								<td class="w">2
-								</td>
-								<td>3
-								</td>
-								<td>4
-								</td>
-								<td class="w">5
-								</td>
-								<td>6
-								</td>
-							</tr>
-							<tr>
-								<td>1
-								</td>
-								<td>2
-								</td>
-								<td class="r">3
-								</td>
-								<td>4
-								</td>
-								<td>5
-								</td>
-								<td>6
-								</td>
-							</tr>
-							<tr>
-								<td>1
-								</td>
-								<td>2
-								</td>
-								<td>3
-								</td>
-								<td>4
-								</td>
-								<td>5
-								</td>
-								<td>6
-								</td>
-							</tr>
-							<tr>
-								<td>1
-								</td>
-								<td>2
-								</td>
-								<td>3
-								</td>
-								<td>4
-								</td>
-								<td>5
-								</td>
-								<td>6
-								</td>
-							</tr>
-						</table>
+						<?php echo ($alltables); ?>
 					</div>
 				</div>
 				<div class="trainingmiddlebox">
@@ -185,9 +114,9 @@
 				<div class="trainingbottombox">
 					<button value="0" class="prevquestion">上一题[PgUp]</button>
 					<button value="2" class="nextquestion">下一题[PgDn]</button>
-					<button value="1" class="markquestion">标&nbsp;题[M]</button>
-					<button value="1" class="unmarkquestion">取消标题[U]</button>
-					<button class="selectquestion">选&nbsp;题[L]</button>
+					<button value="1" class="markquestion">标&nbsp;记[M]</button>
+					<button value="1" class="unmarkquestion">取消标记[U]</button>
+					<button value="0" class="selectquestion">选&nbsp;题[L]</button>
 					<button class="handinpaper">交&nbsp;卷[K]</button>
 				</div>
 				<div class="clearfix"></div>
@@ -195,6 +124,11 @@
 		</div>
 	</div>
 </div>
+<script>
+window.onbeforeunload = function(event) {
+	//return confirm("确定离开当前这个页面吗？请谨慎操作！");
+}
+</script>
 <div class="clearfix"></div>
 <div id="footer">
 	<div class="site-footer">
