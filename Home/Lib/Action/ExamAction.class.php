@@ -17,9 +17,6 @@ Class ExamAction extends CommonAction{
 	}
 	
 	public function login(){
-		if(!$_GET['istest']){
-			session('istest',null);
-		}
 		//cookie(null);
 		$this->assign('pagetitle','船员身份验证');
 		$this->display();
@@ -30,16 +27,43 @@ Class ExamAction extends CommonAction{
 		//dump(session('seatNo'));exit;//座位号
 		
 		//获得题目的总数 生成右上角类似日历的表格
+		$url = explode('index.php', $_SERVER["HTTP_REFERER"]);//获取完整的来路URL
+		if($url[1]!='/Exam/login'){
+			$this->redirect('index.php/User/myapp');
+		}
+		//初始化
+		$this->init_question();
+		$idarr = session('all_questions_id');
+		session('currentapp_question_num',count($idarr));
+		
 		$topics_total = session('currentapp_question_num');
 		$tables = ceil($topics_total/30);
+		$getidjointtrueidarray = getidjointtrueid();
+		//dump($getidjointtrueidarray);
+		
 		$alltables = '';
 		for ($i = 0; $i < $tables; $i++){
 			$alltables .= '<table class="topicslist topicslist'.$i.'">';
 			for ($l = 1;$l <= 5;$l++){
 				$alltables .= '<tr>';
 				for ($r = 0;$r < 6;$r++){
-					$alltables .= '<td>';
 					$tid = $l+(5*$r)+($i*30);
+					//曾经回答过的当前题目的答案
+					$youranswer = cookie('studentanswerforid'.$getidjointtrueidarray[$tid]);
+					if($youranswer){
+						$trueanswer = D('Question')->where('id='.$getidjointtrueidarray[$tid])->find();
+						if($youranswer == $trueanswer['answer']){
+							$m = 'r';
+						}else{
+							$m = 'w';
+						}
+						if(session('istest')){
+							$m = 't';
+						}
+						unset($youranswer);
+					}
+					$alltables .= '<td class="'.$m.'">';	
+					unset($m);				
 					if($tid <= $topics_total){
 						$alltables .= $tid;
 					}
@@ -63,7 +87,8 @@ Class ExamAction extends CommonAction{
 		$t = 1;
 		
 		//把当前APP中的题目再查询一次
-		$questions = D('Question')->where('appid='.session('sutudyappid'))->select();
+		$questions = session('all_questions_id');
+		
 		$topicslistmark = '';
 		$topicslistmark .= '<table class="topicslistmark">';
 		for ($l = 1;$l <= $h;$l++){
@@ -93,6 +118,9 @@ Class ExamAction extends CommonAction{
 				$tid = $t++;
 				if($tid <= $topics_total){
 					$youranswer = cookie('studentanswerforid'.$questions[$t-2]['id']);
+					if($youranswer == ''){
+						$youranswer = '未做答';
+					}
 					$topicslistmark .= $tid.'.['.$questions[$t-2]['type'].']'.$youranswer;
 				}
 				$topicslistmark .= '</span></td>';
@@ -109,10 +137,15 @@ Class ExamAction extends CommonAction{
 	
 	public function doexamlogin(){
 		if($_POST['idCard'] == $_SESSION['userinfo']['identitycard']){
-			$rs = D('Question')->where('appid='.session('sutudyappid'))->count('id');
 			session('seatNo',$_POST['seatNo']);
 			session('begintime',time());
-			session('currentapp_question_num',$rs);
+			
+			//清空之前的做题 COOKIE 信息
+			emptycookie('markquestionid');
+			emptycookie('studentanswerforid');
+			emptycookie('listquestionid');
+			session('all_questions_id',null);
+
 			$this->redirect('Exam/training');
 		}else{
 			$this->error('身份证号码不正确！','/index.php/Exam/login');
@@ -129,7 +162,31 @@ Class ExamAction extends CommonAction{
 		$minutes = floor($remainSeconds / 60);
 		$seconds = intval($sec-(3600*$hours)-(60*$minutes));
 		
-		echo str_pad($hours,2,"0",STR_PAD_LEFT).':'.str_pad($minutes,2,"0",STR_PAD_LEFT).':'.str_pad($seconds,2,"0",STR_PAD_LEFT);
+		$gotime = str_pad($hours,2,"0",STR_PAD_LEFT).':'.str_pad($minutes,2,"0",STR_PAD_LEFT).':'.str_pad($seconds,2,"0",STR_PAD_LEFT);
+		
+		//剩下多少题没有做
+		$leftquestionum = session('currentapp_question_num') - countcookie('studentanswerforid');
+		
+		echo $gotime.'##'.$leftquestionum;
+		
+	}
+	
+	//题目ID初始化
+	private function init_question(){
+		if(session('istest')){
+			//echo session('istest');//是测试
+			//如果是考试，那么第一次进来 就要把所有题目的ID和顺序存入Cookie
+			if(!session('all_questions_id')){
+				$all_rand_questions = D('Question')->where('appid='.session('sutudyappid'))->field('id,type')->order('rand()')->limit(5)->select();
+				session('all_questions_id',$all_rand_questions);
+			}
+		}else{
+			//是练习，也存入COOKIE，统一操作。
+			if(!session('all_questions_id')){
+				$all_questions = D('Question')->where('appid='.session('sutudyappid'))->field('id,type')->select();
+				session('all_questions_id',$all_questions);
+			}
+		}
 	}
 	
 	//获得题目
@@ -139,14 +196,15 @@ Class ExamAction extends CommonAction{
 		
 		//2.判断是否是随机考试
 		$questionid = $_POST['questionid'];
-		if(session('istest')){
-			//是测试
-		}else{
-			//是练习
-			$questionid_ = $questionid-1;
-			$question = D('Question')->limit($questionid_.",1")->select();
-			$answer = D('QuestionAnswer')->where('questionid='.$question[0]['id'])->select();
-		}
+		$questionid_ = $questionid-1;
+		
+		//初始化
+		$this->init_question();
+		
+		$idarr = session('all_questions_id');
+		
+		$question = D('Question')->where('id='.$idarr[$questionid_]['id'])->select();
+		$answer = D('QuestionAnswer')->where('questionid='.$question[0]['id'])->select();
 		
 		if($question[0]['type'] == '多选'){
 			$inputtype = 'checkbox';
@@ -154,7 +212,7 @@ Class ExamAction extends CommonAction{
 		if($question[0]['type'] == '单选'){
 			$inputtype = 'radio';
 		}
-		
+
 		$this->assign('studentanswerforid',cookie('studentanswerforid'.$question[0]['id']));
 		$this->assign('question',$question[0]);
 		$this->assign('inputtype',$inputtype);
@@ -217,6 +275,7 @@ Class ExamAction extends CommonAction{
 	//保存答案
 	public function saveAnswer(){
 		$question_true_id = $_POST['question_true_id'];
+		$questionid = $_POST['questionid'];
 		$answer = $_POST['answer'];
 		$answertype = $_POST['answertype'];
 		
@@ -239,11 +298,13 @@ Class ExamAction extends CommonAction{
 		}
 		
 		cookie('studentanswerforid'.$question_true_id,$answer);
+		cookie('listquestionid_'.$questionid,$question_true_id);
 	}
 	
 	//更新答案
 	public function savecaneledAnswer(){
 		$question_true_id = $_POST['question_true_id'];
+		$questionid = $_POST['questionid'];
 		$answer = $_POST['answer'];
 		$answertype = $_POST['answertype'];
 		
@@ -275,9 +336,38 @@ Class ExamAction extends CommonAction{
 		}
 		
 		cookie('studentanswerforid'.$question_true_id,$answer);
+		cookie('listquestionid_'.$questionid,$question_true_id);
 	}
 	
-	
+	//点击答案，更新右上角的题目列表对错显示
+	public function updatequestionlistanswer(){
+
+		$question_true_id  = $_POST['question_true_id'];
+		$youranswer = cookie('studentanswerforid'.$question_true_id);
+		$trueanswer = D('Question')->where('id='.$question_true_id)->find();
+		//没有做答
+		if(!$youranswer){
+			echo 'null';
+			exit;
+		}
+		//回答正确
+		if($youranswer == $trueanswer['answer']){
+			$r = 'right';
+			if(session('istest')){
+				$r = 'test';
+			}
+			echo $r;
+			exit;
+		}else{
+			//回答错误
+			$w = 'wrong';
+			if(session('istest')){
+				$w = 'test';
+			}
+			echo $w;
+			exit;
+		}
+	}
 	
 	
 }

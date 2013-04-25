@@ -153,10 +153,45 @@ function clicktobuy(appid){
 
 //时间转换
 function gettime(){
-	jq.post(__APP__+'Exam/timer',{},function(data,status){
-		jq('span.trlefttime.hasgo').html(data);
+	jq.post(__APP__+'Exam/timer/r/'+new Date().getTime(),{},function(data,status){
+		$arr = data.split('##');
+		jq('span.trlefttime.hasgo').html($arr[0]);
+		jq('span.leftquestion.red').html($arr[1]);
 	});
 }
+
+//更新右上角题目列表的答案对错显示
+function updatequestionlistanswer(questionid,question_true_id){
+	jq.post(__APP__+'Exam/updatequestionlistanswer',{"question_true_id":question_true_id},function(data,status){
+		jq('div.trainingtopbox table.topicslist tr td').each(function(){
+			var num = jq(this).text();
+			if(questionid == num){
+				if(data == "right"){
+					jq(this).addClass('r');
+					jq(this).removeClass('w');
+					jq(this).removeClass('t');
+				}
+				if(data == "wrong"){
+					jq(this).removeClass('r');
+					jq(this).addClass('w');
+					jq(this).removeClass('t');
+				}
+				if(data == "null"){
+					jq(this).removeClass('r');
+					jq(this).removeClass('w');
+					jq(this).removeClass('t');
+				}
+				if(data == "test"){
+					jq(this).removeClass('r');
+					jq(this).removeClass('w');
+					jq(this).addClass('t');
+				}
+			}
+		});
+	});	
+}
+
+
  
 /**************************************************************/
 jq(function(){
@@ -272,6 +307,7 @@ jq(function(){
 		var answertype = jq(this).attr('type');
 		var answernames = answername.split('_');
 		var question_true_id = answernames[1];
+		var questionid = jq(this).attr('questionid');
 		
 		if(jq(this).attr("checked")=='checked'){
 			if(answertype == 'radio'){
@@ -279,16 +315,19 @@ jq(function(){
 			}
 			jq(this).parent().parent().addClass('checked');
 			//将答案保存
-			jq.post(__APP__+'Exam/saveAnswer',{"question_true_id":question_true_id,"answer":answer,"answertype":answertype},function(data,status){
+			jq.post(__APP__+'Exam/saveAnswer',{"question_true_id":question_true_id,"questionid":questionid,"answer":answer,"answertype":answertype},function(data,status){
 				//...记录COOKIE,没有返回
+				updatequestionlistanswer(questionid,question_true_id);
 			});
 		}else{
 			jq(this).parent().parent().removeClass('checked');
 			//更新答案,从现有的答案中去掉这个被取消的值 
-			jq.post(__APP__+'Exam/savecaneledAnswer',{"question_true_id":question_true_id,"answer":answer,"answertype":answertype},function(data,status){
+			jq.post(__APP__+'Exam/savecaneledAnswer',{"question_true_id":question_true_id,"questionid":questionid,"answer":answer,"answertype":answertype},function(data,status){
 				//...记录COOKIE,没有返回
+				updatequestionlistanswer(questionid,question_true_id);
 			});
 		}
+		
 	});
 	
 	if(jq(".reg-form #birthday").length != 0){
@@ -393,6 +432,19 @@ jq(function(){
 			}
 		});
 		return false;
+	})	
+	
+	//个人应用中心，学习类应用点击（随机100题的考试）
+	jq('span.gototest').click(function(){
+		var sutudyappid = jq(this).attr('title');
+		jq.post(__APP__+'Public/selectapp',{'sutudyappid':sutudyappid,"type":"istest"},function(data,status){
+			if(status == 'success'){
+				window.location.href=__APP__+'Exam/login';
+			}else{
+				alerts('系统忙，请刷新重试！');
+			}
+		});
+		return false;
 	});
 	
 	//座位号
@@ -430,15 +482,11 @@ jq(function(){
 	
 	//计时
 	if(jq('span.trlefttime.hasgo').length != 0){
-
-		//se = setInterval("gettime()",1000);
+		se = setInterval("gettime()",1000);
 		//clearInterval(se);//暂停
 		//clearInterval(se);//停止
 	}else{
-		if(se){
-			//清除以往的计时
-			clearInterval(se);
-		}
+		clearInterval(se);
 	}
 	
 	//加载题目(上一个，下一个)
@@ -502,6 +550,7 @@ jq(function(){
 	//加载题目(乱入选择)
 	jq('table.topicslist tr td,table.topicslistmark tr td span').die().live('click',function(){
 		jq('div.trainingmiddleboxtitle').addClass('loadingline');
+		jq('button.markquestion,button.unmarkquestion').removeClass('markbtnhidden');
 		var questionid = parseInt(jq(this).text());
 		jq.post(__APP__+'Exam/getQuestion',{"questionid":questionid},function(data,status){
 			jq('div.questionbox').html(data);
@@ -540,10 +589,16 @@ jq(function(){
 		}
 	});
 	
+	//标记题目禁止 在Mark页面
+	jq('button.markquestion.markbtnhidden,button.unmarkquestion.markbtnhidden').die().live('click',function(){
+		return false;
+	});
+	
 	//标记题目
 	jq('button.markquestion').die().live("click",function(){
 		if(jq(this).hasClass('disabled')){
-			alerts('此题目已经被标记过了，请不要重复标记！');return false;
+			//alerts('此题目已经被标记过了，请不要重复标记！');
+			return false;
 		}
 		jq(this).addClass('disabled');
 		var questionid = jq(this).attr('value');
@@ -560,7 +615,8 @@ jq(function(){
 	//取消标记的题目
 	jq('button.unmarkquestion').die().live('click',function(){
 		if(jq(this).hasClass('disabled')){
-			alerts('此题目还未曾做过标记！');return false;
+			//alerts('此题目还未曾做过标记！');
+			return false;
 		}
 		var ths = jq(this);
 		var questionid = jq(this).attr('value');
@@ -581,6 +637,7 @@ jq(function(){
 		jq.post(__APP__+'Exam/mark',{'questionid':questionid},function(data,status){
 			if(status = 'success'){
 				jq('div.questionbox').html(data);
+				jq('button.markquestion,button.unmarkquestion').addClass('markbtnhidden');
 			}else{
 				alerts('系统忙，标记失败，请稍后重试！');
 			}			

@@ -629,6 +629,7 @@ function cookie($name, $value='', $option=null) {
         // 要删除的cookie前缀，不指定则删除config设置的指定前缀
         $prefix = empty($value) ? $config['prefix'] : $value;
         if (!empty($prefix)) {// 如果前缀为空字符串将不作处理直接返回
+        	//dump($_COOKIE);
             foreach ($_COOKIE as $key => $val) {
                 if (0 === stripos($key, $prefix)) {
                     setcookie($key, '', time() - 3600, $config['path'], $config['domain']);

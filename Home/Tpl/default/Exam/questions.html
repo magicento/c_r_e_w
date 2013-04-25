@@ -1,11 +1,12 @@
 <div class="trainingmiddleboxcontent item">
+	<div class="questionintro"><{$question.intro}></div>
 	<div class="trtitle"><{$questionid}>.【<{$question.type}>】<{$question.title}></div>
 	<table class="answerbox">
 	<volist name="answer" id="vo">
 		<tr <php>if(strpos($studentanswerforid,$vo['answeridentify']) !== false){echo 'class="checked"';}</php>>
 			<td class="abcheck"><input type="<{$inputtype}>" 
 				<php>if(strpos($studentanswerforid,$vo['answeridentify']) !== false){echo "checked";}</php>
-			 name="answer_<{$question.id}>" value="<{$vo.answeridentify}>" /></td>
+			 name="answer_<{$question.id}>" value="<{$vo.answeridentify}>" questionid="<{$questionid}>" /></td>
 			<td class="abc"><{$vo.answeridentify}>.</td>
 			<td class="lableanswer"><{$vo.answercontent}></td>
 		</tr>

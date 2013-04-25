@@ -72,4 +72,46 @@ function userautologin(){
 		redirect('index.php');
 	}
 }
+
+//清空指定的Cookie，ThinkPHP官方的这个 cookie(null,"think_")好像有问题
+function emptycookie($identify){
+	// 默认设置
+	$config = array(
+			'prefix'    =>  C('COOKIE_PREFIX'), // cookie 名称前缀
+			'expire'    =>  C('COOKIE_EXPIRE'), // cookie 保存时间
+			'path'      =>  C('COOKIE_PATH'), // cookie 保存路径
+			'domain'    =>  C('COOKIE_DOMAIN'), // cookie 有效域名
+	);
+	
+	foreach ($_COOKIE as $key => $val) {
+		if (0 === stripos($key, $identify)) {
+			setcookie($key, '', time() - 3600, $config['path'], $config['domain']);
+			unset($_COOKIE[$key]);
+		}
+	}
+}
+
+//获得指定cookie的数量
+function countcookie($identify){
+	$num = 0;
+	foreach ($_COOKIE as $key => $val) {
+		if (0 === stripos($key, $identify)) {
+			$num++;
+		}
+	}
+	return $num;
+}
+
+//获得Cookie中题目ID和题目顺序编号的关系　
+function getidjointtrueid(){
+	$arr = array();
+	foreach ($_COOKIE as $key => $val) {
+		if (0 === stripos($key, 'listquestionid')) {
+			$a = explode("_", $key);
+			$arr[$a[1]] = $val;
+		}
+	}
+	return $arr;
+}
+
 ?>

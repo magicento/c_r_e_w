@@ -250,7 +250,7 @@ a:link, a:visited {
     height: 14px;
     line-height: 15px;
     margin-top: 6px;
-    padding: 0 10px;
+    padding: 0 16px;
     position: relative;
     right: 50%;
 }
@@ -1052,6 +1052,12 @@ table.topicslist tr td{
 table.topicslist tr td.r{
     background: url(../../images/home/topicyn.png);
 }
+
+table.topicslist tr td.t{
+    background: #1488a5;
+}
+
+
 table.topicslist tr td.w{
     background: url(../../images/home/topicyn.png) 0 -24px;
 }
@@ -1079,7 +1085,7 @@ div.trainingbottombox button{
     margin: 15px auto;
     text-align: center;
     width: 100px;
-    margin-right: 5px;
+    margin-right: 0px;
 }
 div.trainingmiddleboxtitle{
     color: #1488a5;
@@ -1253,4 +1259,29 @@ table.topicslist.topicslist0{
 }
 div.trainingbottombox button.disabled{
     color:#aeaa9c;
+}
+span.gototest{
+    float: right;
+    color: #336699;
+    font-weight: bolder;
+    padding-right: 12px;
+}
+span.gototest:hover{
+    color: red;
+    cursor: pointer;
+}
+span.apptitle{
+    float: left;
+}
+
+div.trainingbottombox button.markbtnhidden{
+    color: #AEAA9C;
+}
+
+div#ui-datepicker-div{display: none;}
+
+.footer_c .weibo {
+    background: url("../../images/home/bitauto_bg130116.png") no-repeat scroll 0 -1304px transparent;
+    margin: 0 5px;
+    padding: 2px 20px;
 }

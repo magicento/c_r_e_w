@@ -162,6 +162,7 @@ Class PublicAction extends Action{
 	
 	public function logout(){
 		session(null);//删除所有的session
+		cookie(null);
 		cookie('autoLoginuserid',null);
 		$this->redirect('index.php');
 	}
@@ -181,9 +182,15 @@ Class PublicAction extends Action{
 	
 	public function selectapp(){
 		$sutudyappid = $_POST['sutudyappid'];
+		$type = $_POST['type'];
 		if($sutudyappid){
 			session('sutudyappid',$sutudyappid);
-			echo session('sutudyappid');
+			if(empty($type)){
+				session('istest',null);
+			}else{
+				session('istest',$type);
+			}
+			//echo session('istest');
 		}
 	}
 	
