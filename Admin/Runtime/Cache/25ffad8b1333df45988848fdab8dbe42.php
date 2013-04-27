@@ -61,238 +61,75 @@ body {
           </tr>
           <tr>
             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
-			<form name="form1" method="POST" action="admintitlechk.asp">
+			<form name="form1" method="POST" action="__URL__/dosaveconfig">
               <tr>
                 <td width="20%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">设定网站名称：</td>
                 <td width="3%" bgcolor="#f2f2f2">&nbsp;</td>
-                <td width="32%" height="30" bgcolor="#f2f2f2"><input name="title" type="text" id="title" size="30" /></td>
+                <td width="32%" height="30" bgcolor="#f2f2f2"><input name="sitename" type="text" id="sitename" size="30" value="<?php echo $config[0]['value'] ?>" /></td>
                 <td width="45%" height="30" bgcolor="#f2f2f2" class="left_txt">网站名称</td>
               </tr>
               <tr>
-                <td height="30" align="right" class="left_txt2">网站访问地址：</td>
+                <td height="30" align="right" class="left_txt2">网站后台加密参数：</td>
                 <td>&nbsp;</td>
-                <td height="30"><input type="text" name="web" size="30" /></td>
-                <td height="30" class="left_txt">网站的网址</td>
+                <td height="30"><input type="text" name="adminjiami" size="30" value="<?php echo $config[1]['value'] ?>"  /></td>
+                <td height="30" class="left_txt">如填写abc,则网站后台的路径就是http://网址/admin.php?abc</td>
               </tr>
               <tr>
                 <td height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">网站备案证号：</td>
                 <td bgcolor="#f2f2f2">&nbsp;</td>
-                <td height="30" bgcolor="#f2f2f2"><input type="text" name="logo" size="25" /></td>
+                <td height="30" bgcolor="#f2f2f2"><input type="text" name="beianhao" size="25" value="<?php echo $config[2]['value'] ?>"  /></td>
                 <td height="30" bgcolor="#f2f2f2" class="left_txt">信息产业部备案号</td>
               </tr>
               <tr>
                 <td height="30" align="right" class="left_txt2">联系电话信息： </td>
                 <td>&nbsp;</td>
-                <td height="30"><input type="text" name="tel" size="30" /></td>
+                <td height="30"><input type="text" name="tel" size="30"  value="<?php echo $config[3]['value'] ?>" /></td>
                 <td height="30" class="left_txt">设置网站联系电话</td>
               </tr>
               <tr>
                 <td height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">网站客服QQ：</td>
                 <td bgcolor="#f2f2f2">&nbsp;</td>
-                <td height="30" bgcolor="#f2f2f2"><input type="text" name="myqq" size="30" /></td>
+                <td height="30" bgcolor="#f2f2f2"><input type="text" name="myqq" size="30" value="<?php echo $config[4]['value'] ?>"  /></td>
                 <td height="30" bgcolor="#f2f2f2" class="left_txt">设置网站客服QQ号</td>
               </tr>
               <tr>
-                <td height="30" align="right" bgcolor="#F7F8F9" class="left_txt2">网站客服QQ2：</td>
-                <td bgcolor="#F7F8F9">&nbsp;</td>
-                <td height="30" bgcolor="#F7F8F9"><input type="text" name="myqq2" size="30" /></td>
-                <td height="30" bgcolor="#F7F8F9" class="left_txt">设置网站客服QQ2号</td>
-              </tr>
-              <tr>
-                <td height="30" align="right" bgcolor="#F2F2F2" class="left_txt2">管理员邮箱：</td>
-                <td bgcolor="#F2F2F2">&nbsp;</td>
-                <td height="30" bgcolor="#F2F2F2"><input name="mymail" type="text" id="mymail" size="30" /></td>
-                <td height="30" bgcolor="#F2F2F2"><span class="left_txt">设置网站客服Email</span></td>
-              </tr>
-              <tr>
-                <td height="30" align="right" class="left_txt2">网站滚动通知：</td>
+                <td height="30" align="right" class="left_txt2">管理员邮箱：</td>
                 <td>&nbsp;</td>
-                <td height="30"><input type="text" name="addinfo" size="30" /></td>
-                <td height="30"><span class="left_txt">设置网站滚动公告内容，支持HTML</span></td>
+                <td height="30"><input name="mymail" type="text" id="mymail" size="30" value="<?php echo $config[5]['value'] ?>"  /></td>
+                <td height="30"><span class="left_txt">设置网站客服Email</span></td>
               </tr>
               <tr>
                 <td height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">关键词设置为： </td>
                 <td bgcolor="#f2f2f2">&nbsp;</td>
-                <td height="30" bgcolor="#f2f2f2"><input type="text" name="ci" size="30" /></td>
+                <td height="30" bgcolor="#f2f2f2"><input type="text" name="keywords" size="55" value="<?php echo $config[6]['value'] ?>"  /></td>
                 <td height="30" bgcolor="#f2f2f2"><span class="left_txt">设置网站的关键词，更容易被搜索引挚找到。</span></td>
               </tr>
               <tr>
-                <td height="30" align="right" class="left_txt2">是否开启复制功能：</td>
+                <td height="30" align="right" class="left_txt2">网站的描述信息： </td>
                 <td>&nbsp;</td>
-                <td height="30"><input type="text" name="kkk" size="4" /></td>
-                <td height="30" class="left_txt">是否禁止外部复制功能 0关闭，1开启</td>
+                <td height="30"><textarea name="sitediscription" cols="72" rows="4" class="left_txt"><?php echo $config[7]['value'] ?></textarea></td>
+                <td height="30"><span class="left_txt">设置网站的描述信息，更容易被搜索引挚找到。</span></td>
               </tr>
               <tr>
-                <td height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">网站风格设置：</td>
+                <td height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">网站统计代码：</td>
                 <td bgcolor="#f2f2f2">&nbsp;</td>
-                <td height="30" bgcolor="#f2f2f2"><input type="text" name="css" size="24" /></td>
-                <td height="30" bgcolor="#f2f2f2" class="left_txt">尾部加/ CSS样式定义内容用</td>
+                <td height="30" bgcolor="#f2f2f2"><textarea name="sitetonji" cols="72" rows="4" class="left_txt"><?php echo $config[8]['value'] ?></textarea></td>
+                <td height="30" bgcolor="#f2f2f2" class="left_txt">您可以申请51统计，百度统计，谷歌统计 （<a href="http://www.51.la/reg.asp" target="_blank">免费注册51la统计</a>）</td>
               </tr>
               <tr>
-                <td height="30" align="right" class="left_txt2">程序授权注册码：</td>
+                <td height="30" align="right" class="left_txt2"></td>
                 <td>&nbsp;</td>
-                <td height="30"><input name="zhengban" type="text" id="zhengban" size="24" /></td>
-                <td height="30" class="left_txt">网站正版授权注册码！</td>
+                <td height="30">
+                	<input type="submit" value="提交数据" />
+                	<input type="reset" value="重新填写" />
+                </td>
+                <td height="30" class="left_txt"></td>
               </tr>
-              
-              <tr>
-                <td height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">51LA网站统计ID：</td>
-                <td bgcolor="#f2f2f2">&nbsp;</td>
-                <td height="30" bgcolor="#f2f2f2"><input name="tongj" type="text" id="tongj" size="15" /></td>
-                <td height="30" bgcolor="#f2f2f2" class="left_txt">51la统计ID，换成您的统计ID号即可 （<a href="http://www.51.la/reg.asp" target="_blank">免费注册51la统计</a>）</td>
-              </tr>
-              <tr>
-                <td height="30" align="right" class="left_txt2">后台管理文件夹：</td>
-                <td>&nbsp;</td>
-                <td height="30"><input type="text" name="foxa" size="24" /></td>
-                <td height="30" class="left_txt">加强安全性，修改后请将后台管理文件夹改为此名</td>
-              </tr>
-              <tr>
-                <td height="17" colspan="4" align="right" >&nbsp;</td>
-              </tr>
-              <tr>
-                <td height="30" colspan="4" align="right" class="left_txt2"><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="nowtable">
-                  <tr>
-                    <td class="left_bt2">&nbsp;&nbsp;&nbsp;&nbsp;会员类型及属性</td>
-                  </tr>
-                </table></td>
-              </tr>
-              <tr>
-                <td height="30" colspan="4" class="left_txt2"><table width="100%" height="99" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="20%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt">①
-                      <input type="text"  name="aname" size="10" class="button01" />
-                      会员 </td>
-                    <td width="20%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt">有效期：
-                      
-                      天</td>
-                    <td width="60%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt">&nbsp;</td>
-                  </tr>
-                  <tr>
-                    <td height="30" align="right" class="left_txt">②
-                      <input type="text"  name="bname" size="10" class="button01" />
-                      会员</td>
-                    <td height="30" align="right" class="left_txt">转换率：</td>
-                    <td height="30" align="right" class="left_txt">&nbsp;</td>
-                  </tr>
-                  <tr>
-                    <td height="30" align="right" bgcolor="#f2f2f2" class="left_txt">③
-                      <input type="text" s name="cname" size="10" class="button01" />
-                      会员</td>
-                    <td height="30" align="right" bgcolor="#f2f2f2" class="left_txt">有效期：
-                      <input type="text"  name="dqsjc" size="5" class="button01" />
-                      <input type="text"  name="dqsja" size="5" class="button01" />
-                      天</td>
-                    <td height="30" align="right" bgcolor="#f2f2f2" class="left_txt">&nbsp;</td>
-                  </tr>
-                  <tr>
-                    <td height="16" colspan="3" align="right">&nbsp;</td>
-                  </tr>
-                  <tr>
-                    <td colspan="3" align="right">&nbsp;</td>
-                  </tr>
-                  <tr>
-                    <td colspan="3" align="right"><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="nowtable">
-                      <tr>
-                        <td class="left_bt2">&nbsp;&nbsp;&nbsp;&nbsp;设&nbsp; 置</td>
-                      </tr>
-                    </table></td>
-                  </tr>
-                </table></td>
-              </tr>
-              <tr>
-                <td height="30" colspan="4" class="left_txt"><table width="100%" height="90" border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td width="27%" align="center" bgcolor="#f2f2f2" class="left_txt">会员升会员需：</td>
-                    <td width="27%" bgcolor="#f2f2f2" class="left_txt"><input type="text" style="color=red" name="asb" value="<%=asb%>" size="2" class="button01" /></td>
-                    <td width="24%" bgcolor="#f2f2f2" class="left_txt">　会员升会员需</td>
-                    <td width="22%" bgcolor="#f2f2f2" class="left_txt"><input type="text" style="color=red" name="bsc" value="<%=bsc%>" size="2" class="button01" /></td>
-                  </tr>
-                  <tr>
-                    <td align="center" class="left_txt">注册会员送：</td>
-                    <td class="left_txt"><input type="text" style="color=red" name="dxb" value="<%=dxb%>" size="2" class="button01" /></td>
-                    <td class="left_txt">发布信息商品消耗：</td>
-                    <td class="left_txt"><input type="text" style="color=red" name="hxb" value="<%=hxb%>" size="2" class="button01" />
-                      /次</td>
-                  </tr>
-                  <tr>
-                    <td align="center" bgcolor="#f2f2f2" class="left_txt">发布图片信息需：</td>
-                    <td bgcolor="#f2f2f2" class="left_txt"><input type="text" style="color=red" name="tdxb" value="<%=tdxb%>" size="2" class="button01" />
-                      /次</td>
-                    <td bgcolor="#f2f2f2" class="left_txt">申请网上店铺需：</td>
-                    <td bgcolor="#f2f2f2" class="left_txt"><input type="text" style="color=red" name="ddxb" value="<%=ddxb%>" size="2" class="button01" /></td>
-                  </tr>
-                </table></td>
-                </tr>
+              </form>
             </table></td>
           </tr>
         </table>
-          <table width="100%" border="0" cellspacing="0" cellpadding="0">
-            <tr>
-              <td colspan="3"><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="nowtable">
-                <tr>
-                  <td class="left_bt2">&nbsp;&nbsp;&nbsp;&nbsp;功能分或转换或消耗</td>
-                </tr>
-              </table></td>
-            </tr>
-            <tr>
-              <td height="30" colspan="3"><table width="100%" height="89" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td height="30" align="center" bgcolor="#f2f2f2" class="left_txt">会员登陆1次积：
-                    <input name="dlf" type="text" class="button01" id="dlf" style="color=red" value="<%=dlf%>" size="2" />
-分</td>
-                  <td height="30" bgcolor="#f2f2f2" class="left_txt">介绍1位积：
-                    <input name="jjf" type="text" class="button01" id="jjf" style="color=red" value="<%=jjf%>" size="2" />
-分</td>
-                  <td height="30" bgcolor="#f2f2f2" class="left_txt">回复1次积：
-                    <input name="ddjf" type="text" class="button01" id="ddjf" style="color=red" value="<%=ddjf%>" size="2" />
-分</td>
-                  <td height="30" bgcolor="#f2f2f2" class="left_txt">积分
-                    <input name="hjf" type="text" class="button01" id="hjf" style="color=red" value="<%=hjf%>" size="2" />
-可换1</td>
-                </tr>
-                <tr>
-                  <td height="30" align="center" class="left_txt">发布信息广告积：
-                    <input name="xxjf" type="text" class="button01" id="xxjf" style="color=red" value="<%=xxjf%>" size="2" />
-分</td>
-                  <td height="30" class="left_txt">发布名片积：
-                    <input name="mpjf" type="text" class="button01" id="mpjf" style="color=red" value="<%=mpjf%>" size="2" />
-分</td>
-                  <td height="30" class="left_txt">加入市场联盟积：
-                    <input name="lmjf" type="text" class="button01" id="lmjf" style="color=red" value="<%=lmjf%>" size="2" />
-分</td>
-                  <td height="30" class="left_txt">发布商品积：
-                    <input name="spjf" type="text" class="button01" id="spjf" style="color=red" value="<%=spjf%>" size="2" />
-分</td>
-                </tr>
-                <tr>
-                  <td height="30" align="center" bgcolor="#f2f2f2" class="left_txt"><input name="gghjf" type="text" class="button01" id="gghjf" style="color=red" value="<%=gghjf%>" size="2" />
-                    换1置顶工具</td>
-                  <td height="30" bgcolor="#f2f2f2" class="left_txt">改资料1次耗：
-                    <input name="zlhjf" type="text" class="button01" id="zlhjf" style="color=red" value="<%=zlhjf%>" size="2" />
-分</td>
-                  <td height="30" bgcolor="#f2f2f2" class="left_txt">修改发布耗：
-                    <input name="xghjf" type="text" class="button01" id="xghjf" style="color=red" value="<%=xghjf%>" size="2" />
-分</td>
-                  <td height="30" bgcolor="#f2f2f2" class="left_txt">上传认证奖：
-                    <input name="rzjf" type="text" class="button01" id="rzjf" style="color=red" value="<%=rzjf%>" size="2" />
-分</td>
-                </tr>
-              </table></td>
-            </tr>
-            
-            <tr>
-              <td height="30" colspan="3">&nbsp;</td>
-            </tr>
-            <tr>
-              <td width="50%" height="30" align="right"><input type="submit" value="完成以上修改" name="B1" /></td>
-              <td width="6%" height="30" align="right">&nbsp;</td>
-              <td width="44%" height="30"><input type="reset" value="取消设置" name="B12" /></td>
-            </tr>
-            <tr>
-              <td height="30" colspan="3">&nbsp;</td>
-            </tr>
-          </table></td>
+        </td>
       </tr>
     </table></td>
     <td background="__PUBLIC__/images/admin/mail_rightbg.gif">&nbsp;</td>

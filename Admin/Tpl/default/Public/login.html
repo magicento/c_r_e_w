@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <title>航运考试网---管理员登陆</title>
   <link href="__PUBLIC__/css/admin/skin.css" rel="stylesheet" type="text/css">
+  <import type='js' file="js.jquery_min,js.admin.common" />
+  <js href="__PUBLIC__/js/artDialog/artDialog.js?skin=black" />
+  <js href="__PUBLIC__/js/artDialog/plugins/iframeTools.js" />
   <script language="JavaScript">
   function correctPNG()
   {
@@ -37,7 +40,7 @@
   function updateverifyimg(obj){
       obj.src="__APP__/Public/verify/?"+Math.random();
   }
-  window.attachEvent("onload", correctPNG);
+ // window.attachEvent("onload", correctPNG);
   </script>
 </head>
 <body class="loginpage">
@@ -106,20 +109,20 @@
               <td height="21"><table cellSpacing="0" cellPadding="0" width="100%" border="0" id="table211" height="328">
                   <tr>
                     <td height="164" colspan="2" align="middle">
-                      <form name="loginform" action="__URL__/checkLogin" method="post">
+                      <form name="loginform" class="loginform" action="__URL__/checkLogin" method="post">
                         <table cellSpacing="0" cellPadding="0" width="100%" border="0" height="143" id="table212">
                           <tr>
                             <td width="13%" height="38" class="top_hui_text"><span class="login_txt">管理员：&nbsp;&nbsp; </span></td>
-                            <td height="38" colspan="2" class="top_hui_text"><input name="account" class="editbox4" value="" size="20" autocomplete="off" /></td>
+                            <td height="38" colspan="2" class="top_hui_text"><input name="account" class="editbox4 useraccount" value="" size="20" autocomplete="off" /></td>
                           </tr>
                           <tr>
                             <td width="13%" height="35" class="top_hui_text"><span class="login_txt"> 密 码： &nbsp;&nbsp; </span></td>
-                            <td height="35" colspan="2" class="top_hui_text"><input class="editbox4" type="password" size="20" name="password" autocomplete="off" />
+                            <td height="35" colspan="2" class="top_hui_text"><input class="editbox4 userpwd" type="password" size="20" name="password" autocomplete="off" />
                               <img style="vertical-align: middle;" src="__PUBLIC__/images/admin/luck.gif" width="19" height="18"> </td>
                           </tr>
                           <tr>
                             <td width="13%" height="35" class="top_hui_text" ><span class="login_txt">验证码：</span></td>
-                            <td height="35" colspan="2" class="top_hui_text"><input class="wenbenkuang" name="verify" type="text" value="" maxLength=4 size=10 autocomplete="off" />
+                            <td height="35" colspan="2" class="top_hui_text"><input class="wenbenkuang uservali" name="verify" type="text" value="" maxLength=4 size=10 autocomplete="off" />
                               <img onclick="updateverifyimg(this)" class="verify" alt="点击图片可以刷新验证码" src='__APP__/Public/verify/' />
                               </td>
                           </tr>

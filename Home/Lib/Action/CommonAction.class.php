@@ -1,7 +1,8 @@
 <?php 
-Class CommonAction extends Action{
+Class CommonAction extends InitAction{
 
 	public function _initialize(){
+		parent::_initialize();
 		//dump(session('userinfo'));
 		header("Content-Type:text/html; charset=utf-8");
 		//session('user_id','36');

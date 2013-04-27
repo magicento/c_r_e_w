@@ -60,7 +60,15 @@ Class UserAction extends CommonAction{
 
 	//删除用户
 	public function deluser(){
-		// $this->display();
+		
+		$delcid = $_POST['delcid'];
+		$delcidarr = explode(',', $delcid);
+		foreach ($delcidarr as $key=>$value){
+			if($value != 1){
+				D('User')->where('id='.$value)->delete();
+			}
+		}
+		
 	}
 
 	//添加用户add

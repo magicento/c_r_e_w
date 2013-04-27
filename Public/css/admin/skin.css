@@ -197,13 +197,11 @@ table{font-size: 12px;}
 }
 a:link {
 	font-size: 12px;
-	line-height: 25px;
 	color: #333333;
 	text-decoration: none;
 }
 body a:hover {
 	font-size: 12px;
-	line-height: 25px;
 	color: red;
 	text-decoration: none;
 }
@@ -398,13 +396,61 @@ td.top_hui_text{
 td.left_txt{
 	text-align: left;
 }
+.hidden{
+	display: none;
+}
+div.kuaijiecaozuo{
+	border-top: 1px #ccc solid;
+	margin: 10px 0;
+	padding: 5px 0;
+}
+div.kuaijiecaozuo table tr td{
+	text-align: center;
+}
 
+div.kuaijiecaozuo table tr td img{
+	width: 60px;
+	border: none;
+	margin: 0 10px;
+}
 
+span.newsblock{
+	margin-left: 100px;
+}
+span.newsblock input,
+span.newsblock label{
+	vertical-align: middle;
+}
+div.divtextareabox{
+	height: 0;
+	overflow: hidden;
+}
 
+.hidden{
+	display: none;
+}
+.red{color: red;}
+form.postappform table{
+	position: relative;
+}
 
-
-
-
-
-
-
+form.postappform table img.applogo{
+	position:absolute;
+	top: 0px;
+	left:830px;
+	width: 55px;
+	height: 55px;
+	border: 1px #ccc solid;
+	padding: 2px;
+	border-radius: 5px;
+	display: none;
+}
+span.isdownload{
+	margin-left: 10px;
+}
+.articledownlink{
+	display: none;
+}
+.show{
+	display: table-row;
+}

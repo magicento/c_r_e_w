@@ -1,4 +1,5 @@
-<?php if (!defined('THINK_PATH')) exit();?><html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE HTML>
+<html>
 <head>
 <title>管理页面 头部</title>
 <meta http-equiv=Content-Type content=text/html;charset=utf-8>
@@ -44,7 +45,7 @@ function showsubmenu(sid) {
 <body leftmargin="0" topmargin="0">
 <table width="100%" height="64" border="0" cellpadding="0" cellspacing="0" class="admin_topbg">
   <tr>
-    <td width="40%" height="64"><img src="__PUBLIC__/images/admin/logo.gif" width="262" height="64"></td>
+    <td width="40%" height="64"><a href="/admin.php/Index/welcome"><img src="__PUBLIC__/images/admin/logo.gif" width="262" height="64"></a></td>
     <td width="60%" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="74%" height="38" class="admin_txt">您好：<b><?php echo ($_SESSION['admininfo']['username']); ?></b>，欢迎登陆使用本系统！您的IP地址为：<?php echo ($_SESSION['admininfo']['lastloginip']); ?>，来自：<?php echo ($area["country"]); echo ($area["area"]); ?></td>

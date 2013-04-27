@@ -89,21 +89,20 @@
 <div id="footer">
 	<div class="site-footer">
 		<div id="footer0904">
-			<div class="footer_c">购车咨询：4000-168-168（工作日 9:00-17:30） 传真：010-68492726
-			<a target="_blank" href="http://e.weibo.com/yiche" class="weibo">易车网</a></div>
+			<div class="footer_c">中国船员考试网客户服务热线：027-822997280（工作日 9:00-17:30） 
+			<a target="_blank" href="http://e.weibo.com/yiche" class="weibo">船员考试网</a>
+			</div>
 			<div class="footer_about">
 			<ul class="about">
-			    <li class="first"><a href="http://corp.bitauto.com/" target="_blank">关于易车</a></li>
-			    <li><a href="http://corp.bitauto.com/business/" target="_blank">业务介绍</a></li>
-			    <li><a href="http://corp.bitauto.com/news/" target="_blank">易车动态</a></li>
-			    <li><a href="http://corp.bitauto.com/job/" target="_blank">加入易车</a></li>
-			    <li><a href="http://corp.bitauto.com/about/contact-us.shtml" target="_blank">联系我们</a></li>
+			    <li class="first"><a href="http://corp.bitauto.com/" target="_blank">关于船员考试网</a></li>
+			    <li><a href="http://corp.bitauto.com/business/" target="_blank">最新资讯</a></li>
+			    <li><a href="http://corp.bitauto.com/news/" target="_blank">常见问题</a></li>
+			    <li><a href="http://corp.bitauto.com/job/" target="_blank">联系我们</a></li>
+			    <li><a href="http://corp.bitauto.com/about/contact-us.shtml" target="_blank">海事规则</a></li>
 			    <li><a href="http://corp.bitauto.com/about/legal-notices.shtml" target="_blank">法律声明</a></li>
-			    <li><a href="http://i.bitauto.com/authenservice/register/Licence.aspx" target="_blank">服务协议</a></li>
-			    <li><a href="http://ir.bitauto.com/" target="_blank">Investor Relations</a></li>
-			    <li><a href="http://www.bitauto.com/feedback/" target="_blank">我要提意见</a></li>
-			    <li><a href="http://ued.bitauto.com/" target="_blank">用户体验中心</a></li>
-			   <li class="last"><a href="http://dealer.easypass.cn/" target="_blank">车易通</a></li>
+			    <li><a href="http://i.bitauto.com/authenservice/register/Licence.aspx" target="_blank">会员服务</a></li>
+			    <li><a href="http://www.bitauto.com/feedback/" target="_blank">在线客服</a></li>
+			   <li class="last"><a href="http://dealer.easypass.cn/" target="_blank">船员导航网</a></li>
 			</ul>
 			</div>
 			

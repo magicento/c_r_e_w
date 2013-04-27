@@ -143,31 +143,7 @@ H1 a {
   <tr>
     <td width="182" valign="top">
     <div id="container">
-      <h1 class="type"><a href="javascript:void(0)">常规选项</a></h1>
-      <div class="content">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td><img src="__PUBLIC__/images/admin/menu_topline.gif" width="182" height="5" /></td>
-          </tr>
-        </table>
-        <ul class="MM">
-          <li><a href="__APP__/Config" target="main">基本设置</a></li>
-        </ul>
-      </div>
-      <h1 class="type"><a href="javascript:void(0)">会员管理</a></h1>
-      <div class="content">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td><img src="__PUBLIC__/images/admin/menu_topline.gif" width="182" height="5" /></td>
-          </tr>
-        </table>
-        <ul class="MM">
-          <li><a href="__APP__/User/index" target="main">会员列表</a></li>
-          <li><a href="__APP__/User/adduser" target="main">添加会员</a></li>
-          <li><a href="__APP__/User/onlineapplylist" target="main">在线报名</a></li>
-          <li><a href="__APP__/User/topup" target="main">手动充值</a></li>
-        </ul>
-      </div>
+    
       <h1 class="type"><a href="javascript:void(0)">应用管理</a></h1>
       <div class="content">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -176,12 +152,30 @@ H1 a {
           </tr>
         </table>
         <ul class="MM">
-          <li><a href="##" target="main">应用列表</a></li>
-          <li><a href="##" target="main">添加应用</a></li>
-          <li><a href="##" target="main">考题管理</a></li>
-          <li><a href="##" target="main">软件管理</a></li>
+          <li><a href="__APP__/App/listcourse" target="main">科目列表</a></li>
+          <li><a href="__APP__/App/addcourse" target="main">添加科目</a></li>
+          <li><a href="__APP__/App/listapp" target="main">应用列表</a></li>
+          <li><a href="__APP__/App/addapp" target="main">添加应用</a></li>
+          <li><a href="__APP__/App/listquestions" target="main">考题列表</a></li>
+          <li><a href="__APP__/App/addquestions" target="main">添加考题</a></li>
         </ul>
       </div>
+          
+      <h1 class="type usermanage" id="typeusermanage"><a href="javascript:void(0)">会员管理</a></h1>
+      <div class="content">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><img src="__PUBLIC__/images/admin/menu_topline.gif" width="182" height="5" /></td>
+          </tr>
+        </table>
+        <ul class="MM">
+          <li><a href="__APP__/User/index" target="main">会员列表</a></li>
+          <!-- <li><a href="__APP__/User/adduser" target="main">添加会员</a></li> -->
+          <li><a href="__APP__/User/onlineapplylist" target="main">在线报名</a></li>
+          <li><a href="__APP__/User/topup" target="main">手动充值</a></li>
+        </ul>
+      </div>
+      
       <php>if(1==2){</php>
       <h1 class="type"><a href="javascript:void(0)">用户权限管理</a></h1>
       <div class="content">
@@ -200,7 +194,8 @@ H1 a {
         </ul>
       </div>
       <php>}</php>
-        <h1 class="type"><a href="javascript:void(0)">新闻管理</a></h1>
+      
+      <h1 class="type"><a href="javascript:void(0)">文章管理</a></h1>
       <div class="content">
           <table width="100%" border="0" cellspacing="0" cellpadding="0">
             <tr>
@@ -208,11 +203,32 @@ H1 a {
             </tr>
           </table>
         <ul class="MM">
-          <li><a href="##" target="main">新闻列表</a></li>
-          <li><a href="##" target="main">添加新闻</a></li>
-          <li><a href="##" target="main">其它文章</a></li>
+          <li><a href="__APP__/Articles/index" target="main">文章列表</a></li>
+          <li><a href="__APP__/Articles/add" target="main">添加文章</a></li>
         </ul>
       </div>
+      
+      <h1 class="type"><a href="javascript:void(0)">常规选项</a></h1>
+      <div class="content">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><img src="__PUBLIC__/images/admin/menu_topline.gif" width="182" height="5" /></td>
+          </tr>
+        </table>
+        <ul class="MM">
+          <li><a href="__APP__/Config" target="main">基本设置</a></li>
+        </ul>
+      </div>
+      
+      <div class="programdiv">
+      <h1 class="type"><a href="javascript:void(0)">程序版本与技术支持</a></h1>
+     		<ul class="devinfo" style="color:#ddd;">
+     			<li>船员考试网-[测试版]</li>
+     			<li>开发：<a style="color:#ddd;" href="mailto:zhang.jiachao@qq.com">Jochen.zhang</a></li>
+     			<li>版权所有©2012-<PHP>echo date('Y',time());</PHP></li>
+     		</ul>
+      </div>
+      
       </div>
         <script type="text/javascript">
 		var contents = document.getElementsByClassName('content');

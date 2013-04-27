@@ -1,0 +1,160 @@
+[ 2013-04-26T00:11:03+08:00 ] 127.0.0.1 /index.php/User/allapp
+INFO: [ route_check ] --START--
+INFO: Run CheckRoute Behavior [ RunTime:0.000644s ]
+INFO: [ route_check ] --END-- [ RunTime:0.000717s ]
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000403s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000450s ]
+SQL: SHOW COLUMNS FROM `think_user` [ RunTime:0.001894s ]
+SQL: SELECT `account`,`email`,`password`,`create_time`,`identitycard`,`sex`,`job`,`tel`,`address`,`birthday` FROM `think_user` WHERE id=36 LIMIT 1   [ RunTime:0.000276s ]
+NOTIC: [8] Undefined index: gid D:\wamp\www\crewexam\Home\Lib\Action\UserAction.class.php 第 94 行.
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001547s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001606s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined index: gid D:\wamp\www\crewexam\Home\Runtime\Cache\e8cfe0531b665b03e8055f02fe00d48f.php 第 157 行.
+NOTIC: [8] Undefined index: gid D:\wamp\www\crewexam\Home\Runtime\Cache\e8cfe0531b665b03e8055f02fe00d48f.php 第 159 行.
+NOTIC: [8] Undefined index: gid D:\wamp\www\crewexam\Home\Runtime\Cache\e8cfe0531b665b03e8055f02fe00d48f.php 第 161 行.
+NOTIC: [8] Undefined index: gid D:\wamp\www\crewexam\Home\Runtime\Cache\e8cfe0531b665b03e8055f02fe00d48f.php 第 163 行.
+NOTIC: [8] Undefined index: gid D:\wamp\www\crewexam\Home\Runtime\Cache\e8cfe0531b665b03e8055f02fe00d48f.php 第 165 行.
+NOTIC: [8] Undefined index: gid D:\wamp\www\crewexam\Home\Runtime\Cache\e8cfe0531b665b03e8055f02fe00d48f.php 第 167 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.022947s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023004s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000494s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000667s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000295s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000458s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002170s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000701s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000759s ]
+
+[ 2013-04-26T01:43:48+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000565s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000639s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000710s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000788s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.013152s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013210s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000417s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000383s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000258s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000479s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001670s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000549s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000603s ]
+
+[ 2013-04-26T04:03:04+08:00 ] 127.0.0.1 /crewexam/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000653s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000720s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000618s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000679s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined index: user_id D:\wamp\www\crewexam\Home\Runtime\Cache\71191d06e3a1515d6f2539df23c89c2b.php 第 38 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.012147s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012201s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000388s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000410s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000246s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000414s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001580s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000503s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000545s ]
+
+[ 2013-04-26T13:58:20+08:00 ] 127.0.0.1 /crewexam/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000847s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000968s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001157s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001245s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined index: user_id D:\wamp\www\crewexam\Home\Runtime\Cache\71191d06e3a1515d6f2539df23c89c2b.php 第 38 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.016667s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016825s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000573s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000502s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000351s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000552s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002155s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000725s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000771s ]
+
+[ 2013-04-26T17:38:02+08:00 ] 127.0.0.1 /
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000614s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000696s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.000622s ]
+INFO: [ view_template ] --END-- [ RunTime:0.000708s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined index: user_id D:\wamp\www\crewexam\Home\Runtime\Cache\71191d06e3a1515d6f2539df23c89c2b.php 第 38 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.014472s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014568s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000495s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000511s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000292s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000550s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002005s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.001317s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001415s ]
+
+[ 2013-04-26T17:40:20+08:00 ] 127.0.0.1 /crewexam/
+INFO: [ app_begin ] --START--
+INFO: Run ReadHtmlCache Behavior [ RunTime:0.000683s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000770s ]
+INFO: [ view_template ] --START--
+INFO: Run LocationTemplate Behavior [ RunTime:0.001116s ]
+INFO: [ view_template ] --END-- [ RunTime:0.001269s ]
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined offset: 1 D:\wamp\www\crewexam\ThinkPHP\Lib\Driver\TagLib\TagLibCx.class.php 第 524 行.
+NOTIC: [8] Undefined index: user_id D:\wamp\www\crewexam\Home\Runtime\Cache\71191d06e3a1515d6f2539df23c89c2b.php 第 38 行.
+INFO: Run ParseTemplate Behavior [ RunTime:0.013585s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013673s ]
+INFO: [ view_filter ] --START--
+INFO: Run ContentReplace Behavior [ RunTime:0.000409s ]
+INFO: Run TokenBuild Behavior [ RunTime:0.000424s ]
+INFO: Run WriteHtmlCache Behavior [ RunTime:0.000255s ]
+INFO: Run ShowRuntime Behavior [ RunTime:0.000434s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001653s ]
+INFO: [ view_end ] --START--
+INFO: Run ShowPageTrace Behavior [ RunTime:0.000734s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000781s ]
+

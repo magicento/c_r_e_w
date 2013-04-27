@@ -126,10 +126,10 @@
 		<div class="userinfoleftbox3">
 			<h3>船员题库练习与模拟考试</h3>
 			<ul>
-				<li><a href="<?php echo U('User/allapp','gid=1');?>">适任证书（驾驶）</a></li>
-				<li><a href="<?php echo U('User/allapp','gid=2');?>">适任证书（轮机）</a></li>
-				<li><a href="<?php echo U('User/allapp','gid=3');?>">船员基本证书</a></li>
-				<li><a href="<?php echo U('User/allapp','gid=4');?>">特殊船舶证书</a></li>
+				<li><a href="<?php echo U('User/allapp','gid=1');?>">适任证书考试</a></li>
+				<li><a href="<?php echo U('User/allapp','gid=3');?>">基本证书培训</a></li>
+				<li><a href="<?php echo U('User/allapp','gid=4');?>">特殊传播证书培训</a></li>
+				<li><a href="<?php echo U('User/allapp','gid=7');?>">其他证书培训</a></li>
 			</ul>
 		</div>
 		<div class="userinfoleftbox4">
@@ -169,7 +169,7 @@
 	<div class="clearfix"></div>
 </div>
 <div class="fourphonebox">
-	<img src="__PUBLIC__/images/home/userloginicon_15.png" alt="" />
+	<img class="telimgfirst" src="__PUBLIC__/images/home/userloginicon_15.png" alt="" />
 	<img src="__PUBLIC__/images/home/userloginicon_16.png" alt="" />
 	<img src="__PUBLIC__/images/home/userloginicon_17.png" alt="" />
 	<img src="__PUBLIC__/images/home/userloginicon_18.png" alt="" />
@@ -185,30 +185,31 @@
 <div id="footer">
 	<div class="site-footer">
 		<div id="footer0904">
-			<div class="footer_c">购车咨询：4000-168-168（工作日 9:00-17:30） 传真：010-68492726
-			<a target="_blank" href="http://e.weibo.com/yiche" class="weibo">易车网</a></div>
+			<div class="footer_c"><?php echo (session('website_sitename')); ?>客户服务热线：<?php echo (session('website_tel')); ?>（工作日 9:00-17:30） 
+			<a target="_blank" href="http://e.weibo.com/yiche" class="weibo"><?php echo (session('website_sitename2')); ?></a>
+			</div>
 			<div class="footer_about">
 			<ul class="about">
-			    <li class="first"><a href="http://corp.bitauto.com/" target="_blank">关于易车</a></li>
-			    <li><a href="http://corp.bitauto.com/business/" target="_blank">业务介绍</a></li>
-			    <li><a href="http://corp.bitauto.com/news/" target="_blank">易车动态</a></li>
-			    <li><a href="http://corp.bitauto.com/job/" target="_blank">加入易车</a></li>
-			    <li><a href="http://corp.bitauto.com/about/contact-us.shtml" target="_blank">联系我们</a></li>
+			    <li class="first"><a href="http://corp.bitauto.com/" target="_blank">关于船员考试网</a></li>
+			    <li><a href="http://corp.bitauto.com/business/" target="_blank">最新资讯</a></li>
+			    <li><a href="http://corp.bitauto.com/news/" target="_blank">常见问题</a></li>
+			    <li><a href="http://corp.bitauto.com/job/" target="_blank">联系我们</a></li>
+			    <li><a href="http://corp.bitauto.com/about/contact-us.shtml" target="_blank">海事规则</a></li>
 			    <li><a href="http://corp.bitauto.com/about/legal-notices.shtml" target="_blank">法律声明</a></li>
-			    <li><a href="http://i.bitauto.com/authenservice/register/Licence.aspx" target="_blank">服务协议</a></li>
-			    <li><a href="http://ir.bitauto.com/" target="_blank">Investor Relations</a></li>
-			    <li><a href="http://www.bitauto.com/feedback/" target="_blank">我要提意见</a></li>
-			    <li><a href="http://ued.bitauto.com/" target="_blank">用户体验中心</a></li>
-			   <li class="last"><a href="http://dealer.easypass.cn/" target="_blank">车易通</a></li>
+			    <li><a href="http://i.bitauto.com/authenservice/register/Licence.aspx" target="_blank">会员服务</a></li>
+			    <li><a href="http://www.bitauto.com/feedback/" target="_blank">在线客服</a></li>
+			   <li class="last"><a href="http://dealer.easypass.cn/" target="_blank">船员导航网</a></li>
 			</ul>
 			</div>
 			
 			<div class="footer_text">
-			<p>CopyRight &copy; 2000-2013 BitAuto,All Rights Reserved 版权所有 北京易车信息科技有限公司</p>
-			<p>电信业务审批[2006]字第92号；经营许可证编号： <a href="http://www.bitauto.com/license/ICP.shtml" target="_blank">京ICP证060175号</a>；公安备案号码：京公网安备 110108901166号</p>
-			<p><a href="http://www.bitauto.com/license/video.shtml" target="_blank">网络视听许可证0110543号</a> <a href="http://www.bitauto.com/license/audio.shtml" target="_blank">广播电视节目制作许可证1238号</a> <a href="http://www.bitauto.com/license/pub.shtml" target="_blank">新出网证(京)字182号</a> <a href="http://www.bitauto.com/license/mapping.shtml" target="_blank">乙测资字11005048</a></p>
+			<p>客户服务热线：<?php echo (session('website_tel')); ?>&nbsp;&nbsp;<?php echo (session('website_sitename2')); ?>邮箱：<?php echo (session('website_mymail')); ?>&nbsp;&nbsp;网站ICP备案：<?php echo (session('website_beianhao')); ?></p>
+			<p>通用网址 网络关键词：<?php echo (session('website_keywords')); ?></p>
+			<p>CopyRight &copy; 2010-<?php echo date('Y',time()); ?>&nbsp;&nbsp;<?php echo (session('website_sitename2')); ?>&nbsp;&nbsp;<?php echo (session('website_siteurl')); ?>,All Rights Reserved&nbsp;&nbsp;<?php echo (session('website_sitename')); ?>&nbsp;&nbsp;版权所有</p>
 			</div>
-			<div class="icpbox"><a href="##" target="_blank" class="icp"><img src="__PUBLIC__/images/home/footerbeian.png"></a></div>
+			<div class="icpbox">
+				<a href="http://t.knet.cn/" target="_blank" class="icp"><img src="__PUBLIC__/images/home/footerbeian.png"></a></div>
+				<div class="tongji"><?php echo (session('website_sitetonji')); ?></div>
 			</div>
 	</div>
 </div>

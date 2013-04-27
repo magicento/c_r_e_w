@@ -1,7 +1,8 @@
 <?php
-Class PublicAction extends Action{
+Class PublicAction extends InitAction{
 	
 	public function _initialize(){
+		parent::_initialize();
 		header("Content-Type:text/html; charset=utf-8");
 		$this->assign('browser',browser());
 	}

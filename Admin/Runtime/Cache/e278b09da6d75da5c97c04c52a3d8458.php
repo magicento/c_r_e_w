@@ -10,6 +10,8 @@ body {
 }
 -->
 </style>
+<script type="text/javascript" src="/Public/js/jquery_min.js"></script><script type="text/javascript" src="/Public/js/admin/common.js"></script>
+
 <body class="welcomebody">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
@@ -30,13 +32,35 @@ body {
         <td valign="top">&nbsp;</td>
       </tr>
       <tr>
-        <td colspan="2" valign="top"><span class="left_bt">感谢您使用 商家信息网 网站管理系统程序</span><br>
+        <td colspan="2" valign="top"><span class="left_bt">感谢您使用  中国船员考试网 网站管理系统程序</span><br>
               <br>
-            <span class="left_txt">&nbsp;<img src="__PUBLIC__/images/admin/ts.gif" width="16" height="16"> 提示：<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您现在使用的是www.865171.cn开发的一套用于构建商务信息类门户型网站的专业系统！如果您有任何疑问请点左下解的</span><span class="left_ts">在线客服</span><span class="left_txt">进行咨询！<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;七大栏目完美整合，一站通使用方式，功能强大，操作简单，后台操作易如反掌，只需会打字，会上网，就会管理网站！<br>
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此程序是您建立地区级商家信息门户的首选方案！　 <br>
-</span></td>
+            <span class="left_txt">&nbsp;<img src="__PUBLIC__/images/admin/ts.gif" width="16" height="16">快捷操作</span>
+           <div class="kuaijiecaozuo">
+           <table>
+           	<tr>
+           		<td><a class="usermanage" href="__APP__/User/index"><img src="__PUBLIC__/images/admin/add_card.png" alt="" /></a></td>
+           		<td><a class="appmanage" href="__APP__/App/listapp"><img src="__PUBLIC__/images/admin/keyboard.png" alt="" /></a></td>
+           		<td><a class="coursemanage" href="__APP__/App/listcourse"><img src="__PUBLIC__/images/admin/kemu.png" alt="" /></a></td>
+           		<!-- <td><a href="##"><img src="__PUBLIC__/images/admin/folder_yellow_software_1.png" alt="" /></a></td> -->
+           		<td><a class="questionmanage" href="__APP__/App/listquestions"><img src="__PUBLIC__/images/admin/news_unsubscribe.png" alt="" /></a></td>
+           		<td><a class="articlemanage" href="__APP__/Articles/index"><img src="__PUBLIC__/images/admin/news.png" alt="" /></a></td>
+           		<td><a class="topupmanage" href="__APP__/User/topup"><img src="__PUBLIC__/images/admin/money.png" alt="" /></a></td>
+           		<td><a class="applymanage" href="__APP__/User/onlineapplylist"><img src="__PUBLIC__/images/admin/on_line.png" alt="" /></a></td>
+           	</tr>
+           	<tr>
+           		<td>会员管理</td>
+           		<td>应用管理</td>
+           		<td>科目管理</td>
+           		<!-- <td>软件管理</td> -->
+           		<td>考题管理</td>
+           		<td>文章管理</td>
+           		<td>后台充值</td>
+           		<td>在线报名</td>
+           	</tr>
+           </table>
+           
+           </div>
+            </td>
         <td width="7%">&nbsp;</td>
         <td width="40%" valign="top"><table width="100%" height="144" border="0" cellpadding="0" cellspacing="0" class="line_table">
           <tr>
@@ -70,113 +94,17 @@ mainTable.tBodies[n].style.display="block";
 }
           </SCRIPT>
               <!--HTML部分-->
-              <TABLE width=72% border=0 cellPadding=0 cellSpacing=0 id=secTable>
+              <TABLE width=100% border=0 cellPadding=0 cellSpacing=0 id=secTable>
                 <TBODY>
                   <TR align=middle height=20>
-                    <TD align="center" class=sec2 onclick=secBoard(0)>验证信息</TD>
-                    <TD align="center" class=sec1 onclick=secBoard(1)>统计信息</TD>
-                    <TD align="center" class=sec1 onclick=secBoard(2)>系统参数</TD>
-                    <TD align="center" class=sec1 onclick=secBoard(3)>版权说明</TD>
+                    <TD align="center" class=sec2 onclick=secBoard(0)>系统参数</TD>
+                    <TD align="center" class=sec1 onclick=secBoard(1)>版权说明</TD>
                   </TR>
                 </TBODY>
               </TABLE>
           <TABLE class=main_tab id=mainTable cellSpacing=0 cellPadding=0 width=100% border=0>
-                <!--关于TBODY标记-->
-                <TBODY style="DISPLAY: block">
-                  <TR>
-                    <TD vAlign=top align=middle width="579">
-                      <TABLE width=98% height="133" border=0 align="center" cellPadding=0 cellSpacing=0>
-                        <TBODY>
-                          <TR>
-                            <TD height="5" colspan="3"></TD>
-                          </TR>
-                          <TR>
-                            <TD width="4%" height="28" background="__PUBLIC__/images/admin/news-title-bg.gif"></TD>
-                            <TD height="25" colspan="2" background="__PUBLIC__/images/admin/news-title-bg.gif" class="left_txt">亲爱的管理员： <font color="#FFFFFF" class="left_ts"><b></b></TD>
-                          </TR>
-                          <TR>
-                            <TD bgcolor="#FAFBFC">&nbsp;</TD>
-                            <TD width="42%" height="25" bgcolor="#FAFBFC"><span class="left_txt">您有未验证分类信息： </span>
-                               
-                                <span class="left_ts"> </span></TD>
-                            <TD width="54%" height="25" bgcolor="#FAFBFC"><span class="left_txt">您有未验证广告张贴： </span>
-                               
-                                <span class="left_ts"> </span></TD>
-                          </TR>
-                          <TR>
-                            <TD bgcolor="#FAFBFC">&nbsp;</TD>
-                            <TD height="25" bgcolor="#FAFBFC"><span class="left_txt">您有未验证商家展示： </span>
-                               
-                                <span class="left_ts"> </span></TD>
-                            <TD height="25" bgcolor="#FAFBFC"><span class="left_txt">您有未验证网上商城： </span>
-                               
-                                <span class="left_ts"> </span></TD>
-                          </TR>
-                          <TR>
-                            <TD bgcolor="#FAFBFC">&nbsp;</TD>
-                            <TD height="25" bgcolor="#FAFBFC"><span class="left_txt">您有未验证网上名片： </span>
-                                <span class="left_ts"> </span></TD>
-                            <TD height="25" bgcolor="#FAFBFC"><span class="left_txt">您有未验证市场联盟： </span>
-                               
-                                <span class="left_ts"> </span></TD>
-                          </TR>
-                          <TR>
-                            <TD bgcolor="#FAFBFC">&nbsp;</TD>
-                            <TD height="25" bgcolor="#FAFBFC"><span class="left_txt">您有未验证市场资讯： </span>
-                               
-                                <span class="left_ts"> </span></TD>
-                            <TD height="25" bgcolor="#FAFBFC"><span class="left_txt">您有未验证商家商品： </span>
-                                <span class="left_ts"> </span></TD>
-                          </TR>
-                          <TR>
-                            <TD height="5" colspan="3"></TD>
-                          </TR>
-                        </TBODY>
-                    </TABLE></TD>
-                  </TR>
-                </TBODY>
-                <!--关于cells集合-->
-                <TBODY style="DISPLAY: none">
-                  <TR>
-                    <TD vAlign=top align=middle width="579">
-                      <TABLE width=98% height="133" border=0 align="center" cellPadding=0 cellSpacing=0>
-                        <TBODY>
-                          <TR>
-                            <TD height="5" colspan="3"></TD>
-                          </TR>
-                          <TR>
-                            <TD width="4%" height="28" background="__PUBLIC__/images/admin/news-title-bg.gif"></TD>
-                            <TD colspan="2" background="__PUBLIC__/images/admin/news-title-bg.gif" class="left_txt">现有会员：名&nbsp;&nbsp; 其中：                                名&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;名</TD>
-                          </TR>
-                          <TR>
-                            <TD bgcolor="#FAFBFC">&nbsp;</TD>
-                            <TD width="42%" height="25" bgcolor="#FAFBFC"><span class="left_txt">本站现有分类信息： </span><span class="left_txt">条</span></TD>
-                            <TD width="54%" bgcolor="#FAFBFC"><span class="left_txt">本站现有广告张贴： </span><span class="left_txt">条</span></TD>
-                          </TR>
-                          <TR>
-                            <TD bgcolor="#FAFBFC">&nbsp;</TD>
-                            <TD height="25" bgcolor="#FAFBFC"><span class="left_txt">本站现有商家展示： </span><span class="left_txt">个</span></TD>
-                            <TD height="25" bgcolor="#FAFBFC"><span class="left_txt">本站现有网上商城： </span><span class="left_txt">个</span></TD>
-                          </TR>
-                          <TR>
-                            <TD bgcolor="#FAFBFC">&nbsp;</TD>
-                            <TD height="25" bgcolor="#FAFBFC"><span class="left_txt">本站现有网上名片： </span><span class="left_txt">个</span></TD>
-                            <TD height="25" bgcolor="#FAFBFC"><span class="left_txt">本站现有市场联盟： </span><span class="left_txt">个</span></TD>
-                          </TR>
-                          <TR>
-                            <TD bgcolor="#FAFBFC">&nbsp;</TD>
-                            <TD height="25" bgcolor="#FAFBFC"><span class="left_txt">本站现有市场资讯： </span><span class="left_txt">条</span></TD>
-                            <TD height="25" bgcolor="#FAFBFC"><span class="left_txt">本站现有商家商品： </span><span class="left_txt">个</span></TD>
-                          </TR>
-                          <TR>
-                            <TD height="5" colspan="3"></TD>
-                          </TR>
-                        </TBODY>
-                    </TABLE></TD>
-                  </TR>
-                </TBODY>
                 <!--关于tBodies集合-->
-                <TBODY style="DISPLAY: none">
+                <TBODY style="DISPLAY: block">
                   <TR>
                     <TD vAlign=top align=middle width="579">
                       <TABLE width=98% border=0 align="center" cellPadding=0 cellSpacing=0>
@@ -266,7 +194,12 @@ mainTable.tBodies[n].style.display="block";
                           </TR>
                           <TR>
                             <TD bgcolor="#FAFBFC">&nbsp;</TD>
-                            <TD bgcolor="#FAFBFC" class="left_txt"><span class="left_ts">4、</span>程序使用，技术支持，二次开发，请联系www.lamp99.com，或者电话：13407131728</TD>
+                            <TD bgcolor="#FAFBFC" class="left_txt"><span class="left_ts">4、</span>程序使用，技术支持，二次开发，请联系www.lamp99.com(zhangjiachao.cn)</TD>
+                            <TD bgcolor="#FAFBFC" class="left_txt">&nbsp;</TD>
+                          </TR>
+                          <TR>
+                            <TD bgcolor="#FAFBFC">&nbsp;</TD>
+                            <TD bgcolor="#FAFBFC" class="left_txt"><span class="left_ts">5、</span>联系电话：13407131728</TD>
                             <TD bgcolor="#FAFBFC" class="left_txt">&nbsp;</TD>
                           </TR>
                           <TR>
@@ -287,10 +220,14 @@ mainTable.tBodies[n].style.display="block";
             <td height="102" valign="top">&nbsp;</td>
             <td height="102" valign="top"><label></label>
               <label>
-              <textarea name="textarea" cols="48" rows="8" class="left_txt">一、专业的地区级商家门户建站首选方案！
-二、全站一号通，一次注册，终身使用，一个帐号，全站通用！
-三、分类信息、商家展示（百业联盟）、网上商城、网上名片（网上黄页）、广告张贴、市场联盟、市场资讯七大栏目完美整合。
-四、界面设计精美，后台功能强大。傻瓜式后台操作，无需专业的网站制作知识，只要会打字，就会管理维护网站。</textarea>
+              <textarea name="textarea" cols="72" rows="6" class="left_txt">一、专业的PHP网站系统，在线ERP系统，门户网建设方案！
+二、管理员首次登陆后台，请修改后台密码和后台登陆密钥！
+三、请妥善保管好网站的后台信息，网站的FTP信息和数据库信息。
+四、若是因为以上保密工作失误造成的网站一系列问题，或者引发不良后果，由运营团队自行全权负责。
+五、如果网站出现异常，请及时和开发人员联系。
+六、如果管理员忘记了密码，或者登陆址，也请联系开发人员处理。
+七、网站即交付之日起后续仅提供操作和简单技术上的指导，不接受无条件再次开发和修改。
+八、本系统程序仅中国船员考试网独家授权使用，在未经开发团队许可的情况下不可以对任何第三方个人或公司复制、兜售本程序。</textarea>
               </label></td>
           </tr>
           <tr>
@@ -307,8 +244,7 @@ mainTable.tBodies[n].style.display="block";
       </tr>
       <tr>
         <td width="2%">&nbsp;</td>
-        <td width="51%" class="left_txt"><img src="__PUBLIC__/images/admin/icon-mail2.gif" width="16" height="11"> 客户服务邮箱：1725440647@qq.com<br>
-              <img src="__PUBLIC__/images/admin/icon-phone.gif" width="17" height="14"> 官方网站：http://www.17tian.com</td>
+        <td width="51%" class="left_txt"><img src="__PUBLIC__/images/admin/icon-mail2.gif" width="16" height="11"> 客户服务邮箱：info@lamp99.com&nbsp;&nbsp;&nbsp;&nbsp;<img src="__PUBLIC__/images/admin/icon-phone.gif" width="17" height="14"> 官方网站：http://www.lamp99.com</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
       </tr>

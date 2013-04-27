@@ -1,8 +1,9 @@
 <?php
 // 本类由系统自动生成，仅供测试用途
-class IndexAction extends Action {
+class IndexAction extends InitAction {
 
 	public function _initialize(){
+		parent::_initialize();
 		header("Content-Type:text/html; charset=utf-8");
 		$this->assign('browser',browser());
 		userautologin();

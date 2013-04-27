@@ -229,7 +229,7 @@ a:link, a:visited {
     background: none repeat scroll 0 0 #F1F1F1;
     border: 1px solid #E9E9E9;
     height: 26px;
-    margin: 0 0 15px;
+    margin: 0 0 6px;
     overflow: hidden;
     position: relative;
     text-align: center;
@@ -1050,16 +1050,18 @@ table.topicslist tr td{
 }
 
 table.topicslist tr td.r{
-    background: url(../../images/home/topicyn.png);
+    background: #a9d5e0 url(../../images/home/topicyn.png);
 }
 
 table.topicslist tr td.t{
-    background: #1488a5;
+    background: #a9d5e0;
+}
+img.telimgfirst{
+    margin-left: 30px;
 }
 
-
 table.topicslist tr td.w{
-    background: url(../../images/home/topicyn.png) 0 -24px;
+    background: #a9d5e0 url(../../images/home/topicyn.png) 0 -24px;
 }
 span.upanddown1{
     margin-left: 30px;
@@ -1071,6 +1073,13 @@ div.trainingmiddlebox{
     /*min-height: 188px;*/
     margin-top: 5px;
     padding: 10px 55px 0px 55px;
+}
+
+div.tongji{
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    display: block;
 }
 
 div.trainingbottombox{
