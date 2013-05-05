@@ -45,7 +45,7 @@ body {
               <tr>
                 <td width="10%" height="55" valign="middle"><img src="__PUBLIC__/images/admin/title.gif" width="54" height="55"></td>
                 <td width="90%" valign="top"><span class="left_txt2">在这里，您可以根据您的网站要求，修改设置网站的</span><span class="left_txt3">基本参数</span><span class="left_txt2">！</span><br>
-                          <span class="left_txt2">包括</span><span class="left_txt3">网站名称，网址，网站备案号，联系方式，网站公告，关键词，风格</span><span class="left_txt2">等以及网站</span><span class="left_txt3">会员及等级积分设置</span><span class="left_txt2">。 </span></td>
+                          <span class="left_txt2">包括</span><span class="left_txt3">网站名称，网址，备案号，联系方式，船员职业，关键词，描述信息，支付宝信息，统计信息</span><span class="left_txt2">等以及网站</span><span class="left_txt3">其它相关设置</span><span class="left_txt2">。 </span></td>
               </tr>
             </table></td>
           </tr>
@@ -69,15 +69,27 @@ body {
                 <td width="45%" height="30" bgcolor="#f2f2f2" class="left_txt">网站名称</td>
               </tr>
               <tr>
-                <td height="30" align="right" class="left_txt2">网站后台加密参数：</td>
+                <td width="20%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">网站第二名称：</td>
+                <td width="3%" bgcolor="#f2f2f2">&nbsp;</td>
+                <td width="32%" height="30" bgcolor="#f2f2f2"><input name="sitename2" type="text" id="sitename2" size="30" value="<?php echo $config[10]['value'] ?>" /></td>
+                <td width="45%" height="30" bgcolor="#f2f2f2" class="left_txt">网站第二名称</td>
+              </tr>
+              <tr>
+                <td width="20%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">设定网站网址：</td>
+                <td width="3%" bgcolor="#f2f2f2">&nbsp;</td>
+                <td width="32%" height="30" bgcolor="#f2f2f2"><input name="siteurl" type="text" id="siteurl" size="30" value="<?php echo $config[9]['value'] ?>" /></td>
+                <td width="45%" height="30" bgcolor="#f2f2f2" class="left_txt">网站URL:如www.abc.com</td>
+              </tr>
+              <tr>
+                <td height="30" align="right" class="left_txt2">网站后台密匙：</td>
                 <td>&nbsp;</td>
                 <td height="30"><input type="text" name="adminjiami" size="30" value="<?php echo $config[1]['value'] ?>"  /></td>
-                <td height="30" class="left_txt">如填写abc,则网站后台的路径就是http://网址/admin.php?abc</td>
+                <td height="30" class="left_txt">默认密匙为：h8k30i2</td>
               </tr>
               <tr>
                 <td height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">网站备案证号：</td>
                 <td bgcolor="#f2f2f2">&nbsp;</td>
-                <td height="30" bgcolor="#f2f2f2"><input type="text" name="beianhao" size="25" value="<?php echo $config[2]['value'] ?>"  /></td>
+                <td height="30" bgcolor="#f2f2f2"><input type="text" name="beianhao" size="30" value="<?php echo $config[2]['value'] ?>"  /></td>
                 <td height="30" bgcolor="#f2f2f2" class="left_txt">信息产业部备案号</td>
               </tr>
               <tr>
@@ -93,10 +105,35 @@ body {
                 <td height="30" bgcolor="#f2f2f2" class="left_txt">设置网站客服QQ号</td>
               </tr>
               <tr>
+                <td height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">网站微博地址：</td>
+                <td bgcolor="#f2f2f2">&nbsp;</td>
+                <td height="30" bgcolor="#f2f2f2"><input type="text" name="weibo" size="30" value="<?php echo $config[13]['value'] ?>"  /></td>
+                <td height="30" bgcolor="#f2f2f2" class="left_txt">设置网站微博地址(全路径)</td>
+              </tr>
+              <tr>
                 <td height="30" align="right" class="left_txt2">管理员邮箱：</td>
                 <td>&nbsp;</td>
                 <td height="30"><input name="mymail" type="text" id="mymail" size="30" value="<?php echo $config[5]['value'] ?>"  /></td>
                 <td height="30"><span class="left_txt">设置网站客服Email</span></td>
+              </tr>
+              <tr>
+                <td height="30" align="right" class="left_txt2">随机考试题目：</td>
+                <td>&nbsp;</td>
+                <td height="30"><input name="examquestionnum" type="text" id="examquestionnum" size="30" value="<?php echo $config[11]['value'] ?>"  /></td>
+                <td height="30"><span class="left_txt">数量</span></td>
+              </tr>
+              <tr>
+                <td height="30" align="right" class="left_txt2">船员职务：</td>
+                <td>&nbsp;</td>
+                <td height="30"><input name="jobs" type="text" id="jobs" size="55" value="<?php echo $config[14]['value'] ?>"  /></td>
+                <td height="30"><span class="left_txt">请用竖线“|”隔开！</span></td>
+              </tr>
+              <tr>
+              <tr>
+                <td height="30" align="right" class="left_txt2">热门应用搜索关键词：</td>
+                <td>&nbsp;</td>
+                <td height="30"><input name="apphotkey" type="text" id="apphotkey" size="55" value="<?php echo $config[12]['value'] ?>"  /></td>
+                <td height="30"><span class="left_txt">请用逗号隔开！</span></td>
               </tr>
               <tr>
                 <td height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">关键词设置为： </td>
@@ -105,23 +142,41 @@ body {
                 <td height="30" bgcolor="#f2f2f2"><span class="left_txt">设置网站的关键词，更容易被搜索引挚找到。</span></td>
               </tr>
               <tr>
+                <td height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">签约支付宝账号： </td>
+                <td bgcolor="#f2f2f2">&nbsp;</td>
+                <td height="30" bgcolor="#f2f2f2"><input type="text" name="alipayemail" size="55" value="<?php echo $config[17]['value'] ?>"  /></td>
+                <td height="30" bgcolor="#f2f2f2"><span class="left_txt">仅支持即时到账签约账号。</span></td>
+              </tr>
+               <tr>
+                <td height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">签约支付宝合作ID： </td>
+                <td bgcolor="#f2f2f2">&nbsp;</td>
+                <td height="30" bgcolor="#f2f2f2"><input type="text" name="alipaypartner" size="55" value="<?php echo $config[15]['value'] ?>"  /></td>
+                <td height="30" bgcolor="#f2f2f2"><span class="left_txt">支付宝商户中心获取。</span></td>
+              </tr>
+              <tr>
+                <td height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">签约支付宝合作密钥： </td>
+                <td bgcolor="#f2f2f2">&nbsp;</td>
+                <td height="30" bgcolor="#f2f2f2"><input type="password" name="alipaykey" size="55" value="<?php echo $config[16]['value'] ?>"  /></td>
+                <td height="30" bgcolor="#f2f2f2"><span class="left_txt red">与上面相关的支付宝KEY。注意保密！</span></td>
+              </tr>
+              <tr>
                 <td height="30" align="right" class="left_txt2">网站的描述信息： </td>
                 <td>&nbsp;</td>
-                <td height="30"><textarea name="sitediscription" cols="72" rows="4" class="left_txt"><?php echo $config[7]['value'] ?></textarea></td>
+                <td height="30"><textarea name="sitediscription" cols="70" rows="2" class="left_txt"><?php echo $config[7]['value'] ?></textarea></td>
                 <td height="30"><span class="left_txt">设置网站的描述信息，更容易被搜索引挚找到。</span></td>
               </tr>
               <tr>
                 <td height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">网站统计代码：</td>
                 <td bgcolor="#f2f2f2">&nbsp;</td>
-                <td height="30" bgcolor="#f2f2f2"><textarea name="sitetonji" cols="72" rows="4" class="left_txt"><?php echo $config[8]['value'] ?></textarea></td>
+                <td height="30" bgcolor="#f2f2f2"><textarea name="sitetonji" cols="70" rows="2" class="left_txt"><?php echo $config[8]['value'] ?></textarea></td>
                 <td height="30" bgcolor="#f2f2f2" class="left_txt">您可以申请51统计，百度统计，谷歌统计 （<a href="http://www.51.la/reg.asp" target="_blank">免费注册51la统计</a>）</td>
               </tr>
               <tr>
                 <td height="30" align="right" class="left_txt2"></td>
                 <td>&nbsp;</td>
                 <td height="30">
-                	<input type="submit" value="提交数据" />
-                	<input type="reset" value="重新填写" />
+                	<input type="submit" class="addformbuttons" value="提交数据" />
+                	<input type="reset" value="重新填写" class="addformbuttons" />
                 </td>
                 <td height="30" class="left_txt"></td>
               </tr>

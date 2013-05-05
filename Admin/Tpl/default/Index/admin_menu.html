@@ -172,7 +172,6 @@ H1 a {
           <li><a href="__APP__/User/index" target="main">会员列表</a></li>
           <!-- <li><a href="__APP__/User/adduser" target="main">添加会员</a></li> -->
           <li><a href="__APP__/User/onlineapplylist" target="main">在线报名</a></li>
-          <li><a href="__APP__/User/topup" target="main">手动充值</a></li>
         </ul>
       </div>
       
@@ -217,15 +216,16 @@ H1 a {
         </table>
         <ul class="MM">
           <li><a href="__APP__/Config" target="main">基本设置</a></li>
+          <li><a href="__APP__/Config/order" target="main">交易管理</a></li>
         </ul>
       </div>
       
       <div class="programdiv">
       <h1 class="type"><a href="javascript:void(0)">程序版本与技术支持</a></h1>
      		<ul class="devinfo" style="color:#ddd;">
-     			<li>船员考试网-[测试版]</li>
+     			<li><{$Think.session.website_sitename2}>-[测试版]</li>
      			<li>开发：<a style="color:#ddd;" href="mailto:zhang.jiachao@qq.com">Jochen.zhang</a></li>
-     			<li>版权所有©2012-<PHP>echo date('Y',time());</PHP></li>
+     			<li>CopyRight©2012-<PHP>echo date('Y',time());</PHP></li>
      		</ul>
       </div>
       
@@ -238,6 +238,15 @@ H1 a {
 			toggles, contents, {opacity: true, duration: 400}
 		);
 		myAccordion.showThisHideOpen(contents[0]);
+		
+		function con(event){
+			if(confirm("友情提示，退出系统请点击系统的右上角的  退出按钮！")){
+				return true;
+			}
+			return false;
+		}
+		window.onbeforeunload = con();
+		
 	</script>
         </td>
   </tr>

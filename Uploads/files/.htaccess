@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+
+RewriteEngine On
+#是否允许直接输入URL查看资源
+#RewriteCond %{HTTP_REFERER} !^$
+#是否允许下面的域名查看资源
+RewriteCond %{HTTP_REFERER} !^http://(crewexam.com|www.crewexam.com) [NC]
+#防盗链的格式及跳转地址
+RewriteRule \.(rar|zip)$ /Public/images/home/herderlogo.png [R,L]
+
+</IfModule>

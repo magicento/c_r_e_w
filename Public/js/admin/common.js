@@ -77,6 +77,34 @@ function ajaxFileUpload()
 
 }
 
+//手动确认订单
+function sdqrsk(orderid){
+	
+	art.dialog({
+		title:'警告',
+	    content: '如果点击确认，就代表您已经收到款项，此用户将会购买成功！',
+	    icon:'warning',
+	    ok: function () {
+	    	jq.post(__APP__+'Config/confirmorder',{"orderid":orderid},function(data,status){
+	    		if(status == 'success'){
+	    			if(data == 'ok'){
+	    				alerts('操作成功');
+	    				window.location.reload();
+	    			}else{
+	    				alerts(data);
+	    			}
+	    		}else{
+	    			alerts('网络延时，操作失败，请稍后重试！');
+	    		}
+	    	});
+	    },
+	    cancelVal: '关闭',
+	    cancel: true //为true等价于function(){}
+	});
+	return false;
+
+}
+
 jq(function(){
 	//登陆自动到输入框
 	if(jq('input.useraccount').length !=0 ){
@@ -91,6 +119,10 @@ jq(function(){
 			alerts('密码不能为空！');
 			return false;
 		}
+		if(jq('input.userpwdmishi').val() == ''){
+			alerts('密匙不能为空！');
+			return false;
+		}
 		if(jq('input.uservali').val() == ''){
 			alerts('验证码不能为空！');
 			return false;
@@ -98,7 +130,7 @@ jq(function(){
 	});
 	
 	//添加文章验证
-	jq('input.submitnews').click(function(){
+	jq('form.addarticleform input.submitnews').click(function(){
 		if(jq('input[name="title"]').val().length == 0){
 			alerts('标题必填！');return false;
 		}
@@ -112,10 +144,10 @@ jq(function(){
 		var cid = jq(this).val();
 		if((cid == 4) || (cid == 5)){
 			jq('tr.articlecontentstr,tr.articledestr,tr.articlekeywordstr').hide();
-			jq('tr.articledownlink').show();
+			jq('tr.articledownlinks').show();
 		}else{
 			jq('tr.articlecontentstr,tr.articledestr,tr.articlekeywordstr').show();
-			jq('tr.articledownlink').hide();
+			jq('tr.articledownlinks').hide();
 		}
 	});
 	
@@ -139,6 +171,143 @@ jq(function(){
 			jq('tr.articledownlink').show();
 		}else{
 			jq('tr.articledownlink').hide();			
+		}
+	});
+	
+	//添加一个答案
+	jq('span.addnewanswer').click(function(){
+		
+	    Array.prototype.S=String.fromCharCode(2);  
+	    Array.prototype.in_array=function(e)  
+	    {  
+	    	var r=new RegExp(this.S+e+this.S);  
+	    	return (r.test(this.S+this.join(this.S)+this.S));  
+	    }  
+	    
+		var arrabc = new Array();
+		jq('table.answertable tr.answertritembox input.answeridentifyid').each(function(){
+			arrabc.push(jq(this).val());
+		});
+		var abcd = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+		for(i = 0; i < abcd.length;i++){
+			if(!(arrabc.in_array(abcd[i]))){
+				answeridentify = abcd[i];
+				break;
+			}
+		}		
+		//alert(answeridentify);return false;
+		jq.post(__APP__+'App/getnewanswer',{"answeridentify":answeridentify},function(data,status){
+			if(status == 'success'){
+				if(jq('table.answertable tr.answertritembox:last').length == 0){
+					jq('table.answertable tr.submitquestitemtrbox').before(data);
+				}else{
+					jq('table.answertable tr.answertritembox:last').after(data);
+				}				
+			}
+		});
+		
+	});
+	
+	//删除一个答案选项
+	jq('img.delansweritemimg').die().live('click',function(){
+		var thsanswer = jq(this).parent().parent();
+		art.dialog({
+			title:'警告',
+		    content: '您确定真的要删除此答案选项么？',
+		    icon:'warning',
+		    ok: function () {
+		    	thsanswer.remove();
+		    },
+		    cancelVal: '关闭',
+		    cancel: true //为true等价于function(){}
+		});
+		return false;
+	});
+	
+	//提交问题
+	jq('form.postquestionform input.submitnews').click(function(){
+		if(jq('input#title').val() == ''){
+			alerts('问题必填！');
+			return false;
+		}
+		if(jq('select#appid').val() == 0){
+			alerts('应用分类必选！');
+			return false;
+		}
+		if(jq('input.answercontentid').length < 2){
+			alerts('至少要添加2个答案选项！');
+			return false;
+		}
+		if(jq('input.answercontentid').val() == 0){
+			alerts('答案选项的内容必填！');
+			return false;
+		}
+		if(jq('input.rightanswerid:checked').length == 0){
+			alerts('至少要指定一个正确的答案！');
+			return false;
+		}
+		
+	});
+	
+	//添加科目
+	jq('form.addcourseform input.submitcourse').click(function(){
+		if(jq('input#title').val() == ''){
+			alerts('科目标题必填！');
+			return false;
+		}
+		if(jq('select#cid').val() == 0){
+			alerts('科目所属分类必选！');
+			return false;
+		}
+	});
+	
+	//添加应用
+	jq('form.addappform input.submitapp').click(function(){
+		if(jq('input#title').val() == ''){
+			alerts('请填写应用名称！');
+			return false;
+		}
+		if(jq('select#cid').val() == 0){
+			alerts('请选择分类！');
+			return false;
+		}
+		if(jq('select#courseid').val() == 0){
+			alerts('请选择科目！');
+			return false;
+		}
+		if(jq('input#logo').val() == ''){
+			alerts('请先上传LOGO！');
+			return false;
+		}
+		if(jq('input#testqishu').val() == ''){
+			alerts('请输入期数！');
+			return false;
+		}
+		if(jq('input#testcode').val() == ''){
+			alerts('请输入应用代码！');
+			return false;
+		}
+		if(jq('input#suitableusers').val() == ''){
+			alerts('请输入对象描述！');
+			return false;
+		}
+		if(jq('input#price').val() == ''){
+			alerts('请输入价格！');
+			return false;
+		}
+		if(jq('input#hitnum').val() == ''){
+			alerts('请输入（基数）应用上线以后的默认下载量！');
+			return false;
+		}
+		if(jq('textarea#discription').val() == ''){
+			alerts('应用描述必填！');
+			return false;
+		}
+		if(jq('input#downloadurlcheckbox').attr("checked") == 'checked'){
+			if(jq('input#downloadurl').val() == ''){
+				alerts('下载的文件名必填！');
+				return false;
+			}
 		}
 	});
 	
@@ -276,6 +445,108 @@ jq(function(){
 		    icon:'warning',
 		    ok: function () {
 		    	jq.post(__APP__+'App/deleteapp',ajaxparam,function(data,status){
+		    		if(status == 'success'){
+		    			window.location.reload();
+		    		}else{
+		    			art.dialog({
+							title:'警告',
+						    content: '删除失败！',
+						    icon:'warning',
+						    cancelVal: '关闭',
+						    cancel: true //为true等价于function(){}
+						});
+		    		}
+		    	});
+		    },
+		    cancelVal: '关闭',
+		    cancel: true //为true等价于function(){}
+			});
+		}
+	});
+	
+	//删除考题
+	jq('a.delalink.onlineapply').click(function(){
+		var chk_value = jqchk('cid');
+		var ajaxparam = 'delcid=';
+		for(i = 0; i < chk_value.length; i++){
+			ajaxparam += chk_value[i]+',';
+		}
+		var ajaxparam = ajaxparam.substring(0,ajaxparam.length-1);
+		if(chk_value){
+			art.dialog({
+			title:'警告',
+		    content: '您确定真的要删除选中的题目么？',
+		    icon:'warning',
+		    ok: function () {
+		    	jq.post(__APP__+'App/deletequestion',ajaxparam,function(data,status){
+		    		if(status == 'success'){
+		    			window.location.reload();
+		    		}else{
+		    			art.dialog({
+							title:'警告',
+						    content: '删除失败！',
+						    icon:'warning',
+						    cancelVal: '关闭',
+						    cancel: true //为true等价于function(){}
+						});
+		    		}
+		    	});
+		    },
+		    cancelVal: '关闭',
+		    cancel: true //为true等价于function(){}
+			});
+		}
+	});
+	
+	//删除在线报名
+	jq('a.delalink.onlineapply').click(function(){
+		var chk_value = jqchk('cid');
+		var ajaxparam = 'delcid=';
+		for(i = 0; i < chk_value.length; i++){
+			ajaxparam += chk_value[i]+',';
+		}
+		var ajaxparam = ajaxparam.substring(0,ajaxparam.length-1);
+		if(chk_value){
+			art.dialog({
+			title:'警告',
+		    content: '您确定真的要删除选中的信息么？',
+		    icon:'warning',
+		    ok: function () {
+		    	jq.post(__APP__+'User/deletonlineapply',ajaxparam,function(data,status){
+		    		if(status == 'success'){
+		    			window.location.reload();
+		    		}else{
+		    			art.dialog({
+							title:'警告',
+						    content: '删除失败！',
+						    icon:'warning',
+						    cancelVal: '关闭',
+						    cancel: true //为true等价于function(){}
+						});
+		    		}
+		    	});
+		    },
+		    cancelVal: '关闭',
+		    cancel: true //为true等价于function(){}
+			});
+		}
+	});
+	
+	//删除订单
+	jq('a.delalink.order').click(function(){
+		var chk_value = jqchk('cid');
+		var ajaxparam = 'delcid=';
+		for(i = 0; i < chk_value.length; i++){
+			ajaxparam += chk_value[i]+',';
+		}
+		var ajaxparam = ajaxparam.substring(0,ajaxparam.length-1);
+		if(chk_value){
+			art.dialog({
+			title:'警告',
+		    content: '您确定真的要删除选中的信息么？',
+		    icon:'warning',
+		    ok: function () {
+		    	jq.post(__APP__+'Config/delorder',ajaxparam,function(data,status){
 		    		if(status == 'success'){
 		    			window.location.reload();
 		    		}else{

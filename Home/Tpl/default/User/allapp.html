@@ -5,11 +5,11 @@
 		<div class="login-page clearfix">
 		<include file="Public:leftbar" />
 		<div class="main-column usercenter allapp">
-			<form action="##" method="post" id="appsearchform" class="appsearchform">
+			<form action="__URL__/allapp" method="get" id="appsearchform" class="appsearchform">
 				<input type="submit" value="" class="appsearchbtn" />
 				<input type="text" value="" name="appsearchvalue" id="" class="appsearchvalue" />
 			</form>
-			<div class="hotkeywords">热门搜索：中国航海学，世界航海学，十万个为什么</div>
+			<div class="hotkeywords">热门搜索：<{$Think.session.website_apphotkey}></div>
 			<div class="clearfix"></div>
 			<div class="rightcontentbox">
 				<div class="headertitle"><div class="titleinfo allapps_titleinfo">船员题库练习与模拟考试</div></div>
@@ -18,15 +18,19 @@
 						<li class="<php>if($_GET['gid']==''){echo 'active';}</php>">
 							<a href="<{:U('allapp')}>">全部</a></li>
 						<li class="<php>if($_GET['gid']==1){echo 'active';}</php>">
-							<a href="<{:U('allapp','gid=1')}>">适任证书（驾驶）</a></li>
+							<a href="<{:U('allapp','gid=1')}>">适任证书-D</a></li>
 						<li class="<php>if($_GET['gid']==2){echo 'active';}</php>">
-							<a href="<{:U('allapp','gid=2')}>">适任证书（轮机）</a></li>
+							<a href="<{:U('allapp','gid=2')}>">适任证书-E</a></li>
 						<li class="<php>if($_GET['gid']==3){echo 'active';}</php>">
-							<a href="<{:U('allapp','gid=3')}>">船员基本证书</a></li>
+							<a href="<{:U('allapp','gid=3')}>">基本证书</a></li>
 						<li class="<php>if($_GET['gid']==4){echo 'active';}</php>">
-							<a href="<{:U('allapp','gid=4')}>">特殊船舶证书</a></li>
-						<li class="<php>if($_GET['gid']==5){echo 'active';}</php>">
-							<a href="<{:U('allapp','gid=5')}>">其它</a></li>
+							<a href="<{:U('allapp','gid=4')}>">特殊证书</a></li>
+							<li class="<php>if($_GET['gid']==5){echo 'active';}</php>">
+							<a href="<{:U('allapp','gid=5')}>">知识更新</a></li>
+							<li class="<php>if($_GET['gid']==6){echo 'active';}</php>">
+							<a href="<{:U('allapp','gid=6')}>">内河证书</a></li>
+						<li class="<php>if($_GET['gid']==7){echo 'active';}</php>">
+							<a href="<{:U('allapp','gid=7')}>">其它</a></li>
 						<li class="sortlable">排序：</li>
 						<li class="sortdownloadnum"><a href="<{:U('allapp','sort=download')}>">下载量最多</a></li>
 						<li class="sortlatestonline"><a href="<{:U('allapp','sort=latestonline')}>">最新上线</a></li>
@@ -34,22 +38,39 @@
 					<div class="clearfix"></div>
 				</div>
 				<div class="realcontentbox">
+					<empty name="appslist">
+						<div class="noapplistforyou">
+							暂无数据！
+						</div>
+					</empty>
 					<volist name="appslist" id="vo">
 						<div class="itemapp <if condition='$i%2 eq 0'>even</if>">
 							<div class="appimgiconleft">
-								<img src="__PUBLIC__/images/home/defaultappimg.png" alt="" class="leftappimg" /><br />
-								<a href="javascript:iwantapply('appid')" class="red">马上报名</a>
+								<img src="<if condition="$vo['logo'] neq ''">__PUBLIC__/images/appicon/<{$vo.logo}><else />__PUBLIC__/images/home/defaultappimg.png</if>" alt="" class="leftappimg" /><br />
+								<a href="javascript:iwantapply('<{$vo.id}>')" class="">马上报名</a>
 							</div>
 							<div class="appimgiconright">
-							<span class="apptitle">91移动开放平台</span><br />
+							<span class="apptitle"><{$vo.title}></span><br />
 							<div class="clearfix"></div>
-							专门为手机用记设计，新的界面，流畅的操作流程，让您 方便与友好的自通。
-							<p>已经有13564人下载</p>
-							<button class="clicktobuy" onclick="clicktobuy(1)">点击购买</button>
+							<div class="appintro">
+								<php>
+									if(strlen($vo['intro']) > 38){
+										echo mb_substr($vo['intro'],0,38,'utf-8').'<a href="javascript:clicktobuy('.$vo[id].')">...详情</a>';
+									}else{
+										echo $vo['intro'];
+									}
+								</php>
+							</div>
+							<p>已经有<{$vo.hitnum}>人下载</p>
+							<button class="clicktobuy" onclick="clicktobuy(<{$vo.id}>)">点击购买</button>
 							</div>
 						</div>
 					</volist>
 				</div>
+				<notempty name="page">
+				<div class="pagelist"><{$page}></div>
+				</notempty>
+				<div class="gototop"></div>
 			</div>
 			</div>
 		</div>

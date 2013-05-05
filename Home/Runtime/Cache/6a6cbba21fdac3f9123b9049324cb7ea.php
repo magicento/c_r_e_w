@@ -1,5 +1,5 @@
 <?php if (!defined('THINK_PATH')) exit();?><div class="trainingmiddleboxcontent item">
-	<div class="questionintro"><?php echo ($question["intro"]); ?></div>
+	<div class="questionintro"><?php echo (htmlspecialchars_decode($question["intro"])); ?></div>
 	<div class="trtitle"><?php echo ($questionid); ?>.【<?php echo ($question["type"]); ?>】<?php echo ($question["title"]); ?></div>
 	<table class="answerbox">
 	<?php if(is_array($answer)): $i = 0; $__LIST__ = $answer;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr <?php if(strpos($studentanswerforid,$vo['answeridentify']) !== false){echo 'class="checked"';} ?>>

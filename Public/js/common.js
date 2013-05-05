@@ -146,7 +146,7 @@ function iwantapply(appid){
 //购买 app
 function clicktobuy(appid){
 	jq('div.bshade').show();
-	art.dialog.load(__APP__+'User/buyapp/'+appid,{title: '立即购买此应用', width: 400, height: 150,fixed: true,close:function(){
+	art.dialog.load(__APP__+'User/buyapp/appid/'+appid,{title: '立即购买此应用', width: 380, height: 150,fixed: true,close:function(){
 		jq('div.bshade').hide();
     }});
 }
@@ -190,11 +190,55 @@ function updatequestionlistanswer(questionid,question_true_id){
 		});
 	});	
 }
+//返回顶部
+function initScrollTop() {
+    var change_speed = 800;
+    if (!jQuery.browser.opera) {
+        jQuery('body').animate({
+            scrollTop: 0
+        }, {
+            queue: false,
+            duration: change_speed
+        })
+    }
+    jQuery('html').animate({
+        scrollTop: 0
+    }, {
+        queue: false,
+        duration: change_speed
+    });
+    return false
+}
+function openwin(url){ 
+	window.open (url, "newwindow", "height=100, width=400, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no")
+} 
 
-
+//下载开始
+function clicktodownload(id){
+	jq.post(__APP__+'User/dodownloadapp',{'id':id},function(data,status){
+		if(data != 'error'){
+			art.dialog.open(data,{
+				title: '下载',
+				init:function(){
+					this.close();
+				},
+				cancelVal:"关闭",
+				cancel: true
+			});
+			return false;
+		}else{
+			alerts('下载失败，请联系我们的客服人员！');
+		}
+	})
+}
  
 /**************************************************************/
 jq(function(){
+	
+	jq('div.gototop').click(function(){
+		initScrollTop();
+	});
+	
 	//删除信息
 	jq('table.cityliststb td a.delete').click(function(){
 		var alink= jq(this).attr('href');
@@ -211,7 +255,46 @@ jq(function(){
 		});
 		return false;
 	});	
+	
+	//忘记密码
+	jq('span.getpassword a').click(function(){
+		jq('div.bshade').show();
+		art.dialog.load(__APP__+'Public/getpwd',{title: '找回密码！', width: 430, height: 50,fixed: true,close:function(){
+			jq('div.bshade').hide();
+	    }})
+	});
 
+	jq('form.getuserpwdform input.getpwdsubmit').die().live('click',function(){
+		var youremail = jq('input#youremail').val();
+		if(youremail == ''){
+			alerts('请输入注册的邮箱地址');return false;
+		}
+		
+		var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+		if(!myreg.test(youremail)){
+			alerts('邮箱不能符合规则，请填写常用邮箱');
+			return false;
+		}
+
+		jq('img.sendingemail').show();
+		jq.post(__APP__+'Public/dogetpwd',{"youremail":youremail},function(data,status){
+			
+			if(status == 'success'){
+				jq('img.sendingemail').hide();
+				if(data == 'noemail'){
+					alerts('查无此人，请联系客服人员！');
+				}else{
+					alerts('邮箱发送成功，请到你的邮箱中查看新密码！');
+				}
+			}else{
+				jq('img.sendingemail').hide();
+				alerts('发送失败，请稍后重试，或者联系客服人员！');
+			}
+		});
+		
+		return false;
+	});
+	
 	//修改信息
 	jq('table.cityliststb td a.update').click(function(){
 		var alink= jq(this).attr('href');
@@ -298,7 +381,6 @@ jq(function(){
 			return false;
 		}
 	});
-	
 		
 	//选择答案
 	jq('table.answerbox tr td.abcheck input').die().live('click',function(){
@@ -403,7 +485,7 @@ jq(function(){
 		}
 		
 		if(jq('input#telephone').val().length < 7){
-			alerts('电话号码不太正常');
+			alerts('请输入正确的电话号码');
 			return false;
 		}
 		if(jq('select[name=Province]').val() == '' || jq('select[name=City]').val() == '' || jq('select[name=Area]').val() == ''){
@@ -421,25 +503,61 @@ jq(function(){
 		}
 	});
 	
-	//个人应用中心，学习类应用点击
-	jq('button.sutudyapp').click(function(){
+	//确定购买应用
+	jq('button.oktobuyappbtn').die().live('click',function(){
+		if(jq('input#aplyxieyi').attr('checked') == "checked"){
+			//。。。。
+		}else{
+			alerts('您必须接受我们的协议才可以购买此产品！');
+			return false;
+		}
+	});
+	
+	//应用中心的应用选中按钮
+	jq('button.sutudyappcenter').click(function(){
 		var sutudyappid = jq(this).attr('title');
 		jq.post(__APP__+'Public/selectapp',{'sutudyappid':sutudyappid},function(data,status){
 			if(status == 'success'){
-				window.location.href=__APP__+'Exam/login';
+				if(data == 'nopermission'){
+					alerts('对不想，没有权限！');
+				}else{
+					window.location.href=__APP__+'Exam/login';
+				}
 			}else{
 				alerts('系统忙，请刷新重试！');
 			}
 		});
 		return false;
-	})	
+	})
 	
-	//个人应用中心，学习类应用点击（随机100题的考试）
-	jq('span.gototest').click(function(){
+	//二选一页面 学习类应用点击
+	jq('button.sutudyapp').click(function(){
+		var sutudyappid = jq(this).attr('title');
+		jq.post(__APP__+'Public/selectapp',{'sutudyappid':sutudyappid},function(data,status){
+			if(status == 'success'){
+				if(data == 'nopermission'){
+					alerts('对不想，没有权限！');
+				}else{
+					window.location.href=__APP__+'Exam/doexamlogin2';
+				}
+			}else{
+				alerts('系统忙，请刷新重试！');
+			}
+		});
+		return false;
+	})
+	
+	
+	//二选一页面，学习类应用点击（随机100题的考试）
+	jq('button.gototest').click(function(){
 		var sutudyappid = jq(this).attr('title');
 		jq.post(__APP__+'Public/selectapp',{'sutudyappid':sutudyappid,"type":"istest"},function(data,status){
 			if(status == 'success'){
-				window.location.href=__APP__+'Exam/login';
+				if(data == 'nopermission'){
+					alerts('对不想，没有权限！');
+				}else{
+					window.location.href=__APP__+'Exam/doexamlogin2';
+				}
 			}else{
 				alerts('系统忙，请刷新重试！');
 			}
@@ -466,6 +584,12 @@ jq(function(){
 			return false;
 		}
 
+	});
+	
+	jq('div.shownewspage div').each(function(){
+		if(jq(this).text() == ''){
+			jq(this).remove();
+		}
 	});
 	
 	//增大字体
@@ -549,6 +673,11 @@ jq(function(){
 	}
 	//加载题目(乱入选择)
 	jq('table.topicslist tr td,table.topicslistmark tr td span').die().live('click',function(){
+		
+		if(jq(this).text() == ''){
+			return false;
+		}
+		
 		jq('div.trainingmiddleboxtitle').addClass('loadingline');
 		jq('button.markquestion,button.unmarkquestion').removeClass('markbtnhidden');
 		var questionid = parseInt(jq(this).text());
@@ -644,10 +773,34 @@ jq(function(){
 		});
 	});
 	
+	//交卷:s1
+	jq('button.handinpaper').die().live('click',function(){
+		jq('div.testoverbox,div.firsttip').show();
+	});
+	//s2
+	jq('button.areyousureovertest1y').die().live('click',function(){
+		jq('div.firsttip').hide();
+		jq('div.secondtip').show();
+	});
+	//s3
+	jq('button.areyousureovertest2y').die().live('click',function(){
+		jq('div.secondtip').hide();
+		jq('div.thirdtip').show();
+	});
+	//s4
+	jq('button.areyousureovertest3y').die().live('click',function(){
+		window.location.href=__APP__+'Exam/handinpaper';
+	});
+	//取消交卷
+	jq('button.areyousureovertest1n,button.areyousureovertest2n,button.areyousureovertest3n').click(function(){
+		jq('div.testoverbox,div.testoverbox div').hide();
+	});
+	
 	//标记页面返回按钮
 	jq('div img.markgobackimg').die().live('click',function(){
 		jq('span.dangqianti,span.zhuangqiangliao').click();
 	});
+	
 	
 });
 

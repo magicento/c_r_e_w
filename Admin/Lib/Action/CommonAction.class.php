@@ -8,6 +8,7 @@ class CommonAction extends Action {
 	public function _initialize() {
 		header ( "Content-Type:text/html; charset=utf-8" );
 		import ( 'ORG.Util.Cookie' );
+		date_default_timezone_set('PRC');
 		// 用户权限检查
 		if (C ( 'USER_AUTH_ON' ) && ! in_array ( MODULE_NAME, explode ( ',', C ( 'NOT_AUTH_MODULE' ) ) )) {
 			import ( 'ORG.Util.RBAC' );

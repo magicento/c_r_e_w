@@ -21,7 +21,7 @@ body {
 <link href="__PUBLIC__/css/admin/skin.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<form name="form1" method="post" action="__URL__/doaddcourse">
+<form name="form1" method="post" action="__URL__/doaddcourse" class="addcourseform">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td width="17" height="29" valign="top" background="__PUBLIC__/images/admin/mail_leftbg.gif"><img src="__PUBLIC__/images/admin/left-top-right.gif" width="17" height="29" /></td>
@@ -70,7 +70,7 @@ body {
                 <td width="20%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">科目标题：</td>
                 <td width="3%" bgcolor="#f2f2f2">&nbsp;</td>
                 <td width="32%" height="30" bgcolor="#f2f2f2">
-                	<input name="title" type="text" id="" size="30" value="<?php echo $appcourse['title'] ?>" />
+                	<input name="title" type="text" id="title" size="30" value="<?php echo $appcourse['title'] ?>" />
                 	<span class="newsblock"></span>
                 	</td>
                 <td width="45%" height="30" bgcolor="#f2f2f2" class="left_txt"></td>
@@ -90,8 +90,8 @@ body {
                 <td height="30" align="right" class="left_txt2"></td>
                 <td>&nbsp;</td>
                 <td height="30">
-                	<input class="submitnews" type="submit" value="提交数据" />
-                	<input type="reset" value="重新填写" />
+                	<input class="submitcourse addformbuttons" type="submit" value="提交数据" />
+                	<input class="addformbuttons" type="reset" value="重新填写" />
                 </td>
                 <td height="30" class="left_txt"><input type="hidden" name="id" value="<?php echo $appcourse['id'] ?>" /></td>
               </tr>

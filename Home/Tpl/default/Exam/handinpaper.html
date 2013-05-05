@@ -1,0 +1,39 @@
+<include file="Public:header" />
+<include file="Public:navigation_3" />
+<div class="page-wrapper clearfix">
+	<div class="full-page">
+		<div class="login-page clearfix">
+			<div class="main-columns">
+				<div id="login_area">
+					<div id="logo_student"></div>
+					<div id="loginCopyRight">
+						该系统由 中国船员考试网 提供技术支持
+						<br>
+						COPYRIGHT 2001-<php>echo date('Y',time());</php> 中国船员考试网
+					</div>
+					<form action="__URL__/doexamlogin" method="post">
+					<div id="input_area">
+						<img class="handinpaperh2" src="__PUBLIC__/images/home/handinpaperh2.png" alt="" />
+						<div class="yourtestcj">
+<script type="text/javascript">
+var time = 20;
+function changeTimes(){
+	if(time == 1){
+		window.location.href="/index.php/User/myapp";
+	}
+	jq('span.sss').text(time--);
+}
+setInterval(changeTimes,1000);
+
+</script>
+							考试结束，您的成绩为：<{$score}> <br />
+							<span class="sss">20</span>秒后，将自动跳转到会员会员管理页面！
+						</div>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<include file="Public:footer" />

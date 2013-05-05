@@ -40,7 +40,7 @@
           <tr>
             <td colspan="2">
             <div class="searchform">
-            	<span class="deluser"><a class="delalink user" href="##">删除用户</a></span>
+            	<span class="deluser"><a class="delalink user" href="##">(解)锁定用户</a></span>
 	            <form action="__SELF__" method="post">
 	            	<input type="text" name="searchtext" class="searchtext"/>
 	            	<input type="submit" value="搜索" class="searchbutton" />

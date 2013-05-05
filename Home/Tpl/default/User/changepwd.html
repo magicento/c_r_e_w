@@ -19,10 +19,12 @@
 				<div class="realcontentbox">
 					<form action="__URL__/dochangepwd" class="changepwdform" method="post">
 						<table>
+						<php>if(!session('resetpwd')){</php>
 							<tr>
 								<th>原密码：</th>
 								<td><input type="password" name="password0" id="oldpwd" class="oldpwd chpwd" /></td>
 							</tr>
+						<php>}</php>
 							<tr>
 								<th>新密码：</th>
 								<td><input type="password" name="password" id="newpwd" class="newpwd chpwd" /></td>

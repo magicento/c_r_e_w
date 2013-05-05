@@ -1,6 +1,9 @@
-
 Options +FollowSymLinks
-
 RewriteEngine On
-
 Options All -Indexes
+
+<IfModule mod_rewrite.c>
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+</IfModule>

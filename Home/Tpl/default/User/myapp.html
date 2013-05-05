@@ -17,26 +17,49 @@
 					<div class="clearfix"></div>
 				</div>
 				<div class="realcontentbox">
+					<empty name="appslist">
+						<div class="noapplistforyou">
+							你现在还没有应用，赶紧<a href="<{:U('User/allapp')}>" class="red">点击这里</a>添加应用开始学习吧！
+						</div>
+					</empty>
 					<volist name="appslist" id="vo">
 						<div class="itemapp <if condition='$i%2 eq 0'>even</if>">
 							<div class="appimgiconleft">
-								<img src="__PUBLIC__/images/home/defaultappimg.png" alt="" class="leftappimg" /><br />
-								<a href="javascript:iwantapply('appid')" class="red">马上报名</a>
+								<img src="<if condition="$vo['logo'] neq ''">__PUBLIC__/images/appicon/<{$vo.logo}><else />__PUBLIC__/images/home/defaultappimg.png</if>" alt="" class="leftappimg" /><br />
+								<a href="javascript:iwantapply('<{$vo.id}>')" class="">马上报名</a>
 							</div>
 							<div class="appimgiconright">
-							<span class="apptitle">91移动开放平台</span>
-							<span title="1" class="gototest">随机考试</span>
+							<span class="apptitle"><{$vo.title}></span>
+							<!-- <span title="<{$vo.id}>" class="gototest">模拟考试</span> -->
 							<div class="clearfix"></div>
-							专门为手机用记设计，新的界面，流畅的操作流程，让您 方便与友好的自通。
-							<p>已经有13564人下载</p>
-								<button title="1" class="clicktobuy sutudyapp">开始练习</button>
+							<div class="clearfix"></div>
+							<div class="appintro">
+								<php>
+									if(strlen($vo['intro']) > 38){
+										echo mb_substr($vo['intro'],0,38,'utf-8').'<a href="javascript:clicktodownload('.$vo[id].')">...详情</a>';
+									}else{
+										echo $vo['intro'];
+									}
+								</php>
+							</div>
+							<p>已经有<{$vo.hitnum}>人下载</p>
+							<empty name="vo.downloadurl">
+								<button title="<{$vo.id}>" class="clicktobuy sutudyappcenter">点击进入</button>
+							<else />
+								<button class="clicktodownload clicktobuy" onclick="clicktodownload(<{$vo.id}>)">点击下载</button>
+							</empty>							
 							</div>
 						</div>
 					</volist>
 				</div>
+				<notempty name="page">
+					<div class="pagelist"><{$page}></div>
+				</notempty>
+				<div class="gototop"></div>
 			</div>
 			</div>
 		</div>
 	</div>
 </div>
+
 <include file="Public:footer" />

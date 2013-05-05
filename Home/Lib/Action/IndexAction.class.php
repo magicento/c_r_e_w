@@ -18,9 +18,15 @@ class IndexAction extends InitAction {
 		//$this->show('我来了','utf-8');		
 		//$this->show(C('DB_USER'));
 
-		
+        $news = D('Articles')->where('cid=1')->limit(4)->order('id desc')->select();
+        $fqas = D('Articles')->where('cid=2')->limit(4)->order('id desc')->select();
+        $imgs = D('Articles')->where('id=95')->find();
 
-		$this->assign('pagetitle','网站首页');
+        $this->assign('news',$news);
+        $this->assign('fqas',$fqas);
+        $this->assign('imgs',$imgs);
+		//$this->assign('pagetitle','网站首页');
+		       
 		$this->display();
 		// $this->display('index','utf-8','text/html');
 		// $this->display('login');

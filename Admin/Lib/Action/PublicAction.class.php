@@ -2,9 +2,10 @@
 /**
  +公开访问的模块
 */
-Class PublicAction extends Action{
+Class PublicAction extends InitAction{
 
 	public function _initialize(){
+		parent::_initialize();
 		header("Content-Type:text/html; charset=utf-8");
 	}
 	
@@ -16,7 +17,7 @@ Class PublicAction extends Action{
 	public function verify(){
 		$type	 =	 isset($_GET['type'])?$_GET['type']:'gif';
 		import('ORG.Util.Image');
-   		Image::buildImageVerify(4,1,$type);
+   		Image::buildImageVerify($length=4, $mode=1, $type='png', $width=55, $height=20, $verifyName='verify');
 	}
 
 	//中文验证码
@@ -34,8 +35,15 @@ Class PublicAction extends Action{
     }
     
     // 用户登录页面
-    public function login() {
+    public function login() {	
+    	
     	if(!isset($_SESSION[C('USER_AUTH_KEY')])) {
+    		if(browser()!="FF"){
+    			echo '<html><body><div style="width:800px;margin:200px auto;text-align:center;">';
+    			echo '<b>友情提示：</b>请用<a target="_blank" href="http://firefox.com.cn/download/">火狐浏览器</a>管理网站后台！';
+    			echo '</div></body></html>';
+    			exit;
+    		}    		
     		$this->display();
     	}else{
     		redirect(__APP__);
@@ -49,7 +57,10 @@ Class PublicAction extends Action{
     
     // 登录检测
     public function checkLogin(){
-    	if(empty($_POST['account'])) {
+    	//dump(session('website_adminjiami'));exit;
+    	if($_POST['adminjiami'] != session('website_adminjiami')) {
+    		$this->error('网站后台密匙错误！');
+    	}elseif(empty($_POST['account'])) {
     		$this->error('帐号错误！');
     	}elseif (empty($_POST['password'])){
     		$this->error('密码必须！');
@@ -91,6 +102,10 @@ Class PublicAction extends Action{
     		$data['login_count']	=	array('exp','login_count+1');
     		$data['last_login_ip']	=	$ip;
     		$User->save($data);
+    		
+    		$admininfo['username'] = $authInfo['account'];
+    		$admininfo['lastloginip'] = $ip;
+    		session('admininfo',$admininfo);
     
     		// 缓存访问权限
     		RBAC::saveAccessList();

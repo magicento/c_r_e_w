@@ -31,19 +31,19 @@
 							</tr>
 							<tr>
 								<th>期数</th>
-								<td>19568</td>
+								<td><{$rs.testqishu}></td>
 							</tr>
 							<tr>
 								<th>科目</th>
-								<td>轮机英语</td>
+								<td><{$rs.coursetitle}></td>
 							</tr>
 							<tr>
 								<th>试卷代码</th>
-								<td>805</td>
+								<td><{$rs.testcode}></td>
 							</tr>
 							<tr>
 								<th>适用对象描述</th>
-								<td>录制需要</td>
+								<td class="shiyongduixiang"><{$rs.suitableusers}></td>
 							</tr>
 						</table>
 					</div>
@@ -67,6 +67,20 @@
 					<button value="1" class="unmarkquestion">取消标记[U]</button>
 					<button value="0" class="selectquestion">选&nbsp;题[L]</button>
 					<button class="handinpaper">交&nbsp;卷[K]</button>
+				</div>
+				<div class="testoverbox">
+					<div class="firsttip">您是否要结束考试？
+						<button value="0" class="areyousureovertest1n">否</button>
+						<button value="1" class="areyousureovertest1y">是</button>
+					</div>
+					<div class="secondtip">您确定真的要结束考试？
+						<button value="0" class="areyousureovertest2n">否</button>
+						<button value="1" class="areyousureovertest2y">是</button>
+					</div>
+					<div class="thirdtip">如果你都已经检查完毕，可以结束考试，结束吗？
+						<button value="0" class="areyousureovertest3n">否</button>
+						<button value="1" class="areyousureovertest3y">是</button>
+					</div>
 				</div>
 				<div class="clearfix"></div>
 			</div>

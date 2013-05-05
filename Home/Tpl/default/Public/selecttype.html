@@ -1,0 +1,59 @@
+<include file="Public:header" />
+<include file="Public:navigation_3" />
+<div class="page-wrapper clearfix">
+	<div class="full-page">
+		<div class="login-page clearfix">
+			<div class="main-columns">
+				<div id="login_area">
+					<div id="input_area" class="selecttypeh2page">
+						<div id="button_area" class="examloginbtn">
+						<img class="selecttypeh2img" src="__PUBLIC__/images/home/selecttypeh2.png" alt="" />
+							<div class="leftuserimgbox"><img src="<php>echo getuseravatar();</php>" alt="" /></div>
+							<div class="righuserinfotbox">
+								<table class="truserinfo">
+									<tbody>
+									<tr>
+										<th>身份证号</th>
+										<td><{$Think.session.userinfo.identitycard}></td>
+									</tr>
+									<tr>
+										<th>准考证号</th>
+										<td><{$Think.session.seatNo}></td>
+									</tr>
+									<tr>
+										<th>姓名</th>
+										<td class="usernametd"><{$Think.session.userinfo.account}></td>
+									</tr>
+									<tr>
+										<th>期数</th>
+										<td><{$rs.testqishu}></td>
+									</tr>
+									<tr>
+										<th>科目</th>
+										<td><{$rs.coursetitle}></td>
+									</tr>
+									<tr>
+										<th>试卷代码</th>
+										<td><{$rs.testcode}></td>
+									</tr>
+									<tr>
+										<th>适用对象描述</th>
+										<td class="shiyongduixiang"><{$rs.suitableusers}></td>
+									</tr>
+								</tbody>
+							</table>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+					<div class="cbuttonbox">
+						<button title="<{$sappid}>" class="examselectbtn sutudyapp">题库练习</button>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<button title="<{$sappid}>" class="examselectbtn gototest">开始考试</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<include file="Public:footer" />

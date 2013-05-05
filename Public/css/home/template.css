@@ -28,12 +28,16 @@ div.navigation{
 }
 
 .nav-title {
-    background: url("../../images/home/slogan.png") no-repeat scroll 0 0 transparent;
+    /*background: url("../../images/home/slogan.png") no-repeat scroll 0 0 transparent;*/
     float: left;
     height: 24px;
-    margin-top: 16px;
-    text-indent: -9999em;
-    width: 342px;
+    margin-top: 10px;
+    /*text-indent: -9999em;*/
+    width: 500px;
+    color: #fff;
+    font-size: 25px;
+    font-weight: bolder;
+    margin-left: 30px;
 }
 .navigation .nav-other {
     float: right;
@@ -335,12 +339,24 @@ div.newsheaderline{
 div.loginnewbox ul li{
 	line-height: 18px;
 	height: 18px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
 }
 
 div.loginnewbox ul li a{
 	color: #666666;
 }
 
+div.loginnewboxleft div.newsheaderline a{
+    color: #000;
+}
+
+div.loginnewboxrihgt div.newsheaderline.red a{
+    color: red;
+}
 
 .nav-main .menu-title {
     width: 60px;
@@ -417,7 +433,7 @@ div.regboxcontent{
 }
 input.birthday.txt,
 input.verify.txt{
-	width: 130px;
+	width: 138px;
 }
 .pcabox select{
 	margin-right: 5px;
@@ -550,6 +566,15 @@ div.usercenter{
 }
 div.rightcontentbox{
 	border:1px #e3e8f0 solid;
+    position: relative;
+    min-height: 480px;
+    height:auto!important;  
+    height:480px;
+}
+div.myapp div.rightcontentbox{
+    min-height: 516px;
+    height:auto!important;  
+    height:516px;
 }
 div.rightcontentbox div.headertitle{
 	background: #f2f6f9;
@@ -565,16 +590,48 @@ div.rightcontentbox div.headertitle div.titleinfo{
 div.rightcontentbox div.secondtitle,
 div.rightcontentbox div.realcontentbox
 {
-	padding: 11px 0 0 18px;
+	padding: 11px 18px 0;
 }
 div.myapp div.rightcontentbox div.realcontentbox
 {
-    padding: 20px 0 0 18px;
+    padding: 20px 18px 0;
+    /*width: 100%;*/
+}
+div.appintro{
+    height: 30px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+body.IE7 div.appintro{
+    height: 33px;
+}
+img.leftappimg{
+    width: 60px;
+    height: 60px;
+    margin-bottom: 6px;
+}
+div.pagelist{
+    border-top: 1px solid #E3E8F0;
+    clear: both;
+    color: #005EAC;
+    margin: -14px 18px 0;
+    padding-top: 23px;
+    text-align: right;
+}
+body.IE7 div.pagelist{
+    margin-top: -11px;
+}
+body.IE8 div.pagelist{
+    margin-top: -13px;
+}
+div.pagelist a{
+    color: #005EAC;
+    text-decoration: none;
 }
 div.rightcontentbox div.secondtitle ul li{
 	float: left;
-	margin-right: 18px;
-	padding: 5px 10px;
+	margin-right: 15px;
+	padding: 5px;
     font-weight: bold;
 }
 div.rightcontentbox div.secondtitle ul li.active{
@@ -586,32 +643,38 @@ div.rightcontentbox div.realcontentbox{
 }
 
 div.rightcontentbox div.realcontentbox div.itemapp{
-	width: 323px;
+	width: 319px;
 	height: 100px;
 	float: left;
+    padding-right: 25px;
 	margin-bottom: 10px;
 	border-bottom: 1px #e3e8f0 solid;
 }
 div.rightcontentbox div.realcontentbox div.itemapp.even{
     float: right;
-    width: 332px;
-    padding-left: 50px;
+    width: 318px;
+    padding-left: 25px;
+    padding-right: 0;
 }
 div.rightcontentbox div.realcontentbox div.itemapp .appimgiconleft{
 	float: left;
 	width: 60px;
+    height: 82px;
 	margin-right: 5px;
 	text-align: center;
 }
 
 div.rightcontentbox div.realcontentbox div.itemapp .appimgiconright{
-	float: left;
-	width: 250px;
+	float: right;
+	width: 252px;
 	position: relative;
 }
 div.rightcontentbox div.realcontentbox div.itemapp .appimgiconright span.apptitle{
 	font-weight: bolder;
 	color: #336699;
+    display: block;
+    height: 16px;
+    overflow: hidden;
 }
 
 div.rightcontentbox div.realcontentbox div.itemapp .appimgiconright p{
@@ -626,7 +689,7 @@ div.rightcontentbox div.realcontentbox div.itemapp .appimgiconright button.click
 	border: none;
 	cursor: pointer;
 	position: absolute;
-	right:9px;
+	right:0px;
 	bottom: 0px;
 	display: block;
     padding-left: 15px;
@@ -677,7 +740,7 @@ form.changepwdform th{
     text-align: right;
 }
 form.changepwdform{
-    padding: 40px 0 0 80px;
+    padding: 15px 0 0 80px;
     color: #808080;
     font-weight: normal;
 }
@@ -778,13 +841,13 @@ div.allapp div.rightcontentbox div.secondtitle ul li {
 
 div.allapp div.rightcontentbox div.secondtitle ul li.sortlable {
     margin: 0;
-    padding: 0;
-    margin-left: 30px;
+    padding: 2px 0;
+    margin-left: 20px;
     font-weight: normal;
 }
 div.allapp div.rightcontentbox div.secondtitle ul li.sortdownloadnum {
     margin: 0;
-    padding: 0;
+    padding: 2px 0;
     border-right: 1px #ddd solid;
     padding-right: 5px;
     margin-right: 5px;
@@ -793,7 +856,7 @@ div.allapp div.rightcontentbox div.secondtitle ul li.sortdownloadnum {
 }
 div.allapp div.rightcontentbox div.secondtitle ul li.sortlatestonline {
     margin: 0;
-    padding: 0;
+    padding: 2px 0;
     font-weight: normal;
 
 }
@@ -979,7 +1042,9 @@ div.trainingtopbox div.row2{
     line-height: 40px;
 }
 
-div.sizebigger button{
+div.sizebigger button,
+button.examselectbtn
+{
     background: url("../../images/home/loginStudent_button.gif") no-repeat scroll 0 0 transparent;
     border: 0 none;
     color: #1C6F83;
@@ -988,6 +1053,11 @@ div.sizebigger button{
     text-align: center;
     width: 100px;
     line-height: 33px;
+    cursor: pointer;
+}
+div.cbuttonbox{
+    margin-top: 10px;
+    text-align: center;
 }
 
 img.markgobackimg{
@@ -1173,15 +1243,14 @@ table.topicslistmark tr td span.biaojiti{
 }
 
 div.appbuybox button{
-    background: none repeat scroll 0 0 #005EAC;
+    background: url("../../images/home/clicktobuy.png") no-repeat scroll 0 0 transparent;
     border: medium none;
-    color: #FFFFFF;
     cursor: pointer;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    width: 90px;
-    margin-right: 30px;
+    height: 29px;
+    overflow: hidden;
+    padding-left: 15px;
+    width: 88px;
+    margin-right: 15px;
 }
 div.appbuybox span b{
     color: red;
@@ -1207,8 +1276,25 @@ div.loadingline{
     background: url(../../images/home/questionloading.gif) no-repeat center center;
 }
 .hidden{
-    display: none;
+    display: none !important;
 }
+div.shownewspage div.ttt{
+    background: #f0efef;
+    padding: 10px;
+    float: right;
+    margin-right: 5px;
+}
+div.shownewspage div.linkPage{
+    float: right;
+}
+div.shownewspage div.linkPage a,
+div.shownewspage div.linkPage span{
+    background: #f0efef;
+    padding: 10px;
+    float: left;
+    margin-right: 5px;
+}
+
 ul.leftnewtitleul{
     margin-top: 5px;
 }
@@ -1230,7 +1316,7 @@ div.main-column.usercenter.news.newlist{
     
 }
 div.realcontentboxx ul{
-    padding: 25px 0 0 10px;
+    padding: 20px 0 0 10px;
 }
 div.realcontentboxx ul li{
     height: 28px;
@@ -1239,15 +1325,28 @@ div.realcontentboxx ul li{
     padding-left: 15px;
 }
 div.realcontentboxx ul li.newsitem5{
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 div.realcontentboxx ul li a{
     color: #666666;
 }
+tr.articledownlinks{
+    display: none;
+}
 div.realcontentboxx div.newsbox h3{
-    height: 60px;
-    line-height: 60px;
+    height: 50px;
+    line-height: 50px;
     font-size: 14px;
+    text-align: center;
+    color: #666666;
+}
+div.realcontentboxx div.newsbox ul li{
+    color: #666666;
+}
+div.shownewspage{
+    text-align: right;
+}
+div.realcontentboxx div.newsbox h4{
     text-align: center;
     color: #666666;
 }
@@ -1274,6 +1373,8 @@ span.gototest{
     color: #336699;
     font-weight: bolder;
     padding-right: 12px;
+    margin-right: 13px;
+    background: url(../../images/home/minikaoshi.png) no-repeat right center;
 }
 span.gototest:hover{
     color: red;
@@ -1282,9 +1383,34 @@ span.gototest:hover{
 span.apptitle{
     float: left;
 }
+div.shraretobox{
+    text-align: right;
+    float: right;
+    margin-top: 10px;
+}
+div.xgyd{
+    border-top: 1px #ddd solid;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+div.rightcontentboxx div.realcontentboxx div.newsbox div.morearticle div.xgyd ul{
+    padding: 0;
+    padding-left: 10px;
+    color: #666666;
+}
 
 div.trainingbottombox button.markbtnhidden{
     color: #AEAA9C;
+}
+.login-page .side-column.newleftbar{
+    height: 420px;
+}
+div.newsdiscriptionbox{
+    background: #f0efef;
+    padding: 14px 20px;
+    font-size: 11px;
+    margin: 15px 0px;
 }
 
 div#ui-datepicker-div{display: none;}
@@ -1293,4 +1419,174 @@ div#ui-datepicker-div{display: none;}
     background: url("../../images/home/bitauto_bg130116.png") no-repeat scroll 0 -1304px transparent;
     margin: 0 5px;
     padding: 2px 20px;
+}
+
+div.gototop{
+    width: 50px;
+    height: 50px;
+    background: url(../../images/home/gototop.png);
+    cursor: pointer;
+    position: absolute;
+    right: -65px;
+    bottom: 0px;
+}
+div.leftuserimgbox{
+    width: 158px;
+    float: left;
+}
+div.righuserinfotbox{
+    width: 254px;
+    float: left;
+}
+div.righuserinfotbox table tr td{
+    text-align: left;
+    color: #4c8d9d;
+}
+
+div.righuserinfotbox table tr th{
+    text-align: left;
+    color: #4c8d9d;
+    padding-right: 10px;
+}
+.shiyongduixiang{
+    width: 127px;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+}
+img.selecttypeh2img{
+    margin-top: 2px;
+}
+div#input_area.selecttypeh2page{
+    margin-top: 40px;
+}
+button.examselectbtn.sutudyapp{
+    margin-right: 50px;
+}
+div.testoverbox{
+    display: none;
+    color: red;
+    text-align: center;
+}
+div.testoverbox div button{
+    background: url("../../images/home/loginStudent_button.gif") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #1C6F83;
+    height: 33px;
+    margin: 15px auto;
+    text-align: center;
+    width: 100px;
+    margin-right: 0px;
+}
+div.firsttip,div.secondtip,div.thirdtip{
+    display: none;
+}
+div.yourtestcj{
+    color: red;
+    line-height: 30px;
+    font-weight: bolder;
+    text-align: center;
+    padding-top: 30px;
+}
+img.handinpaperh2{
+    margin-top: 2px;
+}
+input.getpwdsubmit{
+    background: none repeat scroll 0 0 #005EAC;
+    border: medium none;
+    color: #FFFFFF;
+    cursor: pointer;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    width: 90px;
+}
+input#youremail{
+    height: 25px;
+    line-height: 25px;
+    margin: 10px 0;
+}
+img.sendingemail{
+    height: 100px;
+    left: -5px;
+    position: absolute;
+    top: -19px;
+    width: 257px;
+    display: none;
+}
+div.noapplistforyou{
+    padding-top: 30px;
+    text-align: center;
+    width: 680px;
+}
+div.getpwdbox{
+    position: relative;
+}
+div.buyapptitle{
+    background: #f2f6f9;
+    height: 27px;
+    line-height: 27px;
+    margin-bottom: 15px;
+}
+div.buyappinfo{
+
+}
+div.buyappinfo div.buyappinfoleft{
+    float: left;
+    width: 75px;
+    height: 75px;   
+}
+
+div.buyappinfo div.buyappinfoleft img{
+    width: 60px;
+    height: 60px;
+}
+
+div.buyappinfo div.buyappinforight{
+    float: left;
+    width: 200px;
+}
+
+div.productinfo1,div.productinfo2{
+    height: 66px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    color: #666666;
+    display: block;
+}
+body.IE7 div.productinfo1,div.productinfo2{
+    height: 78px;
+}
+div.apptitle{
+    color: #336699;
+    font-weight: bolder;
+}
+div.productinfo1 b,div.productinfo2 b{
+    display: block;
+    margin-bottom: 5px;
+    color: #000;
+}
+span.buyappprice{
+    color: red;
+    font-size: 20px;
+}
+div.buyappnote{
+    color: red;
+    margin:0 0 10px 0;
+    background: #f2f6f9;
+    font-weight: bolder;
+    padding: 2px;
+}
+div.lxline{height: 20px;}
+div.oktobuy{
+    vertical-align: middle;
+}
+div.oktobuy label{
+    vertical-align: middle;
+    margin-right: 10px;
+}
+input#aplyxieyi{
+    vertical-align: middle;
 }

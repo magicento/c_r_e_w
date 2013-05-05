@@ -30,8 +30,12 @@ Class UserAction extends CommonAction{
 		$rolelist = $roleuser->join('think_role ON think_role.id=think_role_user.role_id')->where('think_role_user.user_id='.$userid)->find();
 		$vo['roleid'] = $rolelist['id'];
 		$vo['rolename'] = $rolelist['name'];
+		
+		$rsex = D('Userextend')->where('uid='.$userid)->find();
+		$money = $rsex['money'];
 
 		$this->assign('vo', $vo);
+		$this->assign('money',$money);
 		
 		$this->display();
 	}
@@ -65,7 +69,14 @@ Class UserAction extends CommonAction{
 		$delcidarr = explode(',', $delcid);
 		foreach ($delcidarr as $key=>$value){
 			if($value != 1){
-				D('User')->where('id='.$value)->delete();
+				//D('User')->where('id='.$value)->delete();
+				$rs = D('User')->where('id='.$value)->field('block')->find();
+				if($rs['block'] == 1){
+					$data['block'] = 0;
+				}else{
+					$data['block'] = 1;
+				}				
+				D('User')->where('id='.$value)->save($data);
 			}
 		}
 		
@@ -107,7 +118,40 @@ Class UserAction extends CommonAction{
 	
 	//修改用户save
 	public function save(){
+		if($_POST['money']){
+			$where['id'] = $_POST['id'];
+			$data['money'] = $_POST['money'];
+			D('Userextend')->where($where)->save($data);
+		}
+		$this->redirect('User/index');
+	}
 
-	} 
+	public function onlineapplylist(){
+		$where['isdel'] = 0;
+		//分页开始
+		$count = D('Onlineapply')->where($where)->count();
+		import('ORG.Util.Page');// 导入分页类
+		$Page = new Page($count,20);// 实例化分页类 传入总记录数和每页显示的记录数
+		$Page->setConfig('header','条数据');
+		
+		//查询所有
+		$list = D('Onlineapply')->where($where)->limit($Page->firstRow.','.$Page->listRows)->order('id desc')->select();
+		$show = $Page->show();// 分页显示输出
+		
+		$this->assign('page',$show);// 赋值分页输出
+		$this->assign('list',$list);
+		
+		$this->display();
+	}
+	
+	public function deletonlineapply(){
+		$delcid = $_POST['delcid'];
+		$delcidarr = explode(',', $delcid);
+		foreach ($delcidarr as $key=>$value){
+			$data['isdel'] = 1;
+			D('Onlineapply')->where('id='.$value)->save($data);
+
+		}
+	}
 }
 ?>

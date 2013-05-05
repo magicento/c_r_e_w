@@ -3,47 +3,51 @@
 <div class="regboxcontent iwantapplypopupbox">
 <import type='css' file="images.home.tip-yellowsimple.tip-yellowsimple,images.home.datepicker.css.jquery-ui" />
 <import type='js' file="js.jquery_poshytip,js.city,images.home.datepicker.js.jquery-ui-datepicker" />
-<form action="##" class="reg-form" method="post">
+<form action="__URL__/doiwantapply" class="reg-form" method="post">
 	<table class="regtableleft">
 		<tr>
 			<th>应用名称：</th>
-			<td>91移动开放平台</td>
+			<td><{$appname}>
+			<input type="hidden" name="appname" value="<{$appname}>" />
+			</td>
 		</tr>
 		<tr>
 			<th>身份证号码：</th>
-			<td><{$Think.session.userinfo.identitycard}></td>
+			<td><{$Think.session.userinfo.identitycard}>
+				<input type="hidden" name="personcard" value="<{$Think.session.userinfo.identitycard}>" />
+			</td>
 		</tr>
 		<tr>
 			<th>姓名：</th>
-			<td><{$Think.session.userinfo.account}></td>
+			<td><{$Think.session.userinfo.account}>
+			<input type="hidden" name="name" value="<{$Think.session.userinfo.account}>" />
+			</td>
 		</tr>
 		<tr>
 			<th>邮箱：</th>
 			<td>
-				<input type="text" name="usereamil" id="usereamil" value="<{$Think.session.userinfo.email}>" class="txt" title="请输入常用邮箱" />
+				<input type="text" name="email" id="usereamil" value="<{$Think.session.userinfo.email}>" class="txt" title="请输入常用邮箱" />
 			</td>
 		</tr>
 		<tr>
 			<th>性别：</th>
 			<td>
 				<php>$sex = $_SESSION['userinfo']['sex'];if($sex==1){$m = 'checked';}else{$w = 'checked';}</php>
-				<input type="radio" <php>echo $m;</php> name="sex" id="sexman" value="1" /><label for="sexman">男</label>
+				<input type="radio" <php>echo $m;</php> name="sex" id="sexman" value="男" /><label for="sexman">男</label>
 				<span style="width: 20px;">&nbsp;</span>
-				<input type="radio" <php>echo $w;</php> name="sex" id="sexwoman" value="2" /><label for="sexwoman">女</label>
+				<input type="radio" <php>echo $w;</php> name="sex" id="sexwoman" value="女" /><label for="sexwoman">女</label>
 			</td>
 		</tr>
 		<tr>
 			<th>现任职务：</th>
 			<td><select name="job" id="job">
 				<option value="<{$Think.session.userinfo.job}>"><{$Think.session.userinfo.job}></option>
-				<option value="大力水手">大力水手</option>
-				<option value="船长">船长</option>
-				<option value="大副">大副</option>
+				<{$Think.session.website_jobs}>
 			</select></td>
 		</tr>
 		<tr>
 			<th>联系电话：</th>
-			<td><input type="text" name="telephone" id="telephone" value="<{$Think.session.userinfo.tel}>" class="telephone txt" title="你的手机或者固定电话！" /></td>
+			<td><input type="text" name="tel" id="telephone" value="<{$Think.session.userinfo.tel}>" class="telephone txt" title="你的手机或者固定电话！" /></td>
 		</tr>
 		<tr>
 			<th>所在地：</th>
@@ -56,7 +60,7 @@
 		<tr class="buchongyuming">
 			<th>补充说明：</th>
 			<td>
-				<textarea name="buchongyuming" id="buchongyuming" cols="30" rows="3"></textarea>
+				<textarea name="note" id="buchongyuming" cols="30" rows="3"></textarea>
 			</td>
 		</tr>
 		<tr>

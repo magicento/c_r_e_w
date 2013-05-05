@@ -45,9 +45,7 @@
 		<tr>
 			<th>现任职务：</th>
 			<td><select name="job" id="job">
-				<option value="大力水手">大力水手</option>
-				<option value="船长">船长</option>
-				<option value="大副">大副</option>
+				<{$Think.session.website_jobs}>
 			</select></td>
 		</tr>
 		<tr>
@@ -78,7 +76,7 @@
 			<th></th>
 			<td>
 				<input type="checkbox" checked name="xieyi" id="xieyi" style="vertical-align:middle;" /><label style="vertical-align:middle;" for="xieyi">我接受</label>
-				<a style="vertical-align:middle;" href="##">船员考试网服务条款</a>
+				<a style="vertical-align:middle;" target="_blank" href="<{:U('Public/news','id=89')}>">船员考试网服务条款</a>
 			</td>
 		</tr>
 	</table>

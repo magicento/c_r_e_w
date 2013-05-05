@@ -4,7 +4,7 @@ Class ExamAction extends CommonAction{
 	public function _initialize(){
 		parent::_initialize();
 		if(!session('sutudyappid')){
-			$this->redirect('index.php/User/myapp');
+			$this->redirect('/User/myapp');
 		}
 	}
 	
@@ -22,15 +22,18 @@ Class ExamAction extends CommonAction{
 		$this->display();
 	}
 	
+	
 	public function training(){
 		//dump(session('身份证号'));exit;//座位号
 		//dump(session('seatNo'));exit;//座位号
 		
 		//获得题目的总数 生成右上角类似日历的表格
-		$url = explode('index.php', $_SERVER["HTTP_REFERER"]);//获取完整的来路URL
-		if($url[1]!='/Exam/login'){
-			$this->redirect('index.php/User/myapp');
+		$url = $_SERVER["HTTP_REFERER"];//获取完整的来路URL
+		
+		if(strpos($url, '/selecttype/sutudyappid/') === false){
+			$this->redirect('/User/myapp');
 		}
+		
 		//初始化
 		$this->init_question();
 		$idarr = session('all_questions_id');
@@ -41,6 +44,14 @@ Class ExamAction extends CommonAction{
 		$getidjointtrueidarray = getidjointtrueid();
 		//dump($getidjointtrueidarray);
 		
+		//应用相关信息
+		$sappid = session('sutudyappid');
+		$join = 'think_appcourse ON think_appcourse.id = think_app.courseid';
+		$field = 'think_app.*,think_appcourse.title as coursetitle';
+		$where['think_app.id'] = $sappid;
+		$rs = D('App')->join($join)->field($field)->where($where)->find();
+		$this->assign('rs',$rs);
+
 		$alltables = '';
 		for ($i = 0; $i < $tables; $i++){
 			$alltables .= '<table class="topicslist topicslist'.$i.'">';
@@ -76,7 +87,7 @@ Class ExamAction extends CommonAction{
 		
 		//dump(cookie('markquestionid'));
 		$this->assign('alltables',$alltables);
-		$this->assign('pagetitle','练习');
+		$this->assign('pagetitle','题库练习与考试');
 		$this->display();
 	}
 	
@@ -138,18 +149,29 @@ Class ExamAction extends CommonAction{
 	public function doexamlogin(){
 		if($_POST['idCard'] == $_SESSION['userinfo']['identitycard']){
 			session('seatNo',$_POST['seatNo']);
-			session('begintime',time());
-			
+						
 			//清空之前的做题 COOKIE 信息
 			emptycookie('markquestionid');
 			emptycookie('studentanswerforid');
 			emptycookie('listquestionid');
 			session('all_questions_id',null);
 
-			$this->redirect('Exam/training');
+			$this->redirect('Public/selecttype','sutudyappid='.session('sutudyappid'));
 		}else{
 			$this->error('身份证号码不正确！','/index.php/Exam/login');
 		}
+	}
+	
+	public function doexamlogin2(){
+
+			//清空之前的做题 COOKIE 信息
+			emptycookie('markquestionid');
+			emptycookie('studentanswerforid');
+			emptycookie('listquestionid');
+			session('all_questions_id',null);
+			session('begintime',time());
+	
+			$this->redirect('Exam/training');
 	}
 	
 	//获得时间 将秒转换成 时分秒
@@ -173,17 +195,30 @@ Class ExamAction extends CommonAction{
 	
 	//题目ID初始化
 	private function init_question(){
+		
+		//判断当前用户是否购买了本套应用
+		$uid = session('user_id');
+		$myappid = D('Userextend')->where('uid='.$uid)->find();
+			
+		$myappidarr = split(',', $myappid['appid']);
+		if(!in_array(session('sutudyappid'), $myappidarr)){
+			echo 'nopermission';exit;
+		}
+		
+		$where['appid'] = session('sutudyappid');
+		$where['isdel'] = 0;
+		
 		if(session('istest')){
 			//echo session('istest');//是测试
 			//如果是考试，那么第一次进来 就要把所有题目的ID和顺序存入Cookie
 			if(!session('all_questions_id')){
-				$all_rand_questions = D('Question')->where('appid='.session('sutudyappid'))->field('id,type')->order('rand()')->limit(5)->select();
+				$all_rand_questions = D('Question')->where($where)->field('id,type,answer')->order('rand()')->limit(session('website_examquestionnum'))->select();
 				session('all_questions_id',$all_rand_questions);
 			}
 		}else{
 			//是练习，也存入COOKIE，统一操作。
 			if(!session('all_questions_id')){
-				$all_questions = D('Question')->where('appid='.session('sutudyappid'))->field('id,type')->select();
+				$all_questions = D('Question')->where($where)->field('id,type,answer')->select();
 				session('all_questions_id',$all_questions);
 			}
 		}
@@ -192,9 +227,7 @@ Class ExamAction extends CommonAction{
 	//获得题目
 	public function getQuestion(){
 		if(!session('sutudyappid')){return false;}
-		//1.判断当前用户是否购买了本套应用
 		
-		//2.判断是否是随机考试
 		$questionid = $_POST['questionid'];
 		$questionid_ = $questionid-1;
 		
@@ -367,6 +400,41 @@ Class ExamAction extends CommonAction{
 			echo $w;
 			exit;
 		}
+	}
+	
+	//交卷
+	public function handinpaper(){
+// 		dump($_SESSION);
+// 		echo '<hr>';
+// 		dump($_COOKIE);
+		
+		//每题平均多少分
+		$per_score = 100/session('currentapp_question_num');
+		$righti = 0;
+		//取出所有题目的答案 根据正确答案去核对用户的选择
+		$rightanswerarr = session('all_questions_id');
+		foreach ($rightanswerarr as $key=>$value){
+			$questiontureid = $value['id'];
+			$questiontureanswer = $value['answer'];
+			
+			$questionyouranswer = cookie('studentanswerforid'.$questiontureid);
+			if($questionyouranswer == $questiontureanswer){
+				$righti++;
+			}
+		}
+		
+		emptycookie('markquestionid');
+		emptycookie('studentanswerforid');
+		emptycookie('listquestionid');
+		session('all_questions_id',null);
+		session('begintime',null);
+		session('sutudyappid',null);
+
+		$score = $righti*$per_score;
+		$this->assign('score',round($score,1));
+		
+		$this->assign('pagetitle','考生成绩');
+		$this->display();
 	}
 	
 	

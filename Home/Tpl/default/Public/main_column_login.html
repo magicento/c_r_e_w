@@ -1,24 +1,22 @@
 <div class="main-column">
 <div class="rightmainloginbox">
-	<img src="__PUBLIC__/images/home/userloginicon_05.png" alt="" />
+	<{$imgs.content|htmlspecialchars_decode}>
 </div>
 <div class="loginnewbox">
 	<div class="loginnewboxleft">
-		<div class="newsheaderline">船员考试网最新船员资讯</div>
+		<div class="newsheaderline"><a href="<{:U('Public/newslist','cid=1')}>">船员考试网最新船员资讯</a></div>
 		<ul>
-			<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月16日：传升级版Nexus 4下月发布 支持LTE</a></li>
-			<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月18日：视频游戏惨淡 3月份零售额同比降一成</a></li>
-			<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月19日：中移动：对雅安所有移动用户实施免停机服务</a></li>
-			<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月7日：东芝Kirabook上手：配视网膜屏 售价1599美元起</a></li>
+			<volist name="news" id="vo">
+			<li class="newsitem"><a href="<{:U('Public/news','id='.$vo['id'])}>"><{$vo.ctime|date="m-d",###}>：<{$vo.title}></a></li>
+			</volist>
 		</ul>
 	</div>
 	<div class="loginnewboxrihgt">
-		<div class="newsheaderline red">船员考试常见问题解答</div>
+		<div class="newsheaderline red"><a href="<{:U('Public/newslist','cid=2')}>">船员考试常见问题解答</a></div>
 		<ul>
-			<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月16日：传升级版Nexus 4下月发布 支持LTE</a></li>
-			<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月18日：视频游戏惨淡 3月份零售额同比降一成</a></li>
-			<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月19日：中移动：对雅安所有移动用户实施免停机服务</a></li>
-			<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月7日：东芝Kirabook上手：配视网膜屏 售价1599美元起</a></li>
+			<volist name="fqas" id="vo">
+			<li class="newsitem"><a href="<{:U('Public/news','id='.$vo['id'])}>"><{$vo.ctime|date="m-d",###}>：<{$vo.title}></a></li>
+			</volist>
 		</ul>
 	</div>
 	<div class="clearfix"></div>
@@ -29,7 +27,7 @@
 	<img src="__PUBLIC__/images/home/userloginicon_17.png" alt="" />
 	<img src="__PUBLIC__/images/home/userloginicon_18.png" alt="" />
 	<div class="undernewsmoreinfoline">
-		想了解更多船员考试信息，<a href="##">点击此处∨</a>
+		想了解更多船员考试信息，<a href="<{:U('Public/newslist','cid=3')}>">点击此处∨</a>
 	</div>
 </div>
 </div>

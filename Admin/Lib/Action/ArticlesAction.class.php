@@ -83,7 +83,7 @@ Class ArticlesAction extends CommonAction{
 		$delcid = $_POST['delcid'];
 		$delcidarr = explode(',', $delcid);
 		foreach ($delcidarr as $key=>$value){
-			D('Articles')->where('id='.$value)->delete();
+			D('Articles')->where('id='.$value.' and cid<>6')->delete();
 		}
 	}
 }

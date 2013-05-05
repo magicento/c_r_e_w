@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
   <meta charset="UTF-8">
-  <title>航运考试网---管理员登陆</title>
+  <title><?php echo (session('website_sitename')); ?>---管理员登陆</title>
   <link href="__PUBLIC__/css/admin/skin.css" rel="stylesheet" type="text/css">
   <script type="text/javascript" src="/Public/js/jquery_min.js"></script><script type="text/javascript" src="/Public/js/admin/common.js"></script>
   <script type="text/javascript" src="__PUBLIC__/js/artDialog/artDialog.js?skin=black"></script>
@@ -116,8 +116,13 @@
                             <td height="38" colspan="2" class="top_hui_text"><input name="account" class="editbox4 useraccount" value="" size="20" autocomplete="off" /></td>
                           </tr>
                           <tr>
-                            <td width="13%" height="35" class="top_hui_text"><span class="login_txt"> 密 码： &nbsp;&nbsp; </span></td>
+                            <td width="13%" height="35" class="top_hui_text"><span class="login_txt"> 密　码： &nbsp;&nbsp; </span></td>
                             <td height="35" colspan="2" class="top_hui_text"><input class="editbox4 userpwd" type="password" size="20" name="password" autocomplete="off" />
+                              <img style="vertical-align: middle;" src="__PUBLIC__/images/admin/luck.gif" width="19" height="18"> </td>
+                          </tr>
+                          <tr>
+                            <td width="13%" height="35" class="top_hui_text"><span class="login_txt"> 密　匙： &nbsp;&nbsp; </span></td>
+                            <td height="35" colspan="2" class="top_hui_text"><input class="editbox4 userpwdmishi" type="password" size="20" name="adminjiami" autocomplete="off" />
                               <img style="vertical-align: middle;" src="__PUBLIC__/images/admin/luck.gif" width="19" height="18"> </td>
                           </tr>
                           <tr>

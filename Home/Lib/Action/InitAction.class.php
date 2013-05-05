@@ -2,10 +2,18 @@
 Class InitAction extends Action{
 	public function _initialize(){
 		header("Content-Type:text/html; charset=utf-8");
-		
+		Load('extend');
 		//网址基本信息
 		if(!session('website_sitename')){
 			$rs = D('Config')->select();
+			//支付宝相关
+			session('website_alipayemail',$rs[17]['value']);
+			session('website_alipaykey',$rs[16]['value']);
+			session('website_alipaypartner',$rs[15]['value']);
+			//网站常规配制
+			session('website_weibo',$rs[13]['value']);
+			session('website_apphotkey',$rs[12]['value']);
+			session('website_examquestionnum',$rs[11]['value']);
 			session('website_sitename2',$rs[10]['value']);
 			session('website_siteurl',$rs[9]['value']);
 			session('website_sitetonji',$rs[8]['value']);
@@ -15,8 +23,15 @@ Class InitAction extends Action{
 			session('website_myqq',$rs[4]['value']);
 			session('website_tel',$rs[3]['value']);
 			session('website_beianhao',$rs[2]['value']);
-			session('website_adminjiami',$rs[1]['value']);
+			//session('website_adminjiami',$rs[1]['value']);
 			session('website_sitename',$rs[0]['value']);
+			
+			$jobsarr = explode('|', $rs[14]['value']);
+			$jobs = '';
+			foreach ($jobsarr as $key=>$value){
+				$jobs .= '<option value="'.$value.'">'.$value.'</option>';
+			}
+			session('website_jobs',$jobs);
 		}
 		
 	}

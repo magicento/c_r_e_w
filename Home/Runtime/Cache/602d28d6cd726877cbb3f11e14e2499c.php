@@ -1,16 +1,28 @@
 <?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE HTML>
 <html lang="en-US">
 <head>
-	<meta charset="UTF-8">
-	<title><?php echo ($pagetitle); ?>_<?php echo C('SITE_NAME') ?></title>
-	<link rel="stylesheet" type="text/css" href="/Public/css/home/template.css" />
-	<script type="text/javascript" src="/Public/js/jquery_min.js"></script><script type="text/javascript" src="/Public/js/json2.js"></script><script type="text/javascript" src="/Public/js/common.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/js/artDialog/artDialog.js?skin=chrome"></script>
-	<script type="text/javascript" src="__PUBLIC__/js/artDialog/plugins/iframeTools.js"></script>
+<title><?php if(!empty($pagetitle)): echo ($pagetitle); ?>_<?php endif; echo (session('website_sitename')); ?>_<?php echo str_replace('www.','',session('website_siteurl')); ?></title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="expires" content="0" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="author" content="CrewExam" />
+<meta name="generator" content="lamp99.com,zhangjichao.cn" />
+<meta name="copyright" content="Copyright (c) 2013 CrewExam. All Rights Reserved." />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="robots" content="index, follow" />
+<meta name="revisit-after" content="1 days" />
+<meta name="rating" content="general" />
+<meta name="keywords" content="<?php echo (session('website_keywords')); ?>" />
+<meta name="description" content="<?php echo ($pagediscription); echo (session('website_sitediscription')); ?>" />
+<link rel="stylesheet" type="text/css" href="/Public/css/home/template.css" />
+<script type="text/javascript" src="/Public/js/jquery_min.js"></script><script type="text/javascript" src="/Public/js/json2.js"></script><script type="text/javascript" src="/Public/js/common.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/artDialog/artDialog.js?skin=chrome"></script>
+<script type="text/javascript" src="__PUBLIC__/js/artDialog/plugins/iframeTools.js"></script>
 </head>
 <body class="<?php echo ($browser); ?>">
 <div class="bshade"></div>
-<div class="navigation">
+<?php if($_SESSION['user_id']== ''): ?><div class="navigation">
 	<div class="navigation-wrapper">
 		<div id="logo2">
 			<h1>
@@ -20,61 +32,101 @@
 			</h1>
 		</div>
 		<div class="nav-body">
-			<h2 class="nav-title">中国领先的实名制SNS社交网络</h2>
+			<h2 class="nav-title">中国船员在线题库练习与模拟考试网</h2>
 			<div class="nav-other">
 				<div class="menu">
-				<a href="##" stats="homenav_suggest" title="给我们提建议">给我们提建议</a>
+				<a href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo (session('website_myqq')); ?>&site=qq&menu=yes" stats="homenav_suggest" title="给我们提建议">在线客户服务</a>
 				</div>
-				<div class="menu more">
+				<div class="menu more hidden">
 				<a class="show-more" id="moreWeb" stats="homenav_more" href="##">更多</a>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<?php else: ?>
+	<div class="navigation">
+	<div class="navigation-wrapper">
+		<div id="logo2">
+			<h1>
+				<a href="/"> <img width="218" height="55"
+					src="__PUBLIC__/images/home/herderlogo2.png" />
+				</a>
+			</h1>
+		</div>
+		<div class="nav-body site-nav exampage">
+			<div class="nav-main">
+				<div class="menu">
+					<div class="menu-title">
+						<a ui-async="async" href="<?php echo U('User/profile');?>" accesskey="1"><span
+							stats="V6Hd_home" class="menu-title-text">会员首页</span></a>
+					</div>
+				</div>
+				<div class="menu">
+					<div class="menu-title" id="profileMenuActive">
+						<a href="<?php echo U('User/myapp');?>" accesskey="2" id="showProfileMenu"><span
+							class="menu-title-text" stats="V6Hd_Profile">我的应用</span></a>
+					</div>
+				</div>
+				<div class="menu">
+					<div id="friendMenuActive" class="menu-title">
+						<a href="<?php echo U('User/allapp');?>" accesskey="3" id="showFriendMenu"><span
+							stats="V6Hd_frd" class="menu-title-text">船员题库</span></a>
+					</div>
+				</div>
+			</div>
+			<div class="nav-other">
+				<div class="menu">
+				<a href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo (session('website_myqq')); ?>&site=qq&menu=yes" stats="homenav_suggest" title="给我们提建议">在线客户服务</a>
+				</div>
+				<div class="menu more hidden">
+				<a class="show-more" id="moreWeb" stats="homenav_more" href="##">更多</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div><?php endif; ?>
 <div class="page-wrapper clearfix">
 	<div class="full-page">
 		<div class="login-page clearfix">
-		<div class="side-column">
+		<div class="side-column newleftbar">
 	<div class="login-panel logoutpanel">
 		<div class="leftnewtitleh2">
-			船员考试网
+			<?php echo (session('website_sitename2')); ?>
 		</div>
 		<ul class="leftnewtitleul">
-			<li><a href="">关于我们</a></li>
-			<li><a href="">最新资讯</a></li>
-			<li><a href="">会员服务及收费</a></li>
-			<li><a href="">常见问题解答</a></li>
-			<li><a href="">海事法规及考试公告</a></li>
-			<li><a href="">省事相关报表下载</a></li>
-			<li><a href="">海员考试资料下载</a></li>
-			<li><a href="">服务条款</a></li>
-			<li><a href="">联系我们</a></li>
+			<li><a href="<?php echo U('Public/news','id=86');?>">关于我们</a></li>
+			<li><a href="<?php echo U('Public/newslist','cid=1');?>">最新资讯</a></li>
+			<li><a href="<?php echo U('Public/news','id=89');?>">会员服务及收费</a></li>
+			<li><a href="<?php echo U('Public/newslist','cid=2');?>">常见问题解答</a></li>
+			<li><a href="<?php echo U('Public/newslist','cid=3');?>">海事法规及考试公告</a></li>
+			<li><a href="<?php echo U('Public/newslist','cid=4');?>">省事相关报表下载</a></li>
+			<li><a href="<?php echo U('Public/newslist','cid=5');?>">海员考试资料下载</a></li>
+			<li><a href="<?php echo U('Public/news','id=90');?>">服务条款</a></li>
+			<li><a href="<?php echo U('Public/news','id=87');?>">联系我们</a></li>
 		</ul>
 	</div>
 </div>
 		<div class="main-column usercenter news newlist">
 			<div class="rightcontentboxx">
-				<div class="headertitles_news"><div class="titleinfo">船员考试网 > 常见问题解答</div></div>
+				<div class="headertitles_news"><div class="titleinfo"><?php echo (session('website_sitename2')); ?> > <?php echo ($articlecatgory["ctitle"]); ?></div></div>
 				<div class="realcontentboxx">
 					<div class="newsbox">
 						<ul>
-							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月16日：传升级版Nexus 4下月发布 支持LTE</a></li>
-							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月18日：视频游戏惨淡 3月份零售额同比降一成</a></li>
-							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月19日：中移动：对雅安所有移动用户实施免停机服务</a></li>
-							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月7日：东芝Kirabook上手：配视网膜屏 售价1599美元起</a></li>
-							<li class="newsitem5"><a href="<?php echo U('Public/news','id=1');?>">7月16日：传升级版Nexus 4下月发布 支持LTE</a></li>
-							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月18日：视频游戏惨淡 3月份零售额同比降一成</a></li>
-							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月19日：中移动：对雅安所有移动用户实施免停机服务</a></li>
-							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月7日：东芝Kirabook上手：配视网膜屏 售价1599美元起</a></li>
-							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月16日：传升级版Nexus 4下月发布 支持LTE</a></li>
-							<li class="newsitem5"><a href="<?php echo U('Public/news','id=1');?>">7月18日：视频游戏惨淡 3月份零售额同比降一成</a></li>
-							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月19日：中移动：对雅安所有移动用户实施免停机服务</a></li>
-							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月7日：东芝Kirabook上手：配视网膜屏 售价1599美元起</a></li>
-							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月16日：传升级版Nexus 4下月发布 支持LTE</a></li>
-							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月18日：视频游戏惨淡 3月份零售额同比降一成</a></li>
-							<li class="newsitem"><a href="<?php echo U('Public/news','id=1');?>">7月7日：东芝Kirabook上手：配视网膜屏 售价1599美元起</a></li>
+							<?php if(is_array($article)): $i = 0; $__LIST__ = $article;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li class="<?php if($i%5 == 0): ?>newsitem5<?php else: ?>newsitem<?php endif; ?>">
+							
+							<?php if($vo['dowloadurl']){ ?>
+								<a href="<?php echo ($vo["dowloadurl"]); ?>"><?php echo ($vo["title"]); ?></a>
+							<?php }else{ ?>
+								<a href="<?php echo U('Public/news');?>/id/<?php echo ($vo["id"]); ?>"><?php echo ($vo["title"]); ?></a>
+							<?php } ?>
+							&nbsp;&nbsp;&nbsp;<?php echo (date("Y-m-d",$vo["ctime"])); ?>
+							
+							</li><?php endforeach; endif; else: echo "" ;endif; ?>
 						</ul>	
+					</div>
+					<div class="shownewspage">
+						<?php echo ($page); ?>
 					</div>
 				</div>
 			</div>
@@ -86,30 +138,31 @@
 <div id="footer">
 	<div class="site-footer">
 		<div id="footer0904">
-			<div class="footer_c">购车咨询：4000-168-168（工作日 9:00-17:30） 传真：010-68492726
-			<a target="_blank" href="http://e.weibo.com/yiche" class="weibo">易车网</a></div>
+			<div class="footer_c"><?php echo (session('website_sitename')); ?>客户服务热线：<?php echo (session('website_tel')); ?>（工作日 9:00-17:30） 
+			<a target="_blank" href="<?php echo (session('website_weibo')); ?>" class="weibo"><?php echo (session('website_sitename2')); ?></a>
+			</div>
 			<div class="footer_about">
 			<ul class="about">
-			    <li class="first"><a href="http://corp.bitauto.com/" target="_blank">关于易车</a></li>
-			    <li><a href="http://corp.bitauto.com/business/" target="_blank">业务介绍</a></li>
-			    <li><a href="http://corp.bitauto.com/news/" target="_blank">易车动态</a></li>
-			    <li><a href="http://corp.bitauto.com/job/" target="_blank">加入易车</a></li>
-			    <li><a href="http://corp.bitauto.com/about/contact-us.shtml" target="_blank">联系我们</a></li>
-			    <li><a href="http://corp.bitauto.com/about/legal-notices.shtml" target="_blank">法律声明</a></li>
-			    <li><a href="http://i.bitauto.com/authenservice/register/Licence.aspx" target="_blank">服务协议</a></li>
-			    <li><a href="http://ir.bitauto.com/" target="_blank">Investor Relations</a></li>
-			    <li><a href="http://www.bitauto.com/feedback/" target="_blank">我要提意见</a></li>
-			    <li><a href="http://ued.bitauto.com/" target="_blank">用户体验中心</a></li>
-			   <li class="last"><a href="http://dealer.easypass.cn/" target="_blank">车易通</a></li>
+			    <li class="first"><a href="<?php echo U('Public/news','id=86');?>" >关于船员考试网</a></li>
+			    <li><a href="<?php echo U('Public/newslist','cid=1');?>" target="_blank">最新资讯</a></li>
+			    <li><a href="<?php echo U('Public/newslist','cid=2');?>" target="_blank">常见问题</a></li>
+			    <li><a href="<?php echo U('Public/news','id=87');?>" target="_blank">联系我们</a></li>
+			    <li><a href="<?php echo U('Public/newslist','cid=3');?>" target="_blank">海事规则</a></li>
+			    <li><a href="<?php echo U('Public/news','id=88');?>" target="_blank">法律声明</a></li>
+			    <li><a href="<?php echo U('Public/news','id=89');?>" target="_blank">会员服务</a></li>
+			    <li><a href="http://wpa.qq.com/msgrd?v=3&uin=<?php echo (session('website_myqq')); ?>&site=qq&menu=yes" >在线客服</a></li>
+			   <li class="last"><a href="http://www.ship123.com" target="_blank">船员导航网</a></li>
 			</ul>
 			</div>
 			
 			<div class="footer_text">
-			<p>CopyRight &copy; 2000-2013 BitAuto,All Rights Reserved 版权所有 北京易车信息科技有限公司</p>
-			<p>电信业务审批[2006]字第92号；经营许可证编号： <a href="http://www.bitauto.com/license/ICP.shtml" target="_blank">京ICP证060175号</a>；公安备案号码：京公网安备 110108901166号</p>
-			<p><a href="http://www.bitauto.com/license/video.shtml" target="_blank">网络视听许可证0110543号</a> <a href="http://www.bitauto.com/license/audio.shtml" target="_blank">广播电视节目制作许可证1238号</a> <a href="http://www.bitauto.com/license/pub.shtml" target="_blank">新出网证(京)字182号</a> <a href="http://www.bitauto.com/license/mapping.shtml" target="_blank">乙测资字11005048</a></p>
+			<p>客户服务热线：<?php echo (session('website_tel')); ?>&nbsp;&nbsp;<?php echo (session('website_sitename2')); ?>邮箱：<?php echo (session('website_mymail')); ?>&nbsp;&nbsp;网站ICP备案：<?php echo (session('website_beianhao')); ?></p>
+			<p>通用网址 网络关键词：<?php echo (session('website_keywords')); ?></p>
+			<p>CopyRight &copy; 2010-<?php echo date('Y',time()); ?>&nbsp;&nbsp;<?php echo (session('website_sitename2')); ?>&nbsp;&nbsp;<?php echo (session('website_siteurl')); ?>,All Rights Reserved&nbsp;&nbsp;<?php echo (session('website_sitename')); ?>&nbsp;&nbsp;版权所有</p>
 			</div>
-			<div class="icpbox"><a href="##" target="_blank" class="icp"><img src="__PUBLIC__/images/home/footerbeian.png"></a></div>
+			<div class="icpbox">
+				<a href="http://t.knet.cn/" target="_blank" class="icp"><img src="__PUBLIC__/images/home/footerbeian.png"></a></div>
+				<div class="tongji"><?php echo (session('website_sitetonji')); ?></div>
 			</div>
 	</div>
 </div>

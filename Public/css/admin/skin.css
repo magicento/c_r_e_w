@@ -379,7 +379,7 @@ div.result.page{
 div.searchform form{
 	margin: 0 0 5px 0;
 	text-align: right;
-	width: 300px;
+	/*width: 300px;*/
 	float: right;
 }
 div.searchform form input.searchtext{
@@ -453,4 +453,107 @@ span.isdownload{
 }
 .show{
 	display: table-row;
+}
+button#buttonUpload{
+	color: red;
+	font-weight: bolder;
+}
+span.addnewanswer{
+	margin-left: 390px;
+	color: red;
+	font-weight: bolder;
+	cursor: pointer;
+}
+select.answeridentify{
+	width: 36px;
+}
+input.answeridentifyid{
+	background: none;
+	text-align: right;
+	border: none;
+	height: 20px;
+	line-height: 20px;
+}
+input.answercontentid{
+	border: none;
+	border-bottom: 1px #ccc solid;
+	width: 400px;
+	background: none;
+	height: 20px;
+	line-height: 20px;
+	color: #333;
+	font-style: italic;
+}
+input.rightanswerid{
+	vertical-align: middle;
+	line-height: 20px;
+	height: 20px;
+}
+.rightansweridtd{
+	vertical-align: middle;
+	padding-left: 10px;
+}
+tr.oushu{
+	background: #f2f2f2;
+}
+div.answertpl{
+	height: 0;
+	overflow: hidden;
+	display: block;
+}
+img.delansweritemimg{
+	vertical-align: middle;
+	margin-left: 20px;
+	cursor: pointer;
+}
+input.addformbuttons{
+	width: 150px;
+	height: 30px;
+	line-height: 30px;
+	margin-top: 15px;
+	background: #005EAC;
+	border: none;
+	color: #fff;
+	font-weight: bolder;
+	padding: 0px 15px;
+	margin-right: 30px;
+	margin-bottom: 20px;
+	cursor: pointer;
+	width: auto;
+}
+a.adminlogobox,
+a.adminlogobox:hover{
+	display: block;
+	width: 297px;
+	height: 52px;
+	background: url(../../images/admin/logo.gif) no-repeat left center;
+	font-size: 20px;
+	color: #fff;
+	padding-left: 65px;
+	padding-top: 5px;
+}
+a.adminlogobox span{
+	font-size: 14px;
+	margin-left: 10px;
+}
+img.useradavtar{
+	position: absolute;
+	left: 730px;
+	width: 150px;
+	padding: 2px;
+	border: 1px #ddd solid;
+	border-radius: 10px;
+}
+.yysk{
+	color:#ddd;
+	border: none;
+	background: none;
+}
+.sdqr{
+	
+}
+.websitetongjitd,.websitetongjitd a,.websitetongjitd a:hover{
+	color: green;
+	font-size: 18px;
+	line-height: 30px;
 }

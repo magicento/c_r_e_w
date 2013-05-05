@@ -1,8 +1,36 @@
 <div class="appbuybox">
-	<h2>说明：应用购买成功以后，可以无限下载和练习！</h2>
-	<span class="appprice">此应用价格：<b>200元</b></span>，
-	<span class="yourcount">您的帐户余额：<b>50元</b></span> 。
-	<hr />
-	<button class="dobuy">我要购买</button>
-	<button class="dopay">立即充值</button>
+<form action="<{:U('Public/doalipay')}>">
+	<div class="buyapptitle">
+		你要购买的产品如下：
+	</div>
+	<div class="buyappinfo">
+		<div class="buyappinfoleft">
+			<img src="__PUBLIC__/images/appicon/<{$appinfo.logo}>" alt="" />
+		</div>
+		<div class="buyappinforight">
+			<div class="apptitle"><{$appinfo.title}></div>
+			<input type="hidden" name="appid" value="<{$appinfo.id}>" />
+			<div class="lxline"></div>
+			价格：<span class="buyappprice">￥<{$appinfo.price}></span>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="productinfo1">
+		<b>产品介绍</b>
+		<{$appinfo.intro}>
+	</div>
+	<div class="productinfo2">
+		<b>适用对象</b>
+		<{$appinfo.suitableusers}>
+	</div>
+	<div class="buyappnote">
+		重要提示：购买应用产品前，请认真阅读船员考试网使用规则，支付购买即代表您已经接受产品使用协议！
+	</div>
+	<div class="oktobuy">
+		<button class="clicktobuy oktobuyappbtn">确认购买</button>
+		<input type="checkbox" name="aplyxieyi" checked id="aplyxieyi" />
+		<label for="aplyxieyi">我接受</label>
+		<a target="_blank" href="<{:U('Public/news','id=89')}>">船员考试网使用规则</a>
+	</div>
+</form>
 </div>

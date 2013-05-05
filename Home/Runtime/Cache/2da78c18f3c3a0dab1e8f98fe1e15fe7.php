@@ -1,12 +1,24 @@
 <?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE HTML>
 <html lang="en-US">
 <head>
-	<meta charset="UTF-8">
-	<title><?php echo ($pagetitle); ?>_<?php echo C('SITE_NAME') ?></title>
-	<link rel="stylesheet" type="text/css" href="/Public/css/home/template.css" />
-	<script type="text/javascript" src="/Public/js/jquery_min.js"></script><script type="text/javascript" src="/Public/js/json2.js"></script><script type="text/javascript" src="/Public/js/common.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/js/artDialog/artDialog.js?skin=chrome"></script>
-	<script type="text/javascript" src="__PUBLIC__/js/artDialog/plugins/iframeTools.js"></script>
+<title><?php if(!empty($pagetitle)): echo ($pagetitle); ?>_<?php endif; echo (session('website_sitename')); ?>_<?php echo str_replace('www.','',session('website_siteurl')); ?></title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="expires" content="0" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="author" content="CrewExam" />
+<meta name="generator" content="lamp99.com,zhangjichao.cn" />
+<meta name="copyright" content="Copyright (c) 2013 CrewExam. All Rights Reserved." />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="robots" content="index, follow" />
+<meta name="revisit-after" content="1 days" />
+<meta name="rating" content="general" />
+<meta name="keywords" content="<?php echo (session('website_keywords')); ?>" />
+<meta name="description" content="<?php echo ($pagediscription); echo (session('website_sitediscription')); ?>" />
+<link rel="stylesheet" type="text/css" href="/Public/css/home/template.css" />
+<script type="text/javascript" src="/Public/js/jquery_min.js"></script><script type="text/javascript" src="/Public/js/json2.js"></script><script type="text/javascript" src="/Public/js/common.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/artDialog/artDialog.js?skin=chrome"></script>
+<script type="text/javascript" src="__PUBLIC__/js/artDialog/plugins/iframeTools.js"></script>
 </head>
 <body class="<?php echo ($browser); ?>">
 <div class="bshade"></div>
@@ -14,33 +26,39 @@
 <div class="regboxcontent iwantapplypopupbox">
 <link rel="stylesheet" type="text/css" href="/Public/images/home/tip-yellowsimple/tip-yellowsimple.css" /><link rel="stylesheet" type="text/css" href="/Public/images/home/datepicker/css/jquery-ui.css" />
 <script type="text/javascript" src="/Public/js/jquery_poshytip.js"></script><script type="text/javascript" src="/Public/js/city.js"></script><script type="text/javascript" src="/Public/images/home/datepicker/js/jquery-ui-datepicker.js"></script>
-<form action="##" class="reg-form" method="post">
+<form action="__URL__/doiwantapply" class="reg-form" method="post">
 	<table class="regtableleft">
 		<tr>
 			<th>应用名称：</th>
-			<td>91移动开放平台</td>
+			<td><?php echo ($appname); ?>
+			<input type="hidden" name="appname" value="<?php echo ($appname); ?>" />
+			</td>
 		</tr>
 		<tr>
 			<th>身份证号码：</th>
-			<td><?php echo ($_SESSION['userinfo']['identitycard']); ?></td>
+			<td><?php echo ($_SESSION['userinfo']['identitycard']); ?>
+				<input type="hidden" name="personcard" value="<?php echo ($_SESSION['userinfo']['identitycard']); ?>" />
+			</td>
 		</tr>
 		<tr>
 			<th>姓名：</th>
-			<td><?php echo ($_SESSION['userinfo']['account']); ?></td>
+			<td><?php echo ($_SESSION['userinfo']['account']); ?>
+			<input type="hidden" name="name" value="<?php echo ($_SESSION['userinfo']['account']); ?>" />
+			</td>
 		</tr>
 		<tr>
 			<th>邮箱：</th>
 			<td>
-				<input type="text" name="usereamil" id="usereamil" value="<?php echo ($_SESSION['userinfo']['email']); ?>" class="txt" title="请输入常用邮箱" />
+				<input type="text" name="email" id="usereamil" value="<?php echo ($_SESSION['userinfo']['email']); ?>" class="txt" title="请输入常用邮箱" />
 			</td>
 		</tr>
 		<tr>
 			<th>性别：</th>
 			<td>
 				<?php $sex = $_SESSION['userinfo']['sex'];if($sex==1){$m = 'checked';}else{$w = 'checked';} ?>
-				<input type="radio" <?php echo $m; ?> name="sex" id="sexman" value="1" /><label for="sexman">男</label>
+				<input type="radio" <?php echo $m; ?> name="sex" id="sexman" value="男" /><label for="sexman">男</label>
 				<span style="width: 20px;">&nbsp;</span>
-				<input type="radio" <?php echo $w; ?> name="sex" id="sexwoman" value="2" /><label for="sexwoman">女</label>
+				<input type="radio" <?php echo $w; ?> name="sex" id="sexwoman" value="女" /><label for="sexwoman">女</label>
 			</td>
 		</tr>
 		<tr>
@@ -54,7 +72,7 @@
 		</tr>
 		<tr>
 			<th>联系电话：</th>
-			<td><input type="text" name="telephone" id="telephone" value="<?php echo ($_SESSION['userinfo']['tel']); ?>" class="telephone txt" title="你的手机或者固定电话！" /></td>
+			<td><input type="text" name="tel" id="telephone" value="<?php echo ($_SESSION['userinfo']['tel']); ?>" class="telephone txt" title="你的手机或者固定电话！" /></td>
 		</tr>
 		<tr>
 			<th>所在地：</th>
@@ -67,7 +85,7 @@
 		<tr class="buchongyuming">
 			<th>补充说明：</th>
 			<td>
-				<textarea name="buchongyuming" id="buchongyuming" cols="30" rows="3"></textarea>
+				<textarea name="note" id="buchongyuming" cols="30" rows="3"></textarea>
 			</td>
 		</tr>
 		<tr>

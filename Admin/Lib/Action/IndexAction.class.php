@@ -7,6 +7,7 @@ class IndexAction extends CommonAction{
     }
     
     public function index(){
+    	
     	$this->display();
     }
 
@@ -21,6 +22,11 @@ class IndexAction extends CommonAction{
         $Ip = new IpLocation('UTFWry.dat'); // 实例化类 参数表示IP地址库文件
         $area = $Ip->getlocation($yourip); // 获取某个IP地址所在的位置
         // dump($area);
+        
+        $where['key'] = 'sitename';
+        $rs = D('Config')->where($where)->find();
+
+        $this->assign('sitename',$rs['value']);
         $this->assign('area',$area);
 
     	$this->display();
@@ -48,6 +54,16 @@ class IndexAction extends CommonAction{
             'magic_quotes_runtime'=>(1===get_magic_quotes_runtime())?'YES':'NO',
             );
         $this->assign('info',$info);
+        
+        //会员查询
+        $usernum = D('User')->where('block=0')->count();
+        $ordernum = D('Order')->where('trade_status<>"TRADE_FINISHED"')->count();
+        $allmoney = D('Order')->where('trade_status="TRADE_FINISHED"')->sum('total_fee');
+        
+        $this->assign('usernum',$usernum);
+        $this->assign('ordernum',$ordernum);
+        $this->assign('allmoney',$allmoney);
+        
         $this->display();
     }
 

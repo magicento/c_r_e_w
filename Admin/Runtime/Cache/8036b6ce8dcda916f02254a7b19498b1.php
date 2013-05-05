@@ -1,6 +1,6 @@
 <?php if (!defined('THINK_PATH')) exit();?><html>
 <head>
-<title>网站后台管理中心</title>
+<title><?php echo (session('website_sitename')); ?> 网站后台管理中心</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style>
 * { padding:0; margin:0;font-size: 12px; }

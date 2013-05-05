@@ -1,0 +1,8 @@
+<?php if (!defined('THINK_PATH')) exit();?><div class="getpwdbox">
+<form action="__URL__/dogetpwd" class="getuserpwdform">
+	请输入您的注册邮箱地址：<br />
+	<input type="text" name="youremail" id="youremail" />
+	<input type="submit" value="找回密码" class="getpwdsubmit" />
+</form>
+<img src="__PUBLIC__/images/home/sending.gif" class="sendingemail" alt="邮件发送中……" />
+</div>

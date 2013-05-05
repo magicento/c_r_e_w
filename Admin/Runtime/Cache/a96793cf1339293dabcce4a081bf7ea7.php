@@ -76,7 +76,7 @@
                   <td><?php echo ($k); ?></td>
                   <td><input type="checkbox" value="<?php echo ($vo["id"]); ?>" name="cid"></td>
                   <td align="left"><a href="__URL__/addapp/id/<?php echo ($vo["id"]); ?>"><?php echo ($vo["title"]); ?></a></td>
-                  <td><?php echo ($vo["coursetitle"]); ?></td>
+                  <td><?php echo ($vo["ctitle"]); ?></td>
                   <td><?php echo ($vo["testqishu"]); ?></td>
                   <td><?php echo ($vo["testcode"]); ?></td>
                   <td><?php echo ($vo["price"]); ?></td>

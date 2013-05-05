@@ -1,5 +1,5 @@
 <div class="trainingmiddleboxcontent item">
-	<div class="questionintro"><{$question.intro}></div>
+	<div class="questionintro"><{$question.intro|htmlspecialchars_decode}></div>
 	<div class="trtitle"><{$questionid}>.【<{$question.type}>】<{$question.title}></div>
 	<table class="answerbox">
 	<volist name="answer" id="vo">

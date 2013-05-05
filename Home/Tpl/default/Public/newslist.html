@@ -1,31 +1,35 @@
 <include file="Public:header" />
-<include file="Public:navigation_1" />
+<if condition="$Think.session.user_id eq ''">
+	<include file="Public:navigation_1" />
+<else />
+	<include file="Public:navigation_3" />
+</if>
 <div class="page-wrapper clearfix">
 	<div class="full-page">
 		<div class="login-page clearfix">
 		<include file="Public:leftbar_news" />
 		<div class="main-column usercenter news newlist">
 			<div class="rightcontentboxx">
-				<div class="headertitles_news"><div class="titleinfo">船员考试网 > 常见问题解答</div></div>
+				<div class="headertitles_news"><div class="titleinfo"><{$Think.session.website_sitename2}> > <{$articlecatgory.ctitle}></div></div>
 				<div class="realcontentboxx">
 					<div class="newsbox">
 						<ul>
-							<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月16日：传升级版Nexus 4下月发布 支持LTE</a></li>
-							<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月18日：视频游戏惨淡 3月份零售额同比降一成</a></li>
-							<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月19日：中移动：对雅安所有移动用户实施免停机服务</a></li>
-							<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月7日：东芝Kirabook上手：配视网膜屏 售价1599美元起</a></li>
-							<li class="newsitem5"><a href="<{:U('Public/news','id=1')}>">7月16日：传升级版Nexus 4下月发布 支持LTE</a></li>
-							<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月18日：视频游戏惨淡 3月份零售额同比降一成</a></li>
-							<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月19日：中移动：对雅安所有移动用户实施免停机服务</a></li>
-							<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月7日：东芝Kirabook上手：配视网膜屏 售价1599美元起</a></li>
-							<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月16日：传升级版Nexus 4下月发布 支持LTE</a></li>
-							<li class="newsitem5"><a href="<{:U('Public/news','id=1')}>">7月18日：视频游戏惨淡 3月份零售额同比降一成</a></li>
-							<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月19日：中移动：对雅安所有移动用户实施免停机服务</a></li>
-							<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月7日：东芝Kirabook上手：配视网膜屏 售价1599美元起</a></li>
-							<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月16日：传升级版Nexus 4下月发布 支持LTE</a></li>
-							<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月18日：视频游戏惨淡 3月份零售额同比降一成</a></li>
-							<li class="newsitem"><a href="<{:U('Public/news','id=1')}>">7月7日：东芝Kirabook上手：配视网膜屏 售价1599美元起</a></li>
+							<volist name="article" id="vo">
+							<li class="<if condition='$i%5 eq 0'>newsitem5<else />newsitem</if>">
+							
+							<php>if($vo['dowloadurl']){</php>
+								<a href="<{$vo.dowloadurl}>"><{$vo.title}></a>
+							<php>}else{</php>
+								<a href="<{:U('Public/news')}>/id/<{$vo.id}>"><{$vo.title}></a>
+							<php>}</php>
+							&nbsp;&nbsp;&nbsp;<{$vo.ctime|date="Y-m-d",###}>
+							
+							</li>
+							</volist>
 						</ul>	
+					</div>
+					<div class="shownewspage">
+						<{$page}>
 					</div>
 				</div>
 			</div>
